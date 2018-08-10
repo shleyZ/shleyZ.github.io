@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/07/29/node%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</loc>
+    <lastmod>2018-08-05T14:30:49.432Z</lastmod>
+    <data>
+        <display>
+        <title>node 版本升级</title>
+        <pubTime>2018-07-29T06:02:01.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="node" url="https://shleyz.github.io/categories/node/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/08/05/NATAPP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
+    <lastmod>2018-08-05T13:56:45.723Z</lastmod>
+    <data>
+        <display>
+        <title>NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题</title>
+        <pubTime>2018-08-05T12:05:19.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="webpack" url="https://shleyz.github.io/categories/webpack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/07/19/net/</loc>
+    <lastmod>2018-07-19T06:14:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>.net</title>
+        <pubTime>2018-07-19T06:14:24.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/11/28/%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82javascript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/</loc>
+    <lastmod>2018-07-16T05:17:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>彻底弄懂javascript执行机制</title>
+        <pubTime>2017-11-28T06:05:11.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="https://shleyz.github.io/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/04/20/nginx%20centOS/</loc>
+    <lastmod>2018-07-16T05:16:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>Nginx 安装使用</title>
+        <pubTime>2018-04-20T05:11:12.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Linx" url="https://shleyz.github.io/categories/Linx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/04/20/nginx%20web%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2018-07-16T05:10:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>阿里云服务器nginx安装</title>
+        <pubTime>2018-04-20T05:11:12.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Linx" url="https://shleyz.github.io/categories/Linx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/04/20/SSH%E8%BF%9E%E6%8E%A5/</loc>
+    <lastmod>2018-07-16T05:10:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>SSH连接</title>
+        <pubTime>2018-04-20T05:11:12.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Linx" url="https://shleyz.github.io/categories/Linx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/04/20/linux%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2018-07-16T05:10:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux使用</title>
+        <pubTime>2018-04-20T05:11:12.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Linx" url="https://shleyz.github.io/categories/Linx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/17/Vue%E4%B9%8B%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue之事件处理</title>
+        <pubTime>2017-09-17T07:58:58.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/19/Vue%E4%B9%8B%E7%BB%84%E4%BB%B6/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue之组件</title>
+        <pubTime>2017-09-19T07:13:02.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/16/Vue%E4%B9%8B%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%E5%92%8C%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue之条件渲染和列表渲染</title>
+        <pubTime>2017-09-16T05:47:58.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/15/Vue%E4%B9%8B%E7%BB%91%E5%AE%9A%E5%B1%9E%E6%80%A7%E6%A0%B7%E5%BC%8F/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue之绑定属性样式</title>
+        <pubTime>2017-09-15T08:06:12.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/17/Vue%E4%B9%8B%E8%A1%A8%E5%8D%95%E8%BE%93%E5%85%A5/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue之表单输入</title>
+        <pubTime>2017-09-17T08:56:47.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/14/Vue%E4%B9%8B%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue之计算属性</title>
+        <pubTime>2017-09-14T07:57:09.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/22/Vue%E5%8A%A8%E7%94%BB-%E5%88%97%E8%A1%A8%E8%BF%87%E6%B8%A1/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue动画--列表过渡</title>
+        <pubTime>2017-09-22T08:48:21.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/22/Vue%E5%8A%A8%E7%94%BB-%E5%8D%95%E5%85%83%E7%B4%A0%E6%88%96%E7%BB%84%E4%BB%B6%E7%9A%84%E8%BF%87%E6%B8%A1/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue动画--单元素或组件的过渡</title>
+        <pubTime>2017-09-22T07:35:15.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/22/Vue%E7%BB%84%E4%BB%B6-%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91slot/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue组件--内容分发slot</title>
+        <pubTime>2017-09-22T02:42:35.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/22/Vue%E7%BB%84%E4%BB%B6-%E5%8F%AF%E5%A4%8D%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6%E7%AD%89%E6%9D%82%E9%A1%B9/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue组件--可复用的组件等杂项</title>
+        <pubTime>2017-09-22T06:05:51.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/22/Vue%E7%BB%84%E4%BB%B6-%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue组件--动态组件</title>
+        <pubTime>2017-09-22T03:14:11.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/10/16/Webpack/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Webpack</title>
+        <pubTime>2017-10-16T07:02:14.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/07/12/html5%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>html5特性</title>
+        <pubTime>2017-07-12T07:53:19.000Z</pubTime>
+        
+        <tag>html</tag>
+         
+         
+           
+             
+              <breadCrumb title="html" url="https://shleyz.github.io/categories/html/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/03/17/git%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>git相关</title>
+        <pubTime>2018-03-17T06:42:05.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="git" url="https://shleyz.github.io/categories/git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/10/11/bind/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>bind</title>
+        <pubTime>2017-10-11T08:33:37.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="https://shleyz.github.io/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/08/27/index/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>about</title>
+        <pubTime>2017-08-26T16:23:46.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/08/28/CSS%E4%B8%AD%E7%9A%84rem/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>CSS中的rem</title>
+        <pubTime>2017-08-28T06:06:49.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+         
+           
+             
+              <breadCrumb title="CSS" url="https://shleyz.github.io/categories/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/08/15/jquery%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>jquery组件开发</title>
+        <pubTime>2017-08-15T07:12:20.000Z</pubTime>
+        
+        <tag>组件开发</tag>
+         
+         
+           
+             
+              <breadCrumb title="jquery" url="https://shleyz.github.io/categories/jquery/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/12/13/mac%E4%BF%AE%E6%94%B9hostname/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>mac修改hostname</title>
+        <pubTime>2017-12-13T12:10:07.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Mac" url="https://shleyz.github.io/categories/Mac/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/25/CSS%E6%8F%AD%E7%A7%98/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>CSS揭秘</title>
+        <pubTime>2017-09-25T04:07:53.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+         
+           
+             
+              <breadCrumb title="CSS" url="https://shleyz.github.io/categories/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/11/28/JQuery-tips/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>JQuery tips</title>
+        <pubTime>2017-11-28T07:23:07.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="jquery" url="https://shleyz.github.io/categories/jquery/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/10/14/ES6%E7%9A%84babel%E8%BD%AC%E7%A0%81%E5%99%A8/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>ES6的babel转码器</title>
+        <pubTime>2017-10-14T01:43:06.000Z</pubTime>
+        
+        <tag>babel</tag>
+         
+         
+           
+             
+              <breadCrumb title="ES6" url="https://shleyz.github.io/categories/ES6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/01/JSON%E9%95%BF%E5%BA%A6/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>JSON长度</title>
+        <pubTime>2017-09-01T08:38:28.000Z</pubTime>
+        
+        <tag>JSON</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="https://shleyz.github.io/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/17/Mac%E4%B8%8Bchrome%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac下chrome快捷键</title>
+        <pubTime>2017-09-17T01:54:27.000Z</pubTime>
+        
+        <tag>chrome快捷键</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mac" url="https://shleyz.github.io/categories/Mac/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/11/25/python%E5%8F%82%E6%95%B0/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>python参数</title>
+        <pubTime>2017-11-25T05:11:12.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Python" url="https://shleyz.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/12/02/python%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>python操作文件和目录</title>
+        <pubTime>2017-12-02T07:28:27.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Python" url="https://shleyz.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/12/05/python%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E4%BB%A5%E5%8F%8A%E5%85%B6%E5%AD%90%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>python获取指定目录以及其子目录下所有文件</title>
+        <pubTime>2017-12-05T08:24:54.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Python" url="https://shleyz.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/10/14/python%E9%A2%98%E7%9B%AE/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>python题目</title>
+        <pubTime>2017-10-14T05:27:40.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Python" url="https://shleyz.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/11/sass%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>sass学习笔记</title>
+        <pubTime>2017-09-11T06:06:10.000Z</pubTime>
+        
+        <tag>sass</tag>
+         
+         
+           
+             
+              <breadCrumb title="Sass" url="https://shleyz.github.io/categories/Sass/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/07/13/seleniumIDE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>seleniumIDE常用命令</title>
+        <pubTime>2017-07-13T08:15:53.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="automated testing" url="https://shleyz.github.io/categories/automated-testing/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/12/10/shell%E8%BF%9B%E8%A1%8Cvim%E6%93%8D%E4%BD%9CFound-a-swp-file-by-the-name/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>shell进行vim操作Found a swp file by the name</title>
+        <pubTime>2017-12-10T12:15:52.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Linux" url="https://shleyz.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/09/vue%E4%B9%8B%E6%A8%A1%E7%89%88/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>vue之模版</title>
+        <pubTime>2017-09-09T07:29:19.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/08/28/%E4%BC%AA%E5%85%83%E7%B4%A0%E5%92%8C%E4%BC%AA%E7%B1%BB/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>伪元素和伪类</title>
+        <pubTime>2017-08-28T06:54:18.000Z</pubTime>
+        
+        <tag>伪元素</tag>
+         
+         
+           
+             
+              <breadCrumb title="CSS" url="https://shleyz.github.io/categories/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/10/11/Array-prototype-slice-call-obj/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Array.prototype.slice.call(obj)</title>
+        <pubTime>2017-10-11T06:01:38.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="https://shleyz.github.io/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/10/20/%E6%88%91%E7%9A%84FCC%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>我的FCC项目</title>
+        <pubTime>2017-10-20T01:42:56.000Z</pubTime>
+        
+        <tag>codepen</tag>
+         
+         
+           
+             
+              <breadCrumb title="demo" url="https://shleyz.github.io/categories/demo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/28/%E5%85%B3%E4%BA%8EES6%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>关于ES6语法</title>
+        <pubTime>2017-09-28T02:39:20.000Z</pubTime>
+        
+        <tag>ES6</tag>
+         
+         
+           
+             
+              <breadCrumb title="ES6" url="https://shleyz.github.io/categories/ES6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E9%9D%9E%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>正则表达式贪婪模式与非贪婪模式</title>
+        <pubTime>2017-09-04T15:43:04.000Z</pubTime>
+        
+        <tag>正则</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="https://shleyz.github.io/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/10/19/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>科学上网</title>
+        <pubTime>2017-10-19T06:52:17.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Mac" url="https://shleyz.github.io/categories/Mac/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2018/03/15/%E8%A7%A3%E5%86%B3webstorm%E8%A2%AB%E9%99%90%E5%88%B6%E8%AF%BB%E5%86%99%E6%9D%83%E9%99%90%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>解决webstorm被限制读写权限的问题</title>
+        <pubTime>2018-03-15T08:32:28.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="webstorm" url="https://shleyz.github.io/categories/webstorm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/08/17/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>自动化测试工具</title>
+        <pubTime>2017-08-17T05:44:42.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="automated testing" url="https://shleyz.github.io/categories/automated-testing/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/21/%E9%80%BB%E8%BE%91%E4%B8%8E%E6%88%96%E6%93%8D%E4%BD%9C%E7%AC%A6/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>逻辑与或操作符</title>
+        <pubTime>2017-09-21T02:28:27.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="https://shleyz.github.io/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/07/10/CSS%E4%B9%8B%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>CSS之盒子模型</title>
+        <pubTime>2017-07-10T06:22:32.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+         
+           
+             
+              <breadCrumb title="CSS" url="https://shleyz.github.io/categories/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/23/Vue-%E6%B7%B7%E5%90%88/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue--混合</title>
+        <pubTime>2017-09-23T07:54:08.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/09/23/Vue-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue--自定义指令</title>
+        <pubTime>2017-09-23T08:39:39.000Z</pubTime>
+        
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Vue" url="https://shleyz.github.io/categories/Vue/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://shleyz.github.io/2017/10/28/javascript%E7%BB%84%E4%BB%B6%E5%8C%96/</loc>
+    <lastmod>2018-05-13T10:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>javascript组件化</title>
+        <pubTime>2017-10-28T12:46:39.000Z</pubTime>
+        
+        <tag>组件开发</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="https://shleyz.github.io/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+</urlset>

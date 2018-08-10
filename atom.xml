@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>雪林的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://shleyz.github.io/"/>
+  <updated>2018-08-05T13:56:45.723Z</updated>
+  <id>https://shleyz.github.io/</id>
+  
+  <author>
+    <name>雪林</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题</title>
+    <link href="https://shleyz.github.io/2018/08/05/NATAPP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    <id>https://shleyz.github.io/2018/08/05/NATAPP内网穿透/</id>
+    <published>2018-08-05T12:05:19.000Z</published>
+    <updated>2018-08-05T13:56:45.723Z</updated>
+    
+    <content type="html"><![CDATA[<p>disableHostCheck: true       </p><p>在webpack配置文件中加入以上。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;disableHostCheck: true       &lt;/p&gt;
+&lt;p&gt;在webpack配置文件中加入以上。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="webpack" scheme="https://shleyz.github.io/categories/webpack/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>node 版本升级</title>
+    <link href="https://shleyz.github.io/2018/07/29/node%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/"/>
+    <id>https://shleyz.github.io/2018/07/29/node版本升级/</id>
+    <published>2018-07-29T06:02:01.000Z</published>
+    <updated>2018-08-05T14:30:49.432Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="首先：查看当前node版本："><a href="#首先：查看当前node版本：" class="headerlink" title="首先：查看当前node版本："></a>首先：查看当前node版本：</h3><pre><code>node –v</code></pre><h3 id="安装n模块："><a href="#安装n模块：" class="headerlink" title="安装n模块："></a>安装n模块：</h3><pre><code>npm install -g n</code></pre><h3 id="升级到指定版本-最新版本（该步骤可能需要花费一些时间）升级之前，可以执行n-ls-（查看可升级的版本）"><a href="#升级到指定版本-最新版本（该步骤可能需要花费一些时间）升级之前，可以执行n-ls-（查看可升级的版本）" class="headerlink" title="升级到指定版本/最新版本（该步骤可能需要花费一些时间）升级之前，可以执行n ls （查看可升级的版本）"></a>升级到指定版本/最新版本（该步骤可能需要花费一些时间）升级之前，可以执行n ls （查看可升级的版本）</h3><p>如：</p><pre><code>n 6.9.1</code></pre><p>或者你也可以告诉管理器，安装最新的稳定版本</p><pre><code>n stable</code></pre><h3 id="安装完成后，查看Node的版本，检查升级是否成功"><a href="#安装完成后，查看Node的版本，检查升级是否成功" class="headerlink" title="安装完成后，查看Node的版本，检查升级是否成功"></a>安装完成后，查看Node的版本，检查升级是否成功</h3><pre><code>node -v</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;首先：查看当前node版本：&quot;&gt;&lt;a href=&quot;#首先：查看当前node版本：&quot; class=&quot;headerlink&quot; title=&quot;首先：查看当前node版本：&quot;&gt;&lt;/a&gt;首先：查看当前node版本：&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;node –v
+&lt;/code
+      
+    
+    </summary>
+    
+      <category term="node" scheme="https://shleyz.github.io/categories/node/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>.net</title>
+    <link href="https://shleyz.github.io/2018/07/19/net/"/>
+    <id>https://shleyz.github.io/2018/07/19/net/</id>
+    <published>2018-07-19T06:14:24.000Z</published>
+    <updated>2018-07-19T06:14:24.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx 安装使用</title>
+    <link href="https://shleyz.github.io/2018/04/20/nginx%20centOS/"/>
+    <id>https://shleyz.github.io/2018/04/20/nginx centOS/</id>
+    <published>2018-04-20T05:11:12.000Z</published>
+    <updated>2018-07-16T05:16:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="nginx基本操作"><a href="#nginx基本操作" class="headerlink" title="nginx基本操作"></a>nginx基本操作</h2><p>安装：</p><pre><code>yum install nginx</code></pre><p>启动：</p><pre><code>service nginx start</code></pre><p>停止： </p><pre><code>service nginx stop</code></pre><p>重载： </p><pre><code>service nginx reload</code></pre><h3 id="部署NGINX："><a href="#部署NGINX：" class="headerlink" title="部署NGINX："></a>部署NGINX：</h3><pre><code>// $ sudo service httpd stop$ sudo yum install nginx</code></pre><p>查看是否启动：</p><pre><code>$ ps -ef | grep nginx</code></pre><p>启动：</p><pre><code>$ sudo service nginx start$ sudo service nginx reloadfirewall-cmd --zone=public --add-port=80/tcp --permanent防火墙开启80端口firewall-cmd --reload防火墙重载yum install iptables-servicessystemctl enable iptablessystemctl stop firewalldsystemctl start firewalld</code></pre><p>配置/etc/nginx/下的配置文件：</p><p>因为在nginx主配置文件中引入了conf.d文件夹中的:<br> include /etc/nginx/conf.d/*.conf;<br>所以在nginx/conf.d/下面添加<strong>**</strong>.conf文件进行配置.</p><p>主配置文件如下：</p><pre><code># For more information on configuration, see:#   * Official English Documentation: http://nginx.org/en/docs/#   * Official Russian Documentation: http://nginx.org/ru/docs/user root;worker_processes auto;error_log /var/log/nginx/error.log;pid /run/nginx.pid;# Load dynamic modules. See /usr/share/nginx/README.dynamic.include /usr/share/nginx/modules/*.conf;events {    worker_connections 1024;}http {    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;    access_log  /var/log/nginx/access.log  main;    sendfile            on;    tcp_nopush          on;    tcp_nodelay         on;    keepalive_timeout   65;    types_hash_max_size 2048;    include             /etc/nginx/mime.types;    default_type        application/octet-stream;    # Load modular configuration files from the /etc/nginx/conf.d directory.    # See http://nginx.org/en/docs/ngx_core_module.html#include    # for more information.    include /etc/nginx/conf.d/*.conf;    server {        listen       80 default_server;        listen       [::]:80 default_server;        server_name  _;        root         /usr/share/nginx/html;      # Load configuration files for the default server block.      include /etc/nginx/default.d/*.conf;      location / {      }      error_page 404 /404.html;          location = /40x.html {      }      error_page 500 502 503 504 /50x.html;          location = /50x.html {          }      }  }</code></pre><ol><li><p>首先主配置文件，修改用户组</p><p> user root;</p></li></ol><p>2.然后进行操作：</p><pre><code>cd conf.dtouch ******.conf  //新建文件vim ******.conf  </code></pre><p>修改<strong>**</strong>.conf:</p><pre><code>server {        listen       80;        server_name  47.**.***.**;        #charset koi8-r;        #access_log  logs/host.access.log  main;        location / {            root   /home/********/****;            index  index.html index.htm;        try_files $uri /index.html;        }        #error_page  404              /404.html;        # redirect server error pages to the static page /50x.html        #        error_page   500 502 503 504  /50x.html;        location = /50x.html {            root   html;        }    }    </code></pre><h3 id="react-router在nginx上的应用，参照："><a href="#react-router在nginx上的应用，参照：" class="headerlink" title="react-router在nginx上的应用，参照："></a>react-router在nginx上的应用，参照：</h3><p><a href="https://blog.csdn.net/qq_26222859/article/details/54287068" target="_blank" rel="noopener">调整nginx正确服务react-router应用</a></p><h3 id="注意在linux进行解压文件时"><a href="#注意在linux进行解压文件时" class="headerlink" title="注意在linux进行解压文件时"></a>注意在linux进行解压文件时</h3><pre><code>unrar e build.rar build</code></pre><p>这样会把build.rar里面所有的文件都解压到build文件夹，不保持原有的目录。</p><pre><code>unrar x build.rar build</code></pre><p>这样解压会保持原有的目录。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;nginx基本操作&quot;&gt;&lt;a href=&quot;#nginx基本操作&quot; class=&quot;headerlink&quot; title=&quot;nginx基本操作&quot;&gt;&lt;/a&gt;nginx基本操作&lt;/h2&gt;&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install nginx
+&lt;/cod
+      
+    
+    </summary>
+    
+      <category term="Linx" scheme="https://shleyz.github.io/categories/Linx/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux使用</title>
+    <link href="https://shleyz.github.io/2018/04/20/linux%E6%93%8D%E4%BD%9C/"/>
+    <id>https://shleyz.github.io/2018/04/20/linux操作/</id>
+    <published>2018-04-20T05:11:12.000Z</published>
+    <updated>2018-07-16T05:10:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="软件操作"><a href="#软件操作" class="headerlink" title="软件操作"></a>软件操作</h2><p>软件包管理</p><pre><code>yum</code></pre><p>安装</p><pre><code>yum install ...</code></pre><p>卸载</p><pre><code>yum remove ...</code></pre><p>搜索</p><pre><code>yum serach ...</code></pre><p>清理缓存</p><pre><code>yum clean packages</code></pre><p>列出已安装</p><pre><code>yum list</code></pre><p>软件包信息</p><pre><code>yum info ...</code></pre><h2 id="硬件资源信息"><a href="#硬件资源信息" class="headerlink" title="硬件资源信息"></a>硬件资源信息</h2><ul><li><p>内存</p><p>  free -m</p></li><li><p>硬盘</p><p>  df -h</p></li><li><p>负载（w或top）</p><p>  w</p><p>  12:53:49 up  2:33,  3 users,  load average: 0.00, 0.01, 0.05<br>  USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT<br>  root     tty2                      10:32    1:59m  0.04s  0.04s -bash<br>  root     pts/0    121.239.246.23   11:34    1:13m  0.01s  0.01s -bash<br>  root     pts/1    121.239.246.23   12:24    5.00s  0.02s  0.00s w</p><p>  load average: 0.00, 0.01, 0.05  分别表示最近1分钟，5分钟，15分钟时候的负载值</p><p>  当到达1时说明负载快要超荷。0.6-0.7是健康值。</p></li><li><p>cpu个数和核数</p><p>  cat /proc/cpuinfo</p></li></ul><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>####目录结构</p><p>根目录/</p><p>家目录 /home</p><p>临时目录 /tmp</p><p>配置目录 /etc</p><p>用户程序目录 /usr</p><p>####文件基本操作</p><pre><code>touch --新建文件rm --删除文件和目录cp --复制mv --移动pwd --显示路径</code></pre><p>####vim</p><pre><code>gg--定位到行头G--定位到行尾dd--删除整行u--恢复</code></pre><p>####文件权限421</p><pre><code>r--4 可读w--2 可写x--1 可执行</code></pre><p>####文件搜索，查找</p><pre><code>tail--从尾部开始读head--从头部开始读cat--读取整个文件more--分页读取less--可控分页grep--搜索关键字find--查找文件wc--统计个数find . -name &quot;*.conf&quot; --查找当前路径下以conf后缀的文件find . -type  f --查找当前路径下的文件find . -type  d --查找当前路径下的文件夹find . -ctime -20 --查找20天内更新过的文件</code></pre><h4 id="文件压缩和解压tar和untar"><a href="#文件压缩和解压tar和untar" class="headerlink" title="文件压缩和解压tar和untar"></a>文件压缩和解压tar和untar</h4><p>把zxl文件压缩为zxl.tar：</p><pre><code>tar -cf zxl.tar zxl</code></pre><p>查看zxl.tar里面的内容：</p><pre><code>tar -tf zxl.tar</code></pre><p>查看zxl.tar里面的详细内容：</p><pre><code>tar -tvf zxl.tar</code></pre><p>把zxl.tar解压：</p><pre><code>tar -xf zxl.tar</code></pre><h2 id="系统用户操作命令"><a href="#系统用户操作命令" class="headerlink" title="系统用户操作命令"></a>系统用户操作命令</h2><h4 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h4><pre><code>cd /home/useradd zhaolin</code></pre><p>这时查看home里面会多了一个文件夹zhaolin</p><p>给zhaolin用户添加密码：</p><pre><code>passwd zhaolin</code></pre><p>输入密码并确认密码。</p><p>这样就有了一个新的用户zhaolin，可以用ssh用zhaolin用户连接。</p><h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><pre><code>userdel zhaolin  --删除用户zhaolinrm -rf zhaolin  --删除用户zhaolin目录userdel -r zhaolin --彻底删除用户以及用户文件夹</code></pre><h2 id="防火墙操作"><a href="#防火墙操作" class="headerlink" title="防火墙操作"></a>防火墙操作</h2><p>作用：保护服务器安全</p><p>安装：</p><pre><code>yum install firewalld</code></pre><p>启动： </p><pre><code>service firewalld started</code></pre><p>启动： </p><pre><code>service firewalld restarted</code></pre><p>列出防火墙服务：</p><pre><code>yum list | grep firewall</code></pre><p>查看是否启动防火墙：</p><pre><code>ps -ef|grep firewall</code></pre><p>停止：</p><pre><code>service firewalld stopservice firewalld status</code></pre><h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>root账号中</p><pre><code>visudo</code></pre><p>修改：</p><pre><code>## Allows people in group wheel to run all commands%wheel  ALL=(ALL)       ALL%zhaolin ALL=(ALL)    ALL</code></pre><p>在zhaolin用户进行操作以前，前面加上sudo即可</p><pre><code>sudo yum install XXXXX</code></pre><h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h4 id="linux-scp"><a href="#linux-scp" class="headerlink" title="linux: scp"></a>linux: scp</h4><pre><code>scp zhaolin@47.96.140.xx:/tmp/abc.txt ./  把服务器47.96.140.xx上tmp里面的文件传到本地当前目录scp abc.txt  zhaolin@47.96.140.xx:/tmp  把本地当前目录的文件上传到服务器47.96.140.xx上tmp</code></pre><h4 id="windows-xshell"><a href="#windows-xshell" class="headerlink" title="windows xshell"></a>windows xshell</h4><ul><li>首先xshell连接linux，</li><li><p>然后再linux服务器上安装：</p><p>  yum install lrzsz</p></li></ul><p>装好以后执行命令：</p><pre><code>rz</code></pre><p>会出现弹框：</p><p>选择文件并上传即可</p><h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><pre><code>wget XXXXX</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;软件操作&quot;&gt;&lt;a href=&quot;#软件操作&quot; class=&quot;headerlink&quot; title=&quot;软件操作&quot;&gt;&lt;/a&gt;软件操作&lt;/h2&gt;&lt;p&gt;软件包管理&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum
+      
+    
+    </summary>
+    
+      <category term="Linx" scheme="https://shleyz.github.io/categories/Linx/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SSH连接</title>
+    <link href="https://shleyz.github.io/2018/04/20/SSH%E8%BF%9E%E6%8E%A5/"/>
+    <id>https://shleyz.github.io/2018/04/20/SSH连接/</id>
+    <published>2018-04-20T05:11:12.000Z</published>
+    <updated>2018-07-16T05:10:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="服务器端安装SSH"><a href="#服务器端安装SSH" class="headerlink" title="服务器端安装SSH"></a>服务器端安装SSH</h2><p>安装SSH：</p><pre><code>yum install openssh-server</code></pre><p>启动SSH：</p><pre><code>sevice sshd start</code></pre><p>设置开机运行：</p><pre><code>chkconfig sshd on 或systemctl enable sshd.service</code></pre><h2 id="客户端SSH连接服务器端SSH"><a href="#客户端SSH连接服务器端SSH" class="headerlink" title="客户端SSH连接服务器端SSH"></a>客户端SSH连接服务器端SSH</h2><p>本地命令行l：</p><pre><code>ssh root@server_ip</code></pre><p>回车输入密码连接。</p><h2 id="SSH-config"><a href="#SSH-config" class="headerlink" title="SSH config"></a>SSH config</h2><ul><li><p>config方便批量管理多个ssh</p></li><li><p>config存放在 ~/.ssh/config</p></li><li><p>config语法</p><p>  cd ~/.ssh/</p><p>  vim config</p></li></ul><p>编辑：</p><pre><code>host &quot;zhu&quot;    HostName 47.96.140.**    User root    Port 22</code></pre><p>同样可以配置多个host</p><h2 id="SSH免密码登录ssh-key"><a href="#SSH免密码登录ssh-key" class="headerlink" title="SSH免密码登录ssh key"></a>SSH免密码登录ssh key</h2><ul><li>ssh key使用非对称加密方式生成公钥和私钥</li><li>私钥存放在本地~/.ssh目录</li><li>公钥可以对外开放，放在服务器的~/.ssh/authorized_keys</li></ul><p>linux生成秘钥</p><pre><code>cd ~/.ssh/ssh-keygen </code></pre><p>然后输入文件名字<br>输入密码<br>确认密码</p><p>生成成功</p><pre><code>Your identification has been saved in file_sra.Your public key has been saved in file_sra.pub.The key fingerprint is:SHA256:NrBxS72quC*************Mf54sqrl8tPwraeHYdKzg root@serverThe key&apos;s randomart image is:+---[RSA 2048]----+|                 ||         .       ||      o o .      ||       * . .     ||   .  . S .      ||  . +  o.o       ||   *.+oo+o.      ||  ==E==+==       ||  =@OO=*=oo.     |+----[SHA256]-----+[root@qyweb01 .ssh]# ls -altotal 24drwx------  2 root root 4096 Apr 27 12:14 .dr-xr-x---. 5 root root 4096 Apr 27 12:02 ..-rw-------  1 root root    0 Apr 27 10:20 authorized_keys-rw-r--r--  1 root root   67 Apr 27 11:52 config-rw-r--r--  1 root root  174 Apr 27 11:58 known_hosts-rw-------  1 root root 1679 Apr 27 12:14 zxl_sra-rw-r--r--  1 root root  394 Apr 27 12:14 zxl_sra.pub</code></pre><p>把公钥 .pub 里面的内容复制到服务器 ~/.ssh/authorized_keys</p><p>这样就可以免密连接服务器</p><h2 id="SSH设置安全端口"><a href="#SSH设置安全端口" class="headerlink" title="SSH设置安全端口"></a>SSH设置安全端口</h2><p>ssh默认端口22</p><p>防止不法分子利用，最好修改默认端口</p><p>修改配置文件</p><pre><code>/etc/ssh/sshd_config</code></pre><p>的port部分，</p><p>然后重启服务</p><pre><code>systemctl restart sshd.service</code></pre><p>最好不要修改默认端口，而是使用复杂的密码，或者使用密钥登陆</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;服务器端安装SSH&quot;&gt;&lt;a href=&quot;#服务器端安装SSH&quot; class=&quot;headerlink&quot; title=&quot;服务器端安装SSH&quot;&gt;&lt;/a&gt;服务器端安装SSH&lt;/h2&gt;&lt;p&gt;安装SSH：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum install openssh-
+      
+    
+    </summary>
+    
+      <category term="Linx" scheme="https://shleyz.github.io/categories/Linx/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云服务器nginx安装</title>
+    <link href="https://shleyz.github.io/2018/04/20/nginx%20web%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>https://shleyz.github.io/2018/04/20/nginx web服务器/</id>
+    <published>2018-04-20T05:11:12.000Z</published>
+    <updated>2018-07-16T05:10:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="阿里云服务器Linux远程ssh连接"><a href="#阿里云服务器Linux远程ssh连接" class="headerlink" title="阿里云服务器Linux远程ssh连接"></a>阿里云服务器Linux远程ssh连接</h2><p>可以在创建 ECS 实例时分配密钥对，也可以为实例绑定密钥对。</p><p>一台 ECS 实例只能绑定一个 SSH 密钥对。</p><h3 id="创建密钥对"><a href="#创建密钥对" class="headerlink" title="创建密钥对"></a>创建密钥对</h3><p>登录 ECS 控制台。</p><p>在左侧导航栏中，单击 密钥对。</p><p>在 密钥对 页面上，选择所需地域后，单击 创建密钥对。</p><p>在 创建密钥对 页面，设置密钥对名称，并选择 自动新建密钥对。</p><p>单击 确定 创建密钥对。</p><h3 id="绑定密钥对"><a href="#绑定密钥对" class="headerlink" title="绑定密钥对"></a>绑定密钥对</h3><p>登录 ECS 控制台。</p><p>在左侧导航栏中，选择 网络与安全 &gt; 密钥对。</p><p>选择一个地域。</p><p>找到需要操作的密钥对，在 操作 列中，单击 绑定密钥对。</p><p>在 绑定密钥对 对话框里，在 选择 ECS 实例 栏中，选中需要绑定该密钥对的 ECS 实例名称，单击 &gt;，移入 已选择 栏中。</p><p>单击 确定 绑定密钥对。</p><h3 id="使用-SSH-密钥对连接-Linux-实例（本地为-Windows-环境）"><a href="#使用-SSH-密钥对连接-Linux-实例（本地为-Windows-环境）" class="headerlink" title="使用 SSH 密钥对连接 Linux 实例（本地为 Windows 环境）"></a>使用 SSH 密钥对连接 Linux 实例（本地为 Windows 环境）</h3><p>#####前提条件</p><p>已经下载并安装了 PuTTY 和 PuTTYgen。</p><p>PuTTY 和 PuTTYgen 的下载地址：</p><p>PuTTY：</p><p><a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe" target="_blank" rel="noopener">https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe</a></p><p>PuTTYgen：</p><p><a href="https://the.earth.li/~sgtatham/putty/latest/w64/puttygen.exe" target="_blank" rel="noopener">https://the.earth.li/~sgtatham/putty/latest/w64/puttygen.exe</a></p><p>已经拥有一个分配了密钥对的 Linux 实例。可以在创建 ECS 实例时分配密钥对，也可以为实例绑定密钥对。</p><p>实例所在的安全组必须添加以下安全组规则（具体操作，请参考 <a href="https://help.aliyun.com/document_detail/51798.html?spm=a2c4g.11186623.4.2.4RBql5#windows）" target="_blank" rel="noopener">https://help.aliyun.com/document_detail/51798.html?spm=a2c4g.11186623.4.2.4RBql5#windows）</a></p><p>#####操作步骤</p><ol><li><p>（可选）如果您正在使用阿里云生成的 .pem 私钥文件，应先按以下步骤转为 .ppk 私钥文件。如果您使用的私钥文件本身已经是 .ppk 文件，可以略过这一步。</p><p> 启动 PuTTYgen。本示例中的 PuTTYgen 版本为 0.68。</p><p> 在 Parameters &gt; Type of key to generate 中，选中 RSA。Number of bits in a generated key 的值不需要设置，软件会根据导入的私钥信息自动更新。</p><p> 单击 Load。PuTTYgen 默认仅显示扩展名为 .ppk 的文件。要找到您的 .pem 文件，请选择显示所有类型的文件。</p><p> 选择您从阿里云下载的“.pem”格式的私钥文件，然后单击 打开。</p><p> 单击 OK（确定）关闭确认对话框。</p><p> 单击 Save private key。PuTTYgen 会显示一条关于在没有口令的情况下保存密钥的警告，单击 是(Y)。</p><p> 指定与密钥对相同的私钥名称，保存。PuTTY 会自动为文件添加 .ppk 扩展名。</p></li><li>启动 PuTTY。</li><li>单击 Connection &gt; SSH &gt; Auth，再单击 Browse…，选择前面所生成的 .ppk 文件。</li><li><p>单击 Session，</p><p> 在 Host Name (or IP address) 里输入账号和需要连接的实例公网 IP 地址，格式为 “root@IP 地址”。<br> 在 Port 里输入端口号 22；<br> Connection type 选择 SSH。<br> 单击 Open，开始连接您的 Linux 实例。    </p></li></ol><h2 id="Ubuntu下搭建和配置Nginx-Web服务器"><a href="#Ubuntu下搭建和配置Nginx-Web服务器" class="headerlink" title="Ubuntu下搭建和配置Nginx Web服务器"></a>Ubuntu下搭建和配置Nginx Web服务器</h2><h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><pre><code>apt-get updateapt-get install nginx</code></pre><h3 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h3><pre><code>systemctl start nginxsystemctl status nginx -lsystemctl enable nginx</code></pre><h3 id="停止nginx"><a href="#停止nginx" class="headerlink" title="停止nginx"></a>停止nginx</h3><pre><code>systemctl stop nginx</code></pre><h3 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h3><pre><code>lsof -i:80COMMAND     PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAMEAliYunDun   898     root   18u  IPv4  12980      0t0  TCP qyweb01:33654-&gt;140.205.140.205:http (CLOSE_WAIT)AliYunDun   934     root   18u  IPv4  12980      0t0  TCP qyweb01:33654-&gt;140.205.140.205:http (CLOSE_WAIT)AliYunDun   934     root   21u  IPv4  13271      0t0  TCP qyweb01:48738-&gt;106.11.68.13:http (ESTABLISHED)nginx     16177     root    6u  IPv4  33583      0t0  TCP *:http (LISTEN)nginx     16177     root    7u  IPv6  33584      0t0  TCP *:http (LISTEN)nginx     16178 www-data    6u  IPv4  33583      0t0  TCP *:http (LISTEN)nginx     16178 www-data    7u  IPv6  33584      0t0  TCP *:http (LISTEN)nginx     16179 www-data    6u  IPv4  33583      0t0  TCP *:http (LISTEN)nginx     16179 www-data    7u  IPv6  33584      0t0  TCP *:http (LISTEN)</code></pre><p>看到如上的信息，说明nginx启动成功。</p><p>nginx配置文件全放在/etc/nginx 下面，用 ll 名令查看如下：</p><pre><code>root@qyweb01:/etc/nginx# lltotal 64drwxr-xr-x  6 root root 4096 Apr 26 12:47 ./drwxr-xr-x 90 root root 4096 Apr 26 12:47 ../drwxr-xr-x  2 root root 4096 Jul 12  2017 conf.d/-rw-r--r--  1 root root 1077 Feb 12  2017 fastcgi.conf-rw-r--r--  1 root root 1007 Feb 12  2017 fastcgi_params-rw-r--r--  1 root root 2837 Feb 12  2017 koi-utf-rw-r--r--  1 root root 2223 Feb 12  2017 koi-win-rw-r--r--  1 root root 3957 Feb 12  2017 mime.types-rw-r--r--  1 root root 1462 Feb 12  2017 nginx.conf-rw-r--r--  1 root root  180 Feb 12  2017 proxy_params-rw-r--r--  1 root root  636 Feb 12  2017 scgi_paramsdrwxr-xr-x  2 root root 4096 Apr 26 12:47 sites-available/drwxr-xr-x  2 root root 4096 Apr 26 12:47 sites-enabled/drwxr-xr-x  2 root root 4096 Apr 26 12:47 snippets/-rw-r--r--  1 root root  664 Feb 12  2017 uwsgi_params-rw-r--r--  1 root root 3071 Feb 12  2017 win-utf</code></pre><p>nginx.conf是主配置文件</p><p>查看nginx进程是否启动</p><pre><code>ps -ef|grep nginx</code></pre><h3 id="配置nginx-Web服务器"><a href="#配置nginx-Web服务器" class="headerlink" title="配置nginx Web服务器"></a>配置nginx Web服务器</h3><p>主要配置文件nginx.conf</p><p>sudo vim /etc/nginx/nginx.conf</p><p>虚拟主机配置文件</p><p>sudo vim /etc/nginx/sites-enabled/default</p><h2 id="Ubuntu下安装node"><a href="#Ubuntu下安装node" class="headerlink" title="Ubuntu下安装node"></a>Ubuntu下安装node</h2><pre><code>sudo apt-get install nodejs-legacy nodejs sudo apt-get install npm</code></pre><h2 id="Windows上传文件到Ubuntu服务器"><a href="#Windows上传文件到Ubuntu服务器" class="headerlink" title="Windows上传文件到Ubuntu服务器"></a>Windows上传文件到Ubuntu服务器</h2><p>使用WinSCP工具，传输rar压缩文件</p><h2 id="Linux解压文件"><a href="#Linux解压文件" class="headerlink" title="Linux解压文件"></a>Linux解压文件</h2><pre><code>apt install rar unrarunrar e build.rar</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;阿里云服务器Linux远程ssh连接&quot;&gt;&lt;a href=&quot;#阿里云服务器Linux远程ssh连接&quot; class=&quot;headerlink&quot; title=&quot;阿里云服务器Linux远程ssh连接&quot;&gt;&lt;/a&gt;阿里云服务器Linux远程ssh连接&lt;/h2&gt;&lt;p&gt;可以在创建 
+      
+    
+    </summary>
+    
+      <category term="Linx" scheme="https://shleyz.github.io/categories/Linx/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>git相关</title>
+    <link href="https://shleyz.github.io/2018/03/17/git%E7%9B%B8%E5%85%B3/"/>
+    <id>https://shleyz.github.io/2018/03/17/git相关/</id>
+    <published>2018-03-17T06:42:05.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="git仓库"><a href="#git仓库" class="headerlink" title="git仓库"></a>git仓库</h2><pre><code>1.创建版本库：$ mkdir learngit$ cd learngit$ git init当前目录下多了一个.git的隐藏目录，这个目录是Git来跟踪管理版本库的，千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。2.把文件添加到版本库新建一个文件readme.txt    用命令git add告诉Git，把文件添加到仓库（把要提交的所有修改放到暂存区）：    $ git add readme.txt    用命令git commit告诉Git，把文件提交到仓库（把暂存区的所有修改提交到分支）：    $ git commit -m &quot;本次提交的说明&quot;    $ git push origin brachName 把分支上的所有本地提交推送到远程库$ git status    可以让我们时刻掌握仓库当前的状态$ git log    显示从最近到最远的提交日志    commit 8125d1babdf58e7f82b2ce78d048f47d867b1b5c (HEAD -&gt; master)    Author: shleyZ &lt;zxl735975459@126.com&gt;    Date:   Sat Mar 17 11:13:22 2018 +0800        添加一段内容    commit 43c80b42f0d4da4005a4c7cf87d150d59a44e64a    （HEAD表示当前版本）$ git reset --hard HEAD^    回退到上一个版本$ git reset --hard 3628164(版本号)  指定回到某个版本$ git reflog  查看你之前的每一次命令，前面是版本号前几位    8125d1b (HEAD -&gt; master) HEAD@{0}: commit: 添加一段内容    43c80b4 HEAD@{1}: commit (initial): 本次提交的说明$ git rm test.txt  删除文件</code></pre><h2 id="git分支"><a href="#git分支" class="headerlink" title="git分支"></a>git分支</h2><pre><code>创建dev分支，然后切换到dev分支    $ git checkout -b dev    //Switched to a new branch &apos;dev&apos;用git branch命令查看当前分支（列出所有分支，当前分支前面会标一个*号）    $ git branch    * dev      master合并某分支到当前分支：    git merge &lt;name&gt;删除分支：    git branch -d &lt;name&gt;    git branch -D &lt;name&gt; （强行删除分支）      </code></pre><h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><pre><code>需要根据提示手动解决，最好不要两人在同时对一个文件修改。</code></pre><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre><code>1.master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；2.在dev分支干活，也就是说，dev分支是不稳定的3.合并分支最好用下面这种方法：git merge --no-ff -m &quot;merge with no-ff&quot; dev这样Git就会在merge时生成一个新的commit，能看出来曾经做过合并。4.bug分支：修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。5.Feature分支（开发新功能）</code></pre><h2 id="多人协作："><a href="#多人协作：" class="headerlink" title="多人协作："></a>多人协作：</h2><pre><code>git remote -v 查看远程库的信息多人协作的工作模式通常是这样：首先，可以试图用git push origin branch-name推送自己的修改；如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；如果合并有冲突，则解决冲突，并在本地提交；没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。这就是多人协作的工作模式，一旦熟悉了，就非常简单。</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;git仓库&quot;&gt;&lt;a href=&quot;#git仓库&quot; class=&quot;headerlink&quot; title=&quot;git仓库&quot;&gt;&lt;/a&gt;git仓库&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;1.创建版本库：
+
+$ mkdir learngit
+$ cd learngit
+$ git ini
+      
+    
+    </summary>
+    
+      <category term="git" scheme="https://shleyz.github.io/categories/git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解决webstorm被限制读写权限的问题</title>
+    <link href="https://shleyz.github.io/2018/03/15/%E8%A7%A3%E5%86%B3webstorm%E8%A2%AB%E9%99%90%E5%88%B6%E8%AF%BB%E5%86%99%E6%9D%83%E9%99%90%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://shleyz.github.io/2018/03/15/解决webstorm被限制读写权限的问题/</id>
+    <published>2018-03-15T08:32:28.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在webstorm上新建一个项目，发现项目下的所有文件上都多了一个小锁的图标，对这些文件修改或新建文件的时候总是弹出：‘ cannot modify a ready-only directory’的弹窗，</p><p>点击修改读写权限的小锁图标，页是弹出‘failed to change read-only flag’。</p><p>解决方法：</p><p>运行：sudo chown -R myusername my-project-folder</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在webstorm上新建一个项目，发现项目下的所有文件上都多了一个小锁的图标，对这些文件修改或新建文件的时候总是弹出：‘ cannot modify a ready-only directory’的弹窗，&lt;/p&gt;
+&lt;p&gt;点击修改读写权限的小锁图标，页是弹出‘failed t
+      
+    
+    </summary>
+    
+      <category term="webstorm" scheme="https://shleyz.github.io/categories/webstorm/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>mac修改hostname</title>
+    <link href="https://shleyz.github.io/2017/12/13/mac%E4%BF%AE%E6%94%B9hostname/"/>
+    <id>https://shleyz.github.io/2017/12/13/mac修改hostname/</id>
+    <published>2017-12-13T12:10:07.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>修改Mac终端～前面的计算机名：</p><pre><code>sudo scutil --set HostName temp</code></pre><p>temp是你想要修改成的名字<br>输入密码回车后重启终端计算机名就会显示temp了！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;修改Mac终端～前面的计算机名：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo scutil --set HostName temp
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;temp是你想要修改成的名字&lt;br&gt;输入密码回车后重启终端计算机名就会显示temp了！&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="Mac" scheme="https://shleyz.github.io/categories/Mac/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>shell进行vim操作Found a swp file by the name</title>
+    <link href="https://shleyz.github.io/2017/12/10/shell%E8%BF%9B%E8%A1%8Cvim%E6%93%8D%E4%BD%9CFound-a-swp-file-by-the-name/"/>
+    <id>https://shleyz.github.io/2017/12/10/shell进行vim操作Found-a-swp-file-by-the-name/</id>
+    <published>2017-12-10T12:15:52.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>用vim打开.bash_profile时出现：</p><pre><code>ATTENTION  Found a swap file by the name &quot;.bash_profile.swp&quot;           owned by: ******   dated: ******           file name: *******           modified: YES           user name: ******   host name: *******           process ID: ******         。。。。。。。</code></pre><p>原因是之前vi 操作.bash_profile文件时出现了异常中断，所以在当前目录下产生了一个.bash_profile.swp文件</p><p>使用ls -a命令查看可以发现这个隐藏文件。</p><pre><code>rm .bash_profile.swp</code></pre><p>这样就不会有    ATTENTION 了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;用vim打开.bash_profile时出现：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ATTENTION  
+Found a swap file by the name &amp;quot;.bash_profile.swp&amp;quot;  
+
+         owned by: ****
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://shleyz.github.io/categories/Linux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python获取指定目录以及其子目录下所有文件</title>
+    <link href="https://shleyz.github.io/2017/12/05/python%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E4%BB%A5%E5%8F%8A%E5%85%B6%E5%AD%90%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/"/>
+    <id>https://shleyz.github.io/2017/12/05/python获取指定目录以及其子目录下所有文件/</id>
+    <published>2017-12-05T08:24:54.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>#!/usr/bin/env python3#-*- coding: utf-8 -*-import osdef findfile(path):    # 获取指定path下的所有文件和文件夹    allfiles = os.listdir(path)    for x in allfiles:        newPath = os.path.join(path,x)        if os.path.isdir(newPath):  # 如果是文件夹，就继续往下查找            findfile(newPath)        if os.path.isfile(newPath):  # 如果是文件，打印出来                print(newPath)    #绝对路径            print(newPath.split(path)[1])  # 相对路径</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;#!/usr/bin/env python3
+#-*- coding: utf-8 -*-
+
+import os
+
+def findfile(path):
+
+    # 获取指定path下的所有文件和文件夹
+    allfiles = os.listdir
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://shleyz.github.io/categories/Python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python操作文件和目录</title>
+    <link href="https://shleyz.github.io/2017/12/02/python%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/"/>
+    <id>https://shleyz.github.io/2017/12/02/python操作文件和目录/</id>
+    <published>2017-12-02T07:28:27.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>如何在python中进行文件和目录操作呢，我们可以在命令行输入操作系统提供的各种命令。</p><p>python内置的os模块可以直接调用操作系统提供的接口函数</p><h4 id="1-引用os模块"><a href="#1-引用os模块" class="headerlink" title="1.引用os模块"></a>1.引用os模块</h4><p>在python交互命令行中</p><pre><code>&gt;&gt;&gt; import os &gt;&gt;&gt; os.name&apos;posix&apos;</code></pre><p>如果系统是Linux，Unix或Mac OS X，那么os.name是’posix’<br>如果系统是Windows，那么os.name是’nt’</p><h4 id="2-操作系统中定义的环境变量都在os-environ中"><a href="#2-操作系统中定义的环境变量都在os-environ中" class="headerlink" title="2.操作系统中定义的环境变量都在os.environ中"></a>2.操作系统中定义的环境变量都在os.environ中</h4><pre><code>&gt;&gt;&gt; os.environenviron({&apos;TERM_PROGRAM&apos;: &apos;Apple_Terminal&apos;, &apos;SHELL&apos;: &apos;/bin/bash&apos;, &apos;TERM&apos;: &apos;xterm-256color&apos;, &apos;TMPDIR&apos;: &apos;/var/folders/jg/dr9gc8rd7y7g0pzyv3xzzp500000gn/T/&apos;, &apos;Apple_PubSub_Socket_Render&apos;: &apos;/private/tmp/com.apple.launchd.LI1PfpIvgk/Render&apos;, &apos;TERM_PROGRAM_VERSION&apos;: &apos;38.8.1.1&apos;, &apos;OLDPWD&apos;: &apos;/Users/*****/workspace&apos;, &apos;TERM_SESSION_ID&apos;: &apos;475******6&apos;, &apos;USER&apos;: &apos;*****&apos;, &apos;SSH_AUTH_SOCK&apos;: &apos;/private/tmp/com.apple.launchd.h8tpeio0hp/Listeners&apos;, &apos;__CF_USER_TEXT_ENCODING&apos;: &apos;0x1F5:0x19:0x34&apos;, &apos;PATH&apos;: &apos;/anaconda3/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/anaconda3/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/jre/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/jre/bin&apos;, &apos;PWD&apos;: &apos;/Users/*****/workspace/cpython&apos;, &apos;JAVA_HOME&apos;: &apos;/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home&apos;, &apos;LANG&apos;: &apos;zh_CN.UTF-8&apos;, &apos;XPC_FLAGS&apos;: &apos;0x0&apos;, &apos;XPC_SERVICE_NAME&apos;: &apos;0&apos;, &apos;SHLVL&apos;: &apos;1&apos;, &apos;HOME&apos;: &apos;/Users/*****&apos;, &apos;LOGNAME&apos;: &apos;*****&apos;, &apos;CLASSPATH&apos;: &apos;.:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/lib:.:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home&apos;, &apos;_&apos;: &apos;/anaconda3/bin/python3&apos;})</code></pre><p>要获取某个环境变量的值，可以用os.environ.get(‘key’):</p><pre><code>&gt;&gt;&gt; os.environ.get(&apos;PATH&apos;)&apos;/anaconda3/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/anaconda3/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/jre/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/jre/bin&apos;</code></pre><h4 id="3-操作文件和目录"><a href="#3-操作文件和目录" class="headerlink" title="3.操作文件和目录"></a>3.操作文件和目录</h4><pre><code>#查看当前绝对路径&gt;&gt;&gt; os.path.abspath(&apos;.&apos;)&apos;/Users/******/Workspace/Cpython&apos;# 在目录下创建一个新目录seconddir&gt;&gt;&gt; os.path.join(&apos;/Users/******/Workspace/Cpython&apos;,&apos;seconddir&apos;)&apos;/Users/******/Workspace/Cpython/seconddir&apos;&gt;&gt;&gt; os.mkdir(&apos;/Users/******/Workspace/Cpython/seconddir&apos;)# 删除一个目录:&gt;&gt;&gt; os.rmdir(&apos;/Users/******/Workspace/Cpython/seconddir&apos;)# 拼接路径：&gt;&gt;&gt; os.path.join(&apos;/Users/******/Workspace&apos;,&apos;Cpython&apos;)&apos;/Users/******/Workspace/Cpython&apos;# 拆分路径：&gt;&gt;&gt; os.path.split(&apos;/Users/******/Workspace/Cpython&apos;)(&apos;/Users/******/Workspace&apos;, &apos;Cpython&apos;)# 对文件夹或者文件重命名：&gt;&gt;&gt; os.rename(&apos;seconddir&apos;,&apos;second&apos;)# 删掉文件（当前目录下的）&gt;&gt;&gt; os.remove(&apos;first_test.py&apos;)# 列出当前目录下的所有目录&gt;&gt;&gt; [x for x in os.listdir(&apos;.&apos;) if os.path.isdir(x)][&apos;__pycache__&apos;, &apos;second&apos;]# 列出所有的.py文件：&gt;&gt;&gt; [x for x in os.listdir(&apos;.&apos;) if os.path.isfile(x) and os.path.splitext(x)[1] == &apos;.py&apos;][&apos;first.py&apos;, &apos;first_test.py&apos;, &apos;hello.py&apos;, &apos;learning.py&apos;, &apos;module.py&apos;]</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;如何在python中进行文件和目录操作呢，我们可以在命令行输入操作系统提供的各种命令。&lt;/p&gt;
+&lt;p&gt;python内置的os模块可以直接调用操作系统提供的接口函数&lt;/p&gt;
+&lt;h4 id=&quot;1-引用os模块&quot;&gt;&lt;a href=&quot;#1-引用os模块&quot; class=&quot;header
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://shleyz.github.io/categories/Python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JQuery tips</title>
+    <link href="https://shleyz.github.io/2017/11/28/JQuery-tips/"/>
+    <id>https://shleyz.github.io/2017/11/28/JQuery-tips/</id>
+    <published>2017-11-28T07:23:07.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="检查JQuery是否加载"><a href="#检查JQuery是否加载" class="headerlink" title="检查JQuery是否加载"></a>检查JQuery是否加载</h4><p>在使用JQuery之前应该确认它是否已经加载：</p><pre><code>if(typeOf JQuery == &apos;undefined&apos;){    console.log(&apos;jQuery hasn\&apos;t loaded&apos;);}else{    console.log(&apos;jQuery has loaded&apos;);}</code></pre><h4 id="返回顶部按钮"><a href="#返回顶部按钮" class="headerlink" title="返回顶部按钮"></a>返回顶部按钮</h4>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;检查JQuery是否加载&quot;&gt;&lt;a href=&quot;#检查JQuery是否加载&quot; class=&quot;headerlink&quot; title=&quot;检查JQuery是否加载&quot;&gt;&lt;/a&gt;检查JQuery是否加载&lt;/h4&gt;&lt;p&gt;在使用JQuery之前应该确认它是否已经加载：&lt;/p&gt;
+&lt;p
+      
+    
+    </summary>
+    
+      <category term="jquery" scheme="https://shleyz.github.io/categories/jquery/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>彻底弄懂javascript执行机制</title>
+    <link href="https://shleyz.github.io/2017/11/28/%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82javascript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/"/>
+    <id>https://shleyz.github.io/2017/11/28/彻底弄懂javascript执行机制/</id>
+    <published>2017-11-28T06:05:11.000Z</published>
+    <updated>2018-07-16T05:17:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://juejin.im/post/59e85eebf265da430d571f89&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这一次，彻底弄懂 JavaScript 执行机制&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="javascript" scheme="https://shleyz.github.io/categories/javascript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python参数</title>
+    <link href="https://shleyz.github.io/2017/11/25/python%E5%8F%82%E6%95%B0/"/>
+    <id>https://shleyz.github.io/2017/11/25/python参数/</id>
+    <published>2017-11-25T05:11:12.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>文章出自    <a href="https://www.cnblogs.com/paulwinflo/p/5764748.html" target="_blank" rel="noopener">菜比之路</a></p><h2 id="python参数-与"><a href="#python参数-与" class="headerlink" title="python参数*与**"></a>python参数*与**</h2><h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><p>在Python函数中，还可以定义可变参数。顾名思义，可变参数就是传入的参数个数是可变的，可以是1个、2个到任意个，还可以是0个。</p><p>我们以数学题为例子，给定一组数字a，b，c……，请计算a2 + b2 + c2 + ……。</p><p>要定义出这个函数，我们必须确定输入的参数。由于参数个数不确定，我们首先想到可以把a，b，c……作为一个list或tuple传进来，这样，函数可以定义如下：</p><pre><code>def calc(numbers):    sum = 0    for n in numbers:        sum = sum + n * n    return sum</code></pre><p>但是调用的时候，需要先组装出一个list或tuple：</p><pre><code>&gt;&gt;&gt; calc([1, 2, 3])14&gt;&gt;&gt; calc((1, 3, 5, 7))84</code></pre><p>如果利用可变参数，调用函数的方式可以简化成这样：</p><pre><code>&gt;&gt;&gt; calc(1, 2, 3)14&gt;&gt;&gt; calc(1, 3, 5, 7)84</code></pre><p>所以，我们把函数的参数改为可变参数：</p><pre><code>def calc(*numbers):    sum = 0    for n in numbers:        sum = sum + n * n    return sum</code></pre><p>定义可变参数和定义list或tuple参数相比，仅仅在参数前面加了一个*号。在函数内部，参数numbers接收到的是一个tuple，因此，函数代码完全不变。但是，调用该函数时，可以传入任意个参数，包括0个参数：</p><pre><code>&gt;&gt;&gt; calc(1, 2)5&gt;&gt;&gt; calc()0</code></pre><p>如果已经有一个list或者tuple，要调用一个可变参数怎么办？可以这样做：</p><pre><code>&gt;&gt;&gt; nums = [1, 2, 3]&gt;&gt;&gt; calc(nums[0], nums[1], nums[2])14</code></pre><p>这种写法当然是可行的，问题是太繁琐，所以Python允许你在list或tuple前面加一个*号，把list或tuple的元素变成可变参数传进去：</p><pre><code>&gt;&gt;&gt; nums = [1, 2, 3]&gt;&gt;&gt; calc(*nums)14</code></pre><p>这种写法相当有用，而且很常见。</p><h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4><p>可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。请看示例：</p><pre><code>def person(name, age, **kw):    print &apos;name:&apos;, name, &apos;age:&apos;, age, &apos;other:&apos;, kw</code></pre><p>函数person除了必选参数name和age外，还接受关键字参数kw。在调用该函数时，可以只传入必选参数：</p><pre><code>&gt;&gt;&gt; person(&apos;Michael&apos;, 30)name: Michael age: 30 other: {}</code></pre><p>也可以传入任意个数的关键字参数：</p><pre><code>&gt;&gt;&gt; person(&apos;Bob&apos;, 35, city=&apos;Beijing&apos;)name: Bob age: 35 other: {&apos;city&apos;: &apos;Beijing&apos;}&gt;&gt;&gt; person(&apos;Adam&apos;, 45, gender=&apos;M&apos;, job=&apos;Engineer&apos;)name: Adam age: 45 other: {&apos;gender&apos;: &apos;M&apos;, &apos;job&apos;: &apos;Engineer&apos;}</code></pre><p>关键字参数有什么用？它可以扩展函数的功能。比如，在person函数里，我们保证能接收到name和age这两个参数，但是，如果调用者愿意提供更多的参数，我们也能收到。试想你正在做一个用户注册的功能，除了用户名和年龄是必填项外，其他都是可选项，利用关键字参数来定义这个函数就能满足注册的需求。</p><p>和可变参数类似，也可以先组装出一个dict，然后，把该dict转换为关键字参数传进去：</p><pre><code>&gt;&gt;&gt; kw = {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos;: &apos;Engineer&apos;}&gt;&gt;&gt; person(&apos;Jack&apos;, 24, city=kw[&apos;city&apos;], job=kw[&apos;job&apos;])name: Jack age: 24 other: {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos;: &apos;Engineer&apos;}</code></pre><p>当然，上面复杂的调用可以用简化的写法：</p><pre><code>&gt;&gt;&gt; kw = {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos;: &apos;Engineer&apos;}&gt;&gt;&gt; person(&apos;Jack&apos;, 24, **kw)name: Jack age: 24 other: {&apos;city&apos;: &apos;Beijing&apos;, &apos;job&apos;: &apos;Engineer&apos;}</code></pre><h4 id="参数组合"><a href="#参数组合" class="headerlink" title="参数组合"></a>参数组合</h4><p>在Python中定义函数，可以用必选参数、默认参数、可变参数和关键字参数，这4种参数都可以一起使用，或者只用其中某些，但是请注意，参数定义的顺序必须是：必选参数、默认参数、可变参数和关键字参数。</p><p>比如定义一个函数，包含上述4种参数：</p><pre><code>def func(a, b, c=0, *args, **kw):    print &apos;a =&apos;, a, &apos;b =&apos;, b, &apos;c =&apos;, c, &apos;args =&apos;, args, &apos;kw =&apos;, kw</code></pre><p>在函数调用的时候，Python解释器自动按照参数位置和参数名把对应的参数传进去。</p><pre><code>&gt;&gt;&gt; func(1, 2)a = 1 b = 2 c = 0 args = () kw = {}&gt;&gt;&gt; func(1, 2, c=3)a = 1 b = 2 c = 3 args = () kw = {}&gt;&gt;&gt; func(1, 2, 3, &apos;a&apos;, &apos;b&apos;)a = 1 b = 2 c = 3 args = (&apos;a&apos;, &apos;b&apos;) kw = {}&gt;&gt;&gt; func(1, 2, 3, &apos;a&apos;, &apos;b&apos;, x=99)a = 1 b = 2 c = 3 args = (&apos;a&apos;, &apos;b&apos;) kw = {&apos;x&apos;: 99}</code></pre><p>最神奇的是通过一个tuple和dict，你也可以调用该函数：</p><pre><code>&gt;&gt;&gt; args = (1, 2, 3, 4)&gt;&gt;&gt; kw = {&apos;x&apos;: 99}&gt;&gt;&gt; func(*args, **kw)a = 1 b = 2 c = 3 args = (4,) kw = {&apos;x&apos;: 99}</code></pre><p>所以，对于任意函数，都可以通过类似func(*args, **kw)的形式调用它，无论它的参数是如何定义的。</p><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>Python的函数具有非常灵活的参数形态，既可以实现简单的调用，又可以传入非常复杂的参数。</p><p>默认参数一定要用不可变对象，如果是可变对象，运行会有逻辑错误！</p><p>要注意定义可变参数和关键字参数的语法：</p><p>*args是可变参数，args接收的是一个tuple；</p><p>**kw是关键字参数，kw接收的是一个dict。</p><p>以及调用函数时如何传入可变参数和关键字参数的语法：</p><p>可变参数既可以直接传入：func(1, 2, 3)，又可以先组装list或tuple，再通过*args传入：func(*(1, 2, 3))；</p><p>关键字参数既可以直接传入：func(a=1, b=2)，又可以先组装dict，再通过**kw传入：func(**{‘a’: 1, ‘b’: 2})。</p><p>使用*args和**kw是Python的习惯写法，当然也可以用其他参数名，但最好使用习惯用法。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;文章出自    &lt;a href=&quot;https://www.cnblogs.com/paulwinflo/p/5764748.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;菜比之路&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;python参数-与&quot;&gt;&lt;a hr
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://shleyz.github.io/categories/Python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>javascript组件化</title>
+    <link href="https://shleyz.github.io/2017/10/28/javascript%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
+    <id>https://shleyz.github.io/2017/10/28/javascript组件化/</id>
+    <published>2017-10-28T12:46:39.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>文章来源于purplebamboo的博客：<a href="https://github.com/purplebamboo/blog/issues/16" target="_blank" rel="noopener">https://github.com/purplebamboo/blog/issues/16</a></p><p>作为一名前端工程师，写组件的能力至关重要。虽然javascript经常被人嘲笑是个小玩具，但是在一代代大牛的前仆后继的努力下，渐渐的也摸索了一套组件的编写方式。</p><p>下面我们来谈谈，在现有的知识体系下，如何很好的写组件。</p><p>比如我们要实现这样一个组件，就是一个输入框里面字数的计数。这个应该是个很简单的需求。</p><p><img src="http://ow3w1zm3t.bkt.clouddn.com/components.gif" alt="components"></p><p>我们来看看，下面的各种写法。</p><p>为了更清楚的演示，下面全部使用jQuery作为基础语言库。</p><h2 id="最简陋的写法"><a href="#最简陋的写法" class="headerlink" title="最简陋的写法"></a>最简陋的写法</h2><hr><p>嗯 所谓的入门级写法呢，就是完完全全的全局函数全局变量的写法。（就我所知，现在好多外包还是这种写法）</p><p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;test&lt;/title&gt;</span><br><span class="line">  &lt;script src=&quot;http://code.jquery.com/jquery-1.9.1.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    $(function() &#123;</span><br><span class="line"></span><br><span class="line">      var input = $(&apos;#J_input&apos;);</span><br><span class="line"></span><br><span class="line">      //用来获取字数</span><br><span class="line">      function getNum()&#123;</span><br><span class="line">        return input.val().length;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      //渲染元素</span><br><span class="line">      function render()&#123;</span><br><span class="line">        var num = getNum();</span><br><span class="line"></span><br><span class="line">        //没有字数的容器就新建一个</span><br><span class="line">        if ($(&apos;#J_input_count&apos;).length == 0) &#123;</span><br><span class="line">          input.after(&apos;&lt;span id=&quot;J_input_count&quot;&gt;&lt;/span&gt;&apos;);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        $(&apos;#J_input_count&apos;).html(num+&apos;个字&apos;);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      //监听事件</span><br><span class="line">      input.on(&apos;keyup&apos;,function()&#123;</span><br><span class="line">        render();</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      //初始化，第一次渲染</span><br><span class="line">      render();</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; id=&quot;J_input&quot;/&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p><p>这段代码跑也是可以跑的，但是呢，各种变量混乱，没有很好的隔离作用域,当页面变的复杂的时候,会很难去维护。目前这种代码基本是用不了的。当然少数的活动页面可以简单用用。</p><h2 id="作用域隔离"><a href="#作用域隔离" class="headerlink" title="作用域隔离"></a>作用域隔离</h2><hr><p>让我们对上面的代码作些改动，使用单个变量模拟命名空间。</p><figure class="highlight plain"><figcaption><span>textCount </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">  input:null,</span><br><span class="line">  init:function(config)&#123;</span><br><span class="line">    this.input = $(config.id);</span><br><span class="line">    this.bind();</span><br><span class="line">    //这边范围对应的对象，可以实现链式调用</span><br><span class="line">    return this;</span><br><span class="line">  &#125;,</span><br><span class="line">  bind:function()&#123;</span><br><span class="line">    var self = this;</span><br><span class="line">    this.input.on(&apos;keyup&apos;,function()&#123;</span><br><span class="line">      self.render();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  getNum:function()&#123;</span><br><span class="line">    return this.input.val().length;</span><br><span class="line">  &#125;,</span><br><span class="line">  //渲染元素</span><br><span class="line">  render:function()&#123;</span><br><span class="line">    var num = this.getNum();</span><br><span class="line"></span><br><span class="line">    if ($(&apos;#J_input_count&apos;).length == 0) &#123;</span><br><span class="line">      this.input.after(&apos;&lt;span id=&quot;J_input_count&quot;&gt;&lt;/span&gt;&apos;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    $(&apos;#J_input_count&apos;).html(num+&apos;个字&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$(function() &#123;</span><br><span class="line">  //在domready后调用</span><br><span class="line">  textCount.init(&#123;id:&apos;#J_input&apos;&#125;).render();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>这样一改造，立马变的清晰了很多，所有的功能都在一个变量下面。代码更清晰，并且有统一的入口调用方法。</p><p>但是还是有些瑕疵，这种写法没有私有的概念，比如上面的getNum,bind应该都是私有的方法。但是其他代码可以很随意的改动这些。当代码量特别特别多的时候，很容易出现变量重复，或被修改的问题。</p><p>于是又出现了一种函数闭包的写法：</p><figure class="highlight plain"><figcaption><span>TextCount </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">  //私有方法，外面将访问不到</span><br><span class="line">  var _bind = function(that)&#123;</span><br><span class="line">    that.input.on(&apos;keyup&apos;,function()&#123;</span><br><span class="line">      that.render();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  var _getNum = function(that)&#123;</span><br><span class="line">    return that.input.val().length;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  var TextCountFun = function(config)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  TextCountFun.prototype.init = function(config) &#123;</span><br><span class="line">    this.input = $(config.id);</span><br><span class="line">    _bind(this);</span><br><span class="line"></span><br><span class="line">    return this;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  TextCountFun.prototype.render = function() &#123;</span><br><span class="line">    var num = _getNum(this);</span><br><span class="line"></span><br><span class="line">    if ($(&apos;#J_input_count&apos;).length == 0) &#123;</span><br><span class="line">      this.input.after(&apos;&lt;span id=&quot;J_input_count&quot;&gt;&lt;/span&gt;&apos;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    $(&apos;#J_input_count&apos;).html(num+&apos;个字&apos;);</span><br><span class="line">  &#125;;</span><br><span class="line">  //返回构造函数</span><br><span class="line">  return TextCountFun;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">$(function() &#123;</span><br><span class="line">  new TextCount().init(&#123;id:&apos;#J_input&apos;&#125;).render();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>这种写法，把所有的东西都包在了一个自动执行的闭包里面，所以不会受到外面的影响，并且只对外公开了TextCountFun构造函数，生成的对象只能访问到init,render方法。这种写法已经满足绝大多数的需求了。事实上大部分的jQuery插件都是这种写法。</p><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><hr><p>上面的写法已经可以满足绝大多数需求了。</p><p>但是呢，当一个页面特别复杂，当我们需要的组件越来越多，当我们需要做一套组件。仅仅用这个就不行了。首先的问题就是，这种写法太灵活了，写单个组件还可以。如果我们需要做一套风格相近的组件，而且是多个人同时在写。那真的是噩梦。</p><p>在编程的圈子里，面向对象一直是被认为最佳的编写代码方式。比如java，就是因为把面向对象发挥到了极致，所以多个人写出来的代码都很接近，维护也很方便。但是很不幸的是，javascript不支持class类的定义。但是我们可以模拟。</p><p>下面我们先实现个简单的javascript类：</p><pre><code>var Class = (function() {  var _mix = function(r, s) {    for (var p in s) {      if (s.hasOwnProperty(p)) {        r[p] = s[p]      }    }  }  var _extend = function() {    //开关 用来使生成原型时,不调用真正的构成流程init    this.initPrototype = true    var prototype = new this()    this.initPrototype = false    var items = Array.prototype.slice.call(arguments) || []    var item    //支持混入多个属性，并且支持{}也支持 Function    while (item = items.shift()) {      _mix(prototype, item.prototype || item)    }    // 这边是返回的类，其实就是我们返回的子类    function SubClass() {      if (!SubClass.initPrototype &amp;&amp; this.init)        this.init.apply(this, arguments)//调用init真正的构造函数    }    // 赋值原型链，完成继承    SubClass.prototype = prototype    // 改变constructor引用    SubClass.prototype.constructor = SubClass    // 为子类也添加extend方法    SubClass.extend = _extend    return SubClass  }  //超级父类  var Class = function() {}  //为超级父类添加extend方法  Class.extend = _extend  return Class})()</code></pre><p>这是拿John Resig的class简单修改了下。</p><p>这边只是很简陋的实现了类的继承机制。如果对类的实现有兴趣可以参考我另一篇文章<a href="http://purplebamboo.github.io/2014/07/13/javascript-oo-class/" target="_blank" rel="noopener">javascript oo</a>实现<br>我们看下使用方法：</p><pre><code>//继承超级父类，生成个子类Animal，并且混入一些方法。这些方法会到Animal的原型上。//另外这边不仅支持混入{}，还支持混入Functionvar Animal = Class.extend({  init:function(opts){    this.msg = opts.msg    this.type = &quot;animal&quot;  },  say:function(){    alert(this.msg+&quot;:i am a &quot;+this.type)  }})//继承Animal，并且混入一些方法var Dog = Animal.extend({  init:function(opts){    //并未实现super方法，直接简单使用父类原型调用即可    Animal.prototype.init.call(this,opts)    //修改了type类型    this.type = &quot;dog&quot;  }})//new Animal({msg:&apos;hello&apos;}).say()new Dog({msg:&apos;hi&apos;}).say()</code></pre><p>使用很简单，超级父类具有extend方法，可以继承出一个子类。子类也具有extend方法。</p><p>这边要强调的是，继承的父类都是一个也就是单继承。但是可以通过extend实现多重混入。详见下面用法。</p><p>有了这个类的扩展，我们可以这么编写代码了：</p><pre><code>var TextCount = Class.extend({  init:function(config){    this.input = $(config.id);    this._bind();    this.render();  },  render:function() {    var num = this._getNum();    if ($(&apos;#J_input_count&apos;).length == 0) {      this.input.after(&apos;&lt;span id=&quot;J_input_count&quot;&gt;&lt;/span&gt;&apos;);    };    $(&apos;#J_input_count&apos;).html(num+&apos;个字&apos;);  },  _getNum:function(){    return this.input.val().length;  },  _bind:function(){    var self = this;    self.input.on(&apos;keyup&apos;,function(){      self.render();    });  }})$(function() {  new TextCount({    id:&quot;#J_input&quot;  });})</code></pre><p>这边可能还没看见class的真正好处，不急我们继续往下。</p><h2 id="抽象出base"><a href="#抽象出base" class="headerlink" title="抽象出base"></a>抽象出base</h2><hr><p>可以看到，我们的组件有些方法，是大部分组件都会有的。</p><p>比如init用来初始化属性。<br>比如render用来处理渲染的逻辑。<br>比如bind用来处理事件的绑定。<br>当然这也是一种约定俗成的规范了。如果大家全部按照这种风格来写代码，开发大规模组件库就变得更加规范，相互之间配合也更容易。</p><p>这个时候面向对象的好处就来了，我们抽象出一个Base类。其他组件编写时都继承它。</p><pre><code>var Base = Class.extend({  init:function(config){    //自动保存配置项    this.__config = config    this.bind()    this.render()  },  //可以使用get来获取配置项  get:function(key){    return this.__config[key]  },  //可以使用set来设置配置项  set:function(key,value){    this.__config[key] = value  },  bind:function(){  },  render:function() {  },  //定义销毁的方法，一些收尾工作都应该在这里  destroy:function(){  }})</code></pre><p>base类主要把组件的一般性内容都提取了出来，这样我们编写组件时可以直接继承base类，覆盖里面的bind和render方法。</p><p>于是我们可以这么写代码：</p><pre><code>var TextCount = Base.extend({  _getNum:function(){    return this.get(&apos;input&apos;).val().length;  },  bind:function(){    var self = this;    self.get(&apos;input&apos;).on(&apos;keyup&apos;,function(){      self.render();    });  },  render:function() {    var num = this._getNum();    if ($(&apos;#J_input_count&apos;).length == 0) {      this.get(&apos;input&apos;).after(&apos;&lt;span id=&quot;J_input_count&quot;&gt;&lt;/span&gt;&apos;);    };    $(&apos;#J_input_count&apos;).html(num+&apos;个字&apos;);  }})$(function() {  new TextCount({  //这边直接传input的节点了，因为属性的赋值都是自动的。    input:$(&quot;#J_input&quot;)  });})</code></pre><p>可以看到我们直接实现一些固定的方法，bind，render就行了。其他的base会自动处理（这里只是简单处理了配置属性的赋值）。</p><p>事实上，这边的init，bind，render就已经有了点生命周期的影子，但凡是组件都会具有这几个阶段，初始化，绑定事件，以及渲染。当然这边还可以加一个destroy销毁的方法，用来清理现场。</p><p>此外为了方便，这边直接变成了传递input的节点。因为属性赋值自动化了，一般来说这种情况下都是使用getter，setter来处理。这边就不详细展开了。</p><h2 id="引入事件机制（观察者模式）"><a href="#引入事件机制（观察者模式）" class="headerlink" title="引入事件机制（观察者模式）"></a>引入事件机制（观察者模式）</h2><hr><p>有了base应该说我们编写组件更加的规范化，体系化了。下面我们继续深挖。</p><p>还是上面的那个例子，如果我们希望输入字的时候超过5个字就弹出警告。该怎么办呢。</p><p>小白可能会说，那简单啊直接改下bind方法：</p><pre><code>var TextCount = Base.extend({  ...  bind:function(){    var self = this;    self.get(&apos;input&apos;).on(&apos;keyup&apos;,function(){      if(self._getNum() &gt; 5){        alert(&apos;超过了5个字了。。。&apos;)      }      self.render();    });  },  ...})</code></pre><p>的确也是一种方法，但是太low了，代码严重耦合。当这种需求特别特别多，代码会越来越乱。</p><p>这个时候就要引入事件机制，也就是经常说的观察者模式。</p><p>注意这边的事件机制跟平时的浏览器那些事件不是一回事，要分开来看。<br>什么是观察者模式呢，官方的解释就不说了，直接拿这个例子来说。</p><p>想象一下base是个机器人会说话，他会一直监听输入的字数并且汇报出去（通知）。而你可以把耳朵凑上去，听着他的汇报（监听）。发现字数超过5个字了，你就做些操作。</p><p>所以这分为两个部分，一个是通知，一个是监听。</p><p>假设通知是 fire方法，监听是on。于是我们可以这么写代码：</p><pre><code>var TextCount = Base.extend({  ...  bind:function(){    var self = this;    self.get(&apos;input&apos;).on(&apos;keyup&apos;,function(){      //通知,每当有输入的时候，就报告出去。      self.fire(&apos;Text.input&apos;,self._getNum())      self.render();    });  },  ...})$(function() {  var t = new TextCount({    input:$(&quot;#J_input&quot;)  });  //监听这个输入事件  t.on(&apos;Text.input&apos;,function(num){    //可以获取到传递过来的值    if(num&gt;5){       alert(&apos;超过了5个字了。。。&apos;)    }  })})</code></pre><p>fire用来触发一个事件，可以传递数据。而on用来添加一个监听。这样组件里面只负责把一些关键的事件抛出来，至于具体的业务逻辑都可以添加监听来实现。没有事件的组件是不完整的。</p><p>下面我们看看怎么实现这套事件机制。</p><p>我们首先抛开base，想想怎么实现一个具有这套机制的类。</p><pre><code>//辅组函数，获取数组里某个元素的索引 indexvar _indexOf = function(array,key){  if (array === null) return -1  var i = 0, length = array.length  for (; i &lt; length; i++) if (array[i] === item) return i  return -1}var Event = Class.extend({  //添加监听  on:function(key,listener){    //this.__events存储所有的处理函数    if (!this.__events) {      this.__events = {}    }    if (!this.__events[key]) {      this.__events[key] = []    }    if (_indexOf(this.__events,listener) === -1 &amp;&amp; typeof listener === &apos;function&apos;) {      this.__events[key].push(listener)    }    return this  },  //触发一个事件，也就是通知  fire:function(key){    if (!this.__events || !this.__events[key]) return    var args = Array.prototype.slice.call(arguments, 1) || []    var listeners = this.__events[key]    var i = 0    var l = listeners.length    for (i; i &lt; l; i++) {      listeners[i].apply(this,args)    }    return this  },  //取消监听  off:function(key,listener){    if (!key &amp;&amp; !listener) {      this.__events = {}    }    //不传监听函数，就去掉当前key下面的所有的监听函数    if (key &amp;&amp; !listener) {      delete this.__events[key]    }    if (key &amp;&amp; listener) {      var listeners = this.__events[key]      var index = _indexOf(listeners, listener)      (index &gt; -1) &amp;&amp; listeners.splice(index, 1)    }    return this;  }})var a = new Event()//添加监听 test事件a.on(&apos;test&apos;,function(msg){  alert(msg)})//触发 test事件a.fire(&apos;test&apos;,&apos;我是第一次触发&apos;)a.fire(&apos;test&apos;,&apos;我又触发了&apos;)a.off(&apos;test&apos;)a.fire(&apos;test&apos;,&apos;你应该看不到我了&apos;)</code></pre><p>实现起来并不复杂，只要使用this.__events存下所有的监听函数。在fire的时候去找到并且执行就行了。</p><p>这个时候面向对象的好处就来了，如果我们希望base拥有事件机制。只需要这么写:</p><pre><code>var Base = Class.extend(Event,{  ...  destroy:function(){    //去掉所有的事件监听    this.off()  }})//于是可以//var a  = new Base()// a.on(xxx,fn)//// a.fire()</code></pre><p>是的只要extend的时候多混入一个Event，这样Base或者它的子类生成的对象都会自动具有事件机制。</p><p>有了事件机制我们可以把组件内部很多状态暴露出来，比如我们可以在set方法中抛出一个事件，这样每次属性变更的时候我们都可以监听到。</p><p>到这里为止，我们的base类已经像模像样了，具有了init，bind，render，destroy方法来表示组件的各个关键过程，并且具有了事件机制。基本上已经可以很好的来开发组件了。</p><h2 id="更进一步，richbase"><a href="#更进一步，richbase" class="headerlink" title="更进一步，richbase"></a>更进一步，richbase</h2><hr><p>我们还可以继续深挖。看看我们的base，还差些什么。首先浏览器的事件监听还很落后，需要用户自己在bind里面绑定，再然后现在的TextCount里面还存在dom操作，也没有自己的模板机制。这都是需要扩展的，于是我们在base的基础上再继承出一个richbase用来实现更完备的组件基类。</p><p>主要实现这些功能：</p><p>事件代理：不需要用户自己去找dom元素绑定监听，也不需要用户去关心什么时候销毁。<br>模板渲染：用户不需要覆盖render方法，而是覆盖实现setUp方法。可以通过在setUp里面调用render来达到渲染对应html的目的。<br>单向绑定：通过setChuckdata方法，更新数据，同时会更新html内容，不再需要dom操作。<br>我们看下我们实现richbase后怎么写组件：</p><pre><code>var TextCount = RichBase.extend({  //事件直接在这里注册，会代理到parentNode节点，parentNode节点在下面指定  EVENTS:{    //选择器字符串，支持所有jQuery风格的选择器    &apos;input&apos;:{      //注册keyup事件      keyup:function(self,e){        //单向绑定，修改数据直接更新对应模板        self.setChuckdata(&apos;count&apos;,self._getNum())      }    }  },  //指定当前组件的模板  template:&apos;&lt;span id=&quot;J_input_count&quot;&gt;&lt;%= count %&gt;个字&lt;/span&gt;&apos;,  //私有方法  _getNum:function(){    return this.get(&apos;input&apos;).val().length || 0  },  //覆盖实现setUp方法，所有逻辑写在这里。最后可以使用render来决定需不需要渲染模板  //模板渲染后会append到parentNode节点下面，如果未指定，会append到document.body  setUp:function(){    var self = this;    var input = this.get(&apos;parentNode&apos;).find(&apos;#J_input&apos;)    self.set(&apos;input&apos;,input)    var num = this._getNum()    //赋值数据，渲染模板，选用。有的组件没有对应的模板就可以不调用这步。    self.render({      count:num    })  }})$(function() {  //传入parentNode节点，组件会挂载到这个节点上。所有事件都会代理到这个上面。  new TextCount({    parentNode:$(&quot;#J_test_container&quot;)  });})/**对应的html,做了些修改，主要为了加上parentNode，这边就是J_test_container&lt;div id=&quot;J_test_container&quot;&gt;  &lt;input type=&quot;text&quot; id=&quot;J_input&quot;/&gt;&lt;/div&gt;*/</code></pre><p>看下上面的用法，可以看到变得更简单清晰了：</p><p>  1.事件不需要自己绑定，直接注册在EVENTS属性上。程序会自动将事件代理到parentNode上。<br>  2.引入了模板机制，使用template规定组件的模板，然后在setUp里面使用render(data)的方式渲染模板，程序会自动帮你append到parentNode下面。<br>  3.单向绑定，无需操作dom，后面要改动内容，不需要操作dom，只需要调用setChuckdata(key,新的值)，选择性的更新某个数据，相应的html会自动重新渲染。<br>下面我们看下richebase的实现：</p><pre><code>var RichBase = Base.extend({  EVENTS:{},  template:&apos;&apos;,  init:function(config){    //存储配置项    this.__config = config    //解析代理事件    this._delegateEvent()    this.setUp()  },  //循环遍历EVENTS，使用jQuery的delegate代理到parentNode  _delegateEvent:function(){    var self = this    var events = this.EVENTS || {}    var eventObjs,fn,select,type    var parentNode = this.get(&apos;parentNode&apos;) || $(document.body)    for (select in events) {      eventObjs = events[select]      for (type in eventObjs) {        fn = eventObjs[type]        parentNode.delegate(select,type,function(e){          fn.call(null,self,e)        })      }    }  },  //支持underscore的极简模板语法  //用来渲染模板，这边是抄的underscore的。非常简单的模板引擎，支持原生的js语法  _parseTemplate:function(str,data){    /**     * http://ejohn.org/blog/javascript-micro-templating/     * https://github.com/jashkenas/underscore/blob/0.1.0/underscore.js#L399     */    var fn = new Function(&apos;obj&apos;,        &apos;var p=[],print=function(){p.push.apply(p,arguments);};&apos; +        &apos;with(obj){p.push(\&apos;&apos; + str            .replace(/[\r\t\n]/g, &quot; &quot;)            .split(&quot;&lt;%&quot;).join(&quot;\t&quot;)            .replace(/((^|%&gt;)[^\t]*)&apos;/g, &quot;$1\r&quot;)            .replace(/\t=(.*?)%&gt;/g, &quot;&apos;,$1,&apos;&quot;)            .split(&quot;\t&quot;).join(&quot;&apos;);&quot;)            .split(&quot;%&gt;&quot;).join(&quot;p.push(&apos;&quot;)            .split(&quot;\r&quot;).join(&quot;\\&apos;&quot;) +        &quot;&apos;);}return p.join(&apos;&apos;);&quot;)    return data ? fn(data) : fn  },  //提供给子类覆盖实现  setUp:function(){    this.render()  },  //用来实现刷新，只需要传入之前render时的数据里的key还有更新值，就可以自动刷新模板  setChuckdata:function(key,value){    var self = this    var data = self.get(&apos;__renderData&apos;)    //更新对应的值    data[key] = value    if (!this.template) return;    //重新渲染    var newHtmlNode = $(self._parseTemplate(this.template,data))    //拿到存储的渲染后的节点    var currentNode = self.get(&apos;__currentNode&apos;)    if (!currentNode) return;    //替换内容    currentNode.replaceWith(newHtmlNode)    self.set(&apos;__currentNode&apos;,newHtmlNode)  },  //使用data来渲染模板并且append到parentNode下面  render:function(data){    var self = this    //先存储起来渲染的data,方便后面setChuckdata获取使用    self.set(&apos;__renderData&apos;,data)    if (!this.template) return;    //使用_parseTemplate解析渲染模板生成html    //子类可以覆盖这个方法使用其他的模板引擎解析    var html = self._parseTemplate(this.template,data)    var parentNode = this.get(&apos;parentNode&apos;) || $(document.body)    var currentNode = $(html)    //保存下来留待后面的区域刷新    //存储起来，方便后面setChuckdata获取使用    self.set(&apos;__currentNode&apos;,currentNode)    parentNode.append(currentNode)  },  destroy:function(){    var self = this    //去掉自身的事件监听    self.off()    //删除渲染好的dom节点    self.get(&apos;__currentNode&apos;).remove()    //去掉绑定的代理事件    var events = self.EVENTS || {}    var eventObjs,fn,select,type    var parentNode = self.get(&apos;parentNode&apos;)    for (select in events) {      eventObjs = events[select]      for (type in eventObjs) {        fn = eventObjs[type]        parentNode.undelegate(select,type,fn)      }    }  }})</code></pre><p>主要做了两件事，一个就是事件的解析跟代理，全部代理到parentNode上面。另外就是把render抽出来，用户只需要实现setUp方法。如果需要模板支持就在setUp里面调用render来渲染模板，并且可以通过setChuckdata来刷新模板，实现单向绑定。</p><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><hr><p>有了richbase，基本上组件开发就没啥问题了。但是我们还是可以继续深挖下去。</p><p>比如组件自动化加载渲染，局部刷新，比如父子组件的嵌套，再比如双向绑定，再比如实现ng-click这种风格的事件机制。</p><p>当然这些东西已经不属于组件里面的内容了。再进一步其实已经是一个框架了。实际上最近比较流行的react，ploymer还有我们的brix等等都是实现了这套东西。受限于篇幅，这个以后有空再写篇文章详细分析下。</p><p>鉴于有人跟我要完整代码，其实上面都列出来了。好吧 那我就再整理下，放在github了包含具体的demo，请点<a href="https://github.com/purplebamboo/demo-richbase/tree/master/example" target="_blank" rel="noopener">这里</a>。不过仅仅作为理解使用最好不要用于生产环境。如果觉得有帮助就给我个star吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;文章来源于purplebamboo的博客：&lt;a href=&quot;https://github.com/purplebamboo/blog/issues/16&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/purplebam
+      
+    
+    </summary>
+    
+      <category term="javascript" scheme="https://shleyz.github.io/categories/javascript/"/>
+    
+    
+      <category term="组件开发" scheme="https://shleyz.github.io/tags/%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的FCC项目</title>
+    <link href="https://shleyz.github.io/2017/10/20/%E6%88%91%E7%9A%84FCC%E9%A1%B9%E7%9B%AE/"/>
+    <id>https://shleyz.github.io/2017/10/20/我的FCC项目/</id>
+    <published>2017-10-20T01:42:56.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的codepen地址：<a href="https://codepen.io/Sherry728/" target="_blank" rel="noopener">https://codepen.io/Sherry728/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我的codepen地址：&lt;a href=&quot;https://codepen.io/Sherry728/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://codepen.io/Sherry728/&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="demo" scheme="https://shleyz.github.io/categories/demo/"/>
+    
+    
+      <category term="codepen" scheme="https://shleyz.github.io/tags/codepen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>科学上网</title>
+    <link href="https://shleyz.github.io/2017/10/19/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <id>https://shleyz.github.io/2017/10/19/科学上网/</id>
+    <published>2017-10-19T06:52:17.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="科学上网：用-VPS-搭建-shadowsocks-服务器"><a href="#科学上网：用-VPS-搭建-shadowsocks-服务器" class="headerlink" title="科学上网：用 VPS 搭建 shadowsocks 服务器"></a>科学上网：用 VPS 搭建 shadowsocks 服务器</h3><p> 目前 shadowsocks 服务已经受到了影响，不过部署在 25 端口目前还可用。</p><p>仍然可以通过 ubuntu 的 apt-get 获取到 shadowsocks 服务端，windows、Mac OS X、Android 客户端的 release 下载链接仍然保留。因此在写作本文时，shadowsocks 还是可以使用的。</p><h4 id="shadowsocks-简介"><a href="#shadowsocks-简介" class="headerlink" title="shadowsocks 简介"></a>shadowsocks 简介</h4><p>shadowsocks 是一款自定义协议的代理软件，由于其流量特征不明显，（直到不久前）一直可以稳定提供上网代理。</p><p>shadowsocks 客户端会在本地开启一个 socks5 代理，通过此代理的网络访问请求由客户端发送至服务端，服务端发出请求，收到响应数据后再发回客户端。</p><p>因此使用 shadowsocks 需要一台墙外的服务器来部署 shadowsocks 服务端。</p><h4 id="购买-VPS-服务器"><a href="#购买-VPS-服务器" class="headerlink" title="购买 VPS 服务器"></a>购买 VPS 服务器</h4><p>主流的 VPS（虚拟主机）服务器提供商有三家：</p><p>linode<br>digital ocean<br>bandwagon<br>下面的比上面的便宜。如果只是自用，bandwagon 足够。</p><p>一般使用 paypal 绑定一个 visa 或 mastercard 信用卡来付款。注意要用国际 paypal 帐号，国内的是不能用外币付款的。</p><p>在 bandwagon 购买 VPS 以后会获得一个主机地址和用于 ssh 登录的 root 密码。</p><h4 id="远程登陆-VPS"><a href="#远程登陆-VPS" class="headerlink" title="远程登陆 VPS"></a>远程登陆 VPS</h4><p>Mac OS X 或 Linux 下直接在终端中 ssh root@your_vps_ip -p your_ssh_port   即可。</p><p>在 windows 系统下需要专门的客户端来 SSH 登录 VPS。在 xShell 官网  下载 xShell。</p><p>家庭和学校用户可以免费试用，下载时选择 home and school use 即可。需要用邮箱注册一下，下载链接会发送到邮箱中。</p><p>xShell 中新建一个连接，会要求输入目标 IP 地址和端口，以及 root 密码，按提示操作即可。</p><h4 id="安装-shadowsocks"><a href="#安装-shadowsocks" class="headerlink" title="安装 shadowsocks"></a>安装 shadowsocks</h4><p>打开 shell，使用 VPS 服务商提供的 root 用户和密码 SSH 登录 VPS。然后执行如下命令：</p><p>Debian/Ubuntu:</p><pre><code>apt-get install python-pippip install shadowsocks </code></pre><p>CentOS:</p><pre><code>yum install python-setuptools &amp;&amp; easy_install pippip install shadowsocks </code></pre><p>shadowsocks 就安装好了。</p><p>有时 Ubuntu 会遇到第一个命令安装 python-pip 时找不到包的情况。pip 官方给出了一个安装脚本，可以自动安装 pip。先下载脚本，然后执行即可：</p><pre><code>wget https://bootstrap.pypa.io/get-pip.py python get-pip.py </code></pre><h4 id="编写配置文件"><a href="#编写配置文件" class="headerlink" title="编写配置文件"></a>编写配置文件</h4><p>shadowsocks 启动时的参数，如服务器端口，代理端口，登录密码等，可以通过启动时的命令行参数来设定，也可以通过 json 格式的配置文件设定。推荐使用配置文件，方便查看和修改。</p><p>用 vi 新建一个配置文件：</p><pre><code>vi /etc/shadowsocks.json </code></pre><p>然后输入如下内容：</p><pre><code>{    &quot;server&quot;:&quot;my_server_ip&quot;,    &quot;server_port&quot;:25,    &quot;local_address&quot;: &quot;127.0.0.1&quot;,    &quot;local_port&quot;:1080,    &quot;password&quot;:&quot;mypassword&quot;,    &quot;timeout&quot;:300,    &quot;method&quot;:&quot;aes-256-cfb&quot;,    &quot;fast_open&quot;: false  } </code></pre><p>保存退出。</p><p>配置文件中个字段的含义：</p><p>server: 服务器ip地址<br>server_port: 绑定的端口，注意不要设置已经使用了的端口<br>possword: 密码<br>timeout: 超时时间<br>method: 加密方法<br>fast_open: 如果你的服务器 Linux 内核在3.7+，可以开启 fast_open 以降低延迟<br>workers: 默认为1</p><p>如果需要配置多个SS账号，可以按照如下案例进行配置：</p><pre><code>{&quot;server&quot;:&quot;your_server_ip&quot;,&quot;port_password&quot;:{     &quot;8381&quot;:&quot;password1&quot;,     &quot;8382&quot;:&quot;password2&quot;,     &quot;8383&quot;:&quot;password3&quot;,     &quot;8384&quot;:&quot;password4&quot;     },&quot;timeout&quot;:300,&quot;method&quot;:&quot;rc4-md5&quot;,&quot;fast_open&quot;:false,&quot;workers&quot;:1}</code></pre><h4 id="启动-shadowsocks"><a href="#启动-shadowsocks" class="headerlink" title="启动 shadowsocks"></a>启动 shadowsocks</h4><p>如果已经写好了配置文件，启动 shadowsocks 服务器的命令如下：</p><pre><code>ssserver -c /etc/shadowsocks.json </code></pre><p>后台启动和停止 shadowsocks 服务器：</p><pre><code>ssserver -c /etc/shadowsocks.json -d start ssserver -c /etc/shadowsocks.json -d stop </code></pre><p>shadowsocks 的日志保存在 /var/log/shadowsocks.log</p><p>安装并启动 shadowsocks 客户端</p><p>shadowsocks 支持 windows、Mac OS X、Linux、Android、iOS 等多个平台。不过 iOS 由于系统对应用后台运行的限制，推荐使用客户端内嵌的浏览器科学上网，给其他应用代理时需要每过几分钟重新启动一下 app。</p><p>shadowsocks 项目 Github 主页在这里。</p><p>里面可以找到客户端下载地址。</p><p>下载安装客户端以后，只需按服务器的配置填写 IP 地址、服务器端口、本地端口（如果没有本地端口选项，就是默认的 1080）、密码、加密方式等参数，启动就可以了。</p><p>客户端支持全局代理和 PAC 代理两种方式，后者会使用一个脚本来自动检查一个网站是否在需要代理的网站列表中，自动选择直接连接或代理连接。</p><p>PAC 列表可以在线更新，但是难免有收录不全的情况。这时可以选择关闭 shadowsocks 代理（实际上是取消对系统代理的配置，shadowsocks 客户端仍然保持工作），然后使用支持自定义规则的代理管理插件来实现自动切换代理，比如 switchyOmega。</p><h4 id="使用-switchyOmega-实现自动切换代理"><a href="#使用-switchyOmega-实现自动切换代理" class="headerlink" title="使用 switchyOmega 实现自动切换代理"></a>使用 switchyOmega 实现自动切换代理</h4><p>switchyOmega 是 chrome 浏览器上一个很好用的代理管理插件。它的前身 switchySharp 更有名。</p><p>chrome 应用商店本身需要翻墙才能访问，因此需要先在 shadowsocks 启动代理模式下下载安装，再关闭 shadowsocks 代理。</p><p>安装完毕后，右击 switchyOmega 图标，选择选项，进入 switchOmega 配置界面。</p><p>创建 shadowsocks 情景模式</p><p>新建一个情景模式，比如叫 SS，代理协议选择 socks5，代理地址为 127.0.0.1，端口 1080。</p><p>现在切换到 SS 情景模式就可以通过 shadowsocks 科学上网了。后面获取自动切换规则列表</p><p>设置自动切换模式</p><p>在设置界面选择自动切换模式，在 “切换规则” 中勾选“规则列表规则”，对应的情景模式选择刚刚新建的 SS。</p><p>然后在下面的规则列表地址中填写</p><pre><code>https://autoproxy-gfwlist.googlecode.com/svn/trunk/gfwlist.txt</code></pre><p>规则列表格式选择 AutoProxy。</p><p>然后点击立即更新情景模式， 更新完成后会有提示。</p><p>点击左侧的 “应用选项”。然后单击 switchyOmega 图标，选择自动切换，就可以在访问“不存在的网站” 时自动切换到 shadowsocks 代理了。</p><p>添加自定义规则</p><p>如果遇到某个国外网站无法直接连接或速度太慢时，可以单击 switchyOmega 图标，选择 “添加条件”，情景模式选择 SS，就可以了。</p><p>这时打开 switchyOmega 选项，在自动切换模式的切换规则中就可以看到刚刚添加的规则。可以在这里管理自定义的规则。</p><p>导入和导出 switchyOmega 设置</p><p>如果换了一台电脑，重新设置一遍 switchyOmega 就太麻烦了。可以在设置好的 switchyOmega 中导出设置文件，在另一个 chrome 浏览器中导入，就可以直接复制原来的设置了。</p><p>在 switchyOmega 选项的左侧点击 “导入 / 导出”，点击“生成备份文件” 即可生成 switchyOmega 设置备份。点击 “从备份文件恢复” 可以导入备份文件。</p><p>(apt install shadowsocks-libev</p><p>)</p><p>坑：</p><p>1.远程连接ubuntu系统时，可能会出现如下错误：</p><pre><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!Someone could be eavesdropping on you right now (man-in-the-middle attack)!It is also possible that a host key has just been changed.The fingerprint for the ECDSA key sent by the remote host isSHA256:JHdZe0uj0FNj0PzyxFFNGZ5TU4M0aY/HsyTRON2CgQ4.Please contact your system administrator.Add correct host key in /Users/*****/.ssh/known_hosts to get rid of this message.Offending ECDSA key in /Users/*****/.ssh/known_hosts:6ECDSA host key for 45.77.195.128 has changed and you have requested strict checking.</code></pre><p>这种情况可能是因为已经登陆过，但是你修改过了ubuntu系统的信息，导致ssh信息不一致，只需要找到.ssh文件（Mac系统里面使用command+shift+.来显示隐藏文件，一般.ssh文件就在个人文件夹里面），删除对应的ip信息就好。</p><p>2.在pip install shadowsocks时会出现error：</p><pre><code>ImportError: No module named setuptools</code></pre><p>解决办法：</p><pre><code>wget http://pypi.python.org/packages/source/s/setuptools/setuptools-0.6c11.tar.gztar zxvf setuptools-0.6c11.tar.gzcd setuptools-0.6c11python setup.py buildpython setup.py install</code></pre><p>3.error: invalid command ‘bdist_wheel’</p><p>解决办法：</p><pre><code>pip install setuptools --upgrade</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;科学上网：用-VPS-搭建-shadowsocks-服务器&quot;&gt;&lt;a href=&quot;#科学上网：用-VPS-搭建-shadowsocks-服务器&quot; class=&quot;headerlink&quot; title=&quot;科学上网：用 VPS 搭建 shadowsocks 服务器&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="Mac" scheme="https://shleyz.github.io/categories/Mac/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Webpack</title>
+    <link href="https://shleyz.github.io/2017/10/16/Webpack/"/>
+    <id>https://shleyz.github.io/2017/10/16/Webpack/</id>
+    <published>2017-10-16T07:02:14.000Z</published>
+    <updated>2018-05-13T10:20:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>webpack 是一个现代 JavaScript 应用程序的模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成少量的 bundle - 通常只有一个，由浏览器加载。</p><p>1.安装webpack </p><p>新建一个文件夹webpack</p><pre><code>npm init此时最好把package.json中的name改掉，不能是webpack，否则局部安装webpack时会报错。改为webpack-test。npm install webpack --save-dev</code></pre><p>用编辑器打开    </p><p>npm install css-loader style-loader –save-dev</p><p>2.webpack使用</p><p>入口:告诉 webpack 从哪里开始，并根据依赖关系图确定需要打包的内容。可以将应用程序的入口起点认为是根上下文(contextual root) 或 app 第一个启动文件。</p><p>出口:将所有的资源(assets)归拢在一起后，还需要告诉 webpack 在哪里打包应用程序。webpack 的 output 属性描述了如何处理归拢在一起的代码(bundled code)。</p><p>Loader:webpack 把每个文件(.css, .html, .scss, .jpg, etc.) 都作为模块处理。然而 webpack 自身只理解 JavaScript。webpack loader 在文件被添加到依赖图中时，其转换为模块。(loader的作用：1.识别需要转换的文件，2.转换这些文件，从而使这些文件添加到依赖图)。</p><p>插件:webpack 的插件系统极其强大和可定制化。要使用一个插件，需要先require它，再把它添加到plugin数组中。</p><p>下面是webpack.config.js:</p><pre><code>const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;); //installed via npmconst webpack = require(&apos;webpack&apos;); //to access built-in pluginsconst path = require(&apos;path&apos;);const config = {  entry: &apos;./path/to/my/entry/file.js&apos;,  output: {    path: path.resolve(__dirname, &apos;dist&apos;),    filename: &apos;my-first-webpack.bundle.js&apos;  },  module: {    rules: [      { test: /\.txt$/, use: &apos;raw-loader&apos; }    ]  },  plugins: [    new webpack.optimize.UglifyJsPlugin(),    new HtmlWebpackPlugin({template: &apos;./src/index.html&apos;})  ]};module.exports = config;</code></pre><h4 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h4><p>单个入口：</p><pre><code>const config = {  entry: {    main: &apos;./path/to/my/entry/file.js&apos;  }};</code></pre><p>多个入口（对象形式）：</p><pre><code>const config = {  entry: {    app: &apos;./src/app.js&apos;,    vendors: &apos;./src/vendors.js&apos;  }};</code></pre><p>分离 应用程序(app) 和 第三方库(vendor) 入口。（或者多页面应用程序）</p><h4 id="输出output"><a href="#输出output" class="headerlink" title="输出output"></a>输出output</h4><p>即使可以存在多个入口起点，但只指定一个输出配置。</p><p>在 webpack 中配置 output 属性的最低要求是，将它的值设置为一个对象，包括以下两点：</p><ol><li>filename 用于输出文件的文件名。</li><li><p>目标输出目录 path 的绝对路径。</p><p> const config = {</p><pre><code>output: {    path: &apos;/home/proj/public/assets&apos;,    filename: &apos;bundle.js&apos;}</code></pre><p> }</p></li></ol><p>如果有多个入口，应该使用占位符(substitutions)来确保每个文件具有唯一的名称：</p><pre><code>{    entry: {        app: &apos;./src/app.js&apos;,        vendors: &apos;./src/vendors.js&apos;    }    output: {        filename: &apos;[name].js&apos;,        path: __dirname + bundle.js    }}// 写入到硬盘：./dist/app.js, ./dist/search.js</code></pre><h4 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h4><p>对模块的源代码进行转换。</p><p>loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 甚至允许你直接在 JavaScript 模块中 import CSS文件！<br>    module.exports = {<br>        entry: {<br>            …<br>        },<br>        output: {<br>            …<br>        },<br>        module: {<br>            rules:[<br>                {test: /.css$/, use: ‘css-loader’},<br>                {test:/.ts$/, use: ‘ts-loader’}<br>            ]<br>        }<br>    }</p><p>loader的使用方法有三种：</p><p>1.推荐配置webpack.config.js</p><pre><code>  module: {  rules: [    {      test: /\.css$/,      use: [        { loader: &apos;style-loader&apos; },        {          loader: &apos;css-loader&apos;,          options: {            modules: true          }        }      ]    }  ]}</code></pre><p>2.内联</p><pre><code>import Styles from &apos;style-loader!css-loader?modules!./styles.css&apos;;</code></pre><p>3.CLI(webpack命令行借口)</p><pre><code>webpack --module-bind jade-loader --module-bind &apos;css=style-loader!css-loader&apos;</code></pre><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>插件是webpack的支柱功能，目的是解决loader无法实现的事情。</p><p>用法：</p><p>webpack 配置中，向 plugins 属性传入 new 实例。</p><pre><code>plugins: [    new webpack.optimize.UglifyJsPlugin(),    new HtmlWebpackPlugin({template: &apos;./src/index.html&apos;})  ]</code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>1.通过require(…)导入其他文件<br>2.通过require(…)使用npm的工具函数<br>3.使用JS的控制流表达式<br>4.对常用值使用常量或者变量<br>5.编写并执行函数来生成部分配置</p><h4 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h4><p>在模块化编程中，开发者将程序分解成离散功能块，称为模块。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;webpack 是一个现代 JavaScript 应用程序的模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成少量的 bu
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

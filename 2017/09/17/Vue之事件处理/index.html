@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><title>Vue之事件处理 | 雪林的博客</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Vue之事件处理</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Vue之事件处理</h1><div class="post-meta"><a href="/2017/09/17/Vue之事件处理/#comments" class="comment-count"></a><p><span class="date">Sep 17, 2017</span><span><a href="/categories/Vue/" class="category">Vue</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>1.方法事件处理器</p>
+<p>用 v-on 指令监听 DOM 事件来触发一些 JavaScript 代码.<br>当事件处理的逻辑很复杂时，v-on 可以接收一个定义的方法来调用：</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;button v-on:click=&quot;greet&quot;&gt;Greet&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{
+            name:&apos;Vue.js&apos;
+        },
+        methods:{
+            greet:function (event) {
+                alert(&apos;hello&apos;+this.name+&apos;!&apos;);
+                if(event){
+                    alert(event.target.tagName);
+                }
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre><p>2.内联事件处理器</p>
+<p>如果需要在内联语句里面访问原生DOM事件，可以使用特殊变量$event把它传入方法：</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;button v-on:click=&quot;warn(&apos;Form cannot be submmit yet&apos;,$event)&quot;&gt;warn&lt;/button&gt;
+&lt;/div&gt;
+
+var vm = new Vue({
+    el:&apos;#test&apos;,
+    methods:{
+        warn:function (msg,event) {
+            if(event){
+                event.preventDefault();
+            }
+            alert(msg);
+
+        }
+    }
+})
+</code></pre><p>3.事件修饰符</p>
+<p>在事件处理程序中调用 event.preventDefault() 或 event.stopPropagation() 是非常常见的需求。尽管我们可以在 methods 中轻松实现这点，但更好的方式是：<em>methods 只有纯粹的数据逻辑，而不是去处理 DOM 事件细节</em>。<br>为了解决这个问题，Vue.js 为 v-on 提供了 事件修饰符。通过由点 (.) 表示的指令后缀来调用修饰符。</p>
+<p>.stop<br>.prevent<br>.capture<br>.self<br>.once    </p>
+<pre><code>&lt;!-- 阻止单击事件冒泡 --&gt;
+&lt;a v-on:click.stop=&quot;doThis&quot;&gt;&lt;/a&gt;
+&lt;!-- 提交事件不再重载页面 --&gt;
+&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;
+&lt;!-- 修饰符可以串联 --&gt;
+&lt;a v-on:click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;
+&lt;!-- 只有修饰符 --&gt;
+&lt;form v-on:submit.prevent&gt;&lt;/form&gt;
+&lt;!-- 添加事件侦听器时使用事件捕获模式 --&gt;
+&lt;div v-on:click.capture=&quot;doThis&quot;&gt;...&lt;/div&gt;
+&lt;!-- 只当事件在该元素本身 (比如不是子元素) 触发时触发回调 --&gt;
+&lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
+&lt;!-- 点击事件将只会触发一次 --&gt;
+&lt;a v-on:click.once=&quot;doThis&quot;&gt;&lt;/a&gt;
+</code></pre><p>4.键值修饰符</p>
+<p>监听键盘事件的键值，Vue 为最常用的按键提供了别名。</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;input v-on:keyup.enter=&quot;sub&quot;&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        methods:{
+            sub:function () {
+                alert(&apos;回车事件&apos;);
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre><p>全部的按键别名：</p>
+<p>.enter<br>.tab<br>.delete (捕获“删除”和“退格”键)<br>.esc<br>.space<br>.up<br>.down<br>.left<br>.right</p>
+<p>可以通过全局 config.keyCodes 对象自定义键值修饰符别名：</p>
+<pre><code>// 可以使用 v-on:keyup.f1
+Vue.config.keyCodes.f1 = 112
+</code></pre><p>5.修饰键</p>
+<p>可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应。</p>
+<p>.ctrl<br>.alt<br>.shift<br>.meta</p>
+<p>注意：在 Mac 系统键盘上，meta 对应命令键 (⌘)。在 Windows 系统键盘 meta 对应 windows 徽标键 (⊞)。在 Sun 操作系统键盘上，meta 对应实心宝石键 (◆)。在其他特定键盘上，尤其在 MIT 和 Lisp 键盘及其后续，比如 Knight 键盘，space-cadet 键盘，meta 被标记为“META”。在 Symbolics 键盘上，meta 被标记为“META”或者“Meta”。</p>
+<p>6.鼠标按钮修饰符</p>
+<p>.left<br>.right<br>.middle<br>这些修饰符会限制处理程序监听特定的滑鼠按键。</p>
+</div><div class="tags"><a href="/tags/Vue/">Vue</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/09/17/Vue之表单输入/" class="pre">Vue之表单输入</a><a href="/2017/09/17/Mac下chrome快捷键/" class="next">Mac下chrome快捷键</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/05/NATAPP内网穿透/">NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/node版本升级/">node 版本升级</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/net/">.net</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx centOS/">Nginx 安装使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/linux操作/">Linux使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/SSH连接/">SSH连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx web服务器/">阿里云服务器nginx安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/git相关/">git相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/解决webstorm被限制读写权限的问题/">解决webstorm被限制读写权限的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/mac修改hostname/">mac修改hostname</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linx/">Linx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/automated-testing/">automated testing</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo/">demo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jquery/">jquery</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webstorm/">webstorm</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/组件开发/" style="font-size: 15px;">组件开发</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JSON/" style="font-size: 15px;">JSON</a> <a href="/tags/chrome快捷键/" style="font-size: 15px;">chrome快捷键</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/html/" style="font-size: 15px;">html</a> <a href="/tags/babel/" style="font-size: 15px;">babel</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/伪元素/" style="font-size: 15px;">伪元素</a> <a href="/tags/codepen/" style="font-size: 15px;">codepen</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.qingyun100.com/" title="青云100" target="_blank">青云100</a><ul></ul><a href="https://github.com/shleyZ" title="shleyZ" target="_blank">shleyZ</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>

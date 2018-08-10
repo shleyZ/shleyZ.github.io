@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><title>Webpack | 雪林的博客</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Webpack</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Webpack</h1><div class="post-meta"><a href="/2017/10/16/Webpack/#comments" class="comment-count"></a><p><span class="date">Oct 16, 2017</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>webpack 是一个现代 JavaScript 应用程序的模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成少量的 bundle - 通常只有一个，由浏览器加载。</p>
+<p>1.安装webpack </p>
+<p>新建一个文件夹webpack</p>
+<pre><code>npm init
+
+此时最好把package.json中的name改掉，不能是webpack，否则局部安装webpack时会报错。改为webpack-test。
+
+npm install webpack --save-dev
+</code></pre><p>用编辑器打开    </p>
+<p>npm install css-loader style-loader –save-dev</p>
+<p>2.webpack使用</p>
+<p>入口:告诉 webpack 从哪里开始，并根据依赖关系图确定需要打包的内容。可以将应用程序的入口起点认为是根上下文(contextual root) 或 app 第一个启动文件。</p>
+<p>出口:将所有的资源(assets)归拢在一起后，还需要告诉 webpack 在哪里打包应用程序。webpack 的 output 属性描述了如何处理归拢在一起的代码(bundled code)。</p>
+<p>Loader:webpack 把每个文件(.css, .html, .scss, .jpg, etc.) 都作为模块处理。然而 webpack 自身只理解 JavaScript。webpack loader 在文件被添加到依赖图中时，其转换为模块。(loader的作用：1.识别需要转换的文件，2.转换这些文件，从而使这些文件添加到依赖图)。</p>
+<p>插件:webpack 的插件系统极其强大和可定制化。要使用一个插件，需要先require它，再把它添加到plugin数组中。</p>
+<p>下面是webpack.config.js:</p>
+<pre><code>const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;); //installed via npm
+const webpack = require(&apos;webpack&apos;); //to access built-in plugins
+const path = require(&apos;path&apos;);
+
+const config = {
+  entry: &apos;./path/to/my/entry/file.js&apos;,
+  output: {
+    path: path.resolve(__dirname, &apos;dist&apos;),
+    filename: &apos;my-first-webpack.bundle.js&apos;
+  },
+  module: {
+    rules: [
+      { test: /\.txt$/, use: &apos;raw-loader&apos; }
+    ]
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new HtmlWebpackPlugin({template: &apos;./src/index.html&apos;})
+  ]
+};
+module.exports = config;
+</code></pre><h4 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h4><p>单个入口：</p>
+<pre><code>const config = {
+  entry: {
+    main: &apos;./path/to/my/entry/file.js&apos;
+  }
+};
+</code></pre><p>多个入口（对象形式）：</p>
+<pre><code>const config = {
+  entry: {
+    app: &apos;./src/app.js&apos;,
+    vendors: &apos;./src/vendors.js&apos;
+  }
+};
+</code></pre><p>分离 应用程序(app) 和 第三方库(vendor) 入口。（或者多页面应用程序）</p>
+<h4 id="输出output"><a href="#输出output" class="headerlink" title="输出output"></a>输出output</h4><p>即使可以存在多个入口起点，但只指定一个输出配置。</p>
+<p>在 webpack 中配置 output 属性的最低要求是，将它的值设置为一个对象，包括以下两点：</p>
+<ol>
+<li>filename 用于输出文件的文件名。</li>
+<li><p>目标输出目录 path 的绝对路径。</p>
+<p> const config = {</p>
+<pre><code>output: {
+    path: &apos;/home/proj/public/assets&apos;,
+    filename: &apos;bundle.js&apos;
+}
+</code></pre><p> }</p>
+</li>
+</ol>
+<p>如果有多个入口，应该使用占位符(substitutions)来确保每个文件具有唯一的名称：</p>
+<pre><code>{
+    entry: {
+        app: &apos;./src/app.js&apos;,
+        vendors: &apos;./src/vendors.js&apos;
+    }
+    output: {
+        filename: &apos;[name].js&apos;,
+        path: __dirname + bundle.js
+    }
+}
+// 写入到硬盘：./dist/app.js, ./dist/search.js
+</code></pre><h4 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h4><p>对模块的源代码进行转换。</p>
+<p>loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 甚至允许你直接在 JavaScript 模块中 import CSS文件！<br>    module.exports = {<br>        entry: {<br>            …<br>        },<br>        output: {<br>            …<br>        },<br>        module: {<br>            rules:[<br>                {test: /.css$/, use: ‘css-loader’},<br>                {test:/.ts$/, use: ‘ts-loader’}<br>            ]<br>        }<br>    }</p>
+<p>loader的使用方法有三种：</p>
+<p>1.推荐配置webpack.config.js</p>
+<pre><code>  module: {
+  rules: [
+    {
+      test: /\.css$/,
+      use: [
+        { loader: &apos;style-loader&apos; },
+        {
+          loader: &apos;css-loader&apos;,
+          options: {
+            modules: true
+          }
+        }
+      ]
+    }
+  ]
+}
+</code></pre><p>2.内联</p>
+<pre><code>import Styles from &apos;style-loader!css-loader?modules!./styles.css&apos;;
+</code></pre><p>3.CLI(webpack命令行借口)</p>
+<pre><code>webpack --module-bind jade-loader --module-bind &apos;css=style-loader!css-loader&apos;
+</code></pre><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>插件是webpack的支柱功能，目的是解决loader无法实现的事情。</p>
+<p>用法：</p>
+<p>webpack 配置中，向 plugins 属性传入 new 实例。</p>
+<pre><code>plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new HtmlWebpackPlugin({template: &apos;./src/index.html&apos;})
+  ]
+</code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>1.通过require(…)导入其他文件<br>2.通过require(…)使用npm的工具函数<br>3.使用JS的控制流表达式<br>4.对常用值使用常量或者变量<br>5.编写并执行函数来生成部分配置</p>
+<h4 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h4><p>在模块化编程中，开发者将程序分解成离散功能块，称为模块。</p>
+</div><div class="tags"></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/10/19/科学上网/" class="pre">科学上网</a><a href="/2017/10/14/python题目/" class="next">python题目</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#入口"><span class="toc-text">入口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出output"><span class="toc-text">输出output</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loader"><span class="toc-text">loader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插件"><span class="toc-text">插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模块"><span class="toc-text">模块</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/05/NATAPP内网穿透/">NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/node版本升级/">node 版本升级</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/net/">.net</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx centOS/">Nginx 安装使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/linux操作/">Linux使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/SSH连接/">SSH连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx web服务器/">阿里云服务器nginx安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/git相关/">git相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/解决webstorm被限制读写权限的问题/">解决webstorm被限制读写权限的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/mac修改hostname/">mac修改hostname</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linx/">Linx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/automated-testing/">automated testing</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo/">demo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jquery/">jquery</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webstorm/">webstorm</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/组件开发/" style="font-size: 15px;">组件开发</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JSON/" style="font-size: 15px;">JSON</a> <a href="/tags/chrome快捷键/" style="font-size: 15px;">chrome快捷键</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/html/" style="font-size: 15px;">html</a> <a href="/tags/babel/" style="font-size: 15px;">babel</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/伪元素/" style="font-size: 15px;">伪元素</a> <a href="/tags/codepen/" style="font-size: 15px;">codepen</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.qingyun100.com/" title="青云100" target="_blank">青云100</a><ul></ul><a href="https://github.com/shleyZ" title="shleyZ" target="_blank">shleyZ</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><title>ES6的babel转码器 | 雪林的博客</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">ES6的babel转码器</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">ES6的babel转码器</h1><div class="post-meta"><a href="/2017/10/14/ES6的babel转码器/#comments" class="comment-count"></a><p><span class="date">Oct 14, 2017</span><span><a href="/categories/ES6/" class="category">ES6</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h4 id="我使用的是Mac系统，webstorm，在webstorm上创建一个新的项目ES6，安装babel。（首先要安装node）"><a href="#我使用的是Mac系统，webstorm，在webstorm上创建一个新的项目ES6，安装babel。（首先要安装node）" class="headerlink" title="我使用的是Mac系统，webstorm，在webstorm上创建一个新的项目ES6，安装babel。（首先要安装node）"></a>我使用的是Mac系统，webstorm，在webstorm上创建一个新的项目ES6，安装babel。（首先要安装node）</h4><h4 id="1-在ES6项目下执行"><a href="#1-在ES6项目下执行" class="headerlink" title="1.在ES6项目下执行"></a>1.在ES6项目下执行</h4><pre><code>npm init -y (根据权限不同，有的时候前面需要加sudo：sudo npm init -y，然后输入管理员密码)
+</code></pre><p>这样是为了生成一个package.json的文件</p>
+<h4 id="2-本地安装babel命令行工具，这样就可以命令行使用babel。"><a href="#2-本地安装babel命令行工具，这样就可以命令行使用babel。" class="headerlink" title="2.本地安装babel命令行工具，这样就可以命令行使用babel。"></a>2.本地安装babel命令行工具，这样就可以命令行使用babel。</h4><p>babel命令行工具可以全局安装也可本地安装，不过官方推荐本地安装，原因有两点：</p>
+<pre><code>本地安装不同的项目可以使用不同版本的babel，你也可以单独对某个项目的babel进行升级等操作  
+每个项目单独安装的意味着对计算机环境没有依赖，便于移植
+</code></pre><p>安装：</p>
+<pre><code>npm install --save-dev babel-cli
+</code></pre><p>这时项目里面又了node_modules文件夹</p>
+<p>如果你已经全局安装了babel-cli,可以使用下面的命令卸载：</p>
+<pre><code>npm uninstall --global babel-cli
+</code></pre><p>这时的package.json文件如下：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;ES6-babel&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;babel-cli&quot;: &quot;^6.26.0&quot;
+  }
+}
+</code></pre><h4 id="3-在命令行中调用babel"><a href="#3-在命令行中调用babel" class="headerlink" title="3.在命令行中调用babel"></a>3.在命令行中调用babel</h4><p>本地安装的babel是不能够在直接命令行中运行的，为了在命令行中运行babel，有两种方法，不过推荐第一种：</p>
+<p>方法一：配置package.json文件的scripts项（在script中添加 “build”: “babel src -d lib”,”babel”: “babel”）</p>
+<pre><code>{
+  &quot;name&quot;: &quot;ES6-babel&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;build&quot;: &quot;babel src -d lib&quot;,
+    &quot;babel&quot;: &quot;babel&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;babel-cli&quot;: &quot;^6.26.0&quot;
+  }
+}
+</code></pre><p>方法二：进入node_modules文件夹，再进入.bin文件夹，然后执行在命令行中执行babel src -d lib。</p>
+<h4 id="4-创建-babelrc-配置文件"><a href="#4-创建-babelrc-配置文件" class="headerlink" title="4.创建 .babelrc 配置文件"></a>4.创建 .babelrc 配置文件</h4><pre><code>type nul&gt;.babelrc
+</code></pre><p>或者：</p>
+<pre><code>mkfile -n 1m .babelrc
+</code></pre><p>都能创建.babelrc文件    </p>
+<h4 id="5-安装babel转译器"><a href="#5-安装babel转译器" class="headerlink" title="5.安装babel转译器"></a>5.安装babel转译器</h4><p>把ES6代码转换为ES5的代码必须要用转译器，装好需要的转译器还需要在babelrc进行配置这些转译器(presets)选项。</p>
+<p>下面是一些转译器，可以选择一个或多个，根据自己需要安装：</p>
+<pre><code>##ES2015转码规则
+npm install --save-dev babel-preset-es2015
+
+##react转码规则
+npm install --save-dev babel-preset-react
+
+##ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个
+npm install --save-dev babel-preset-stage-0
+npm install --save-dev babel-preset-stage-1
+npm install --save-dev babel-preset-stage-2
+npm install --save-dev babel-preset-stage-3
+</code></pre><h4 id="6-配置-babelrc文件"><a href="#6-配置-babelrc文件" class="headerlink" title="6.配置.babelrc文件"></a>6.配置.babelrc文件</h4><p>.babelrc用于配置除回调以外的所有babel api 选项。例如plugins和presets。plugins用于配置我们转译所需要的插件，presets用于配置我们所需要的转译器。</p>
+<p>添加：</p>
+<pre><code>{
+    &quot;presets&quot;: [
+      &quot;es2015&quot;
+    ],
+    &quot;plugins&quot;: []
+  }
+</code></pre><h4 id="7-这样我们就可以来转码了"><a href="#7-这样我们就可以来转码了" class="headerlink" title="7.这样我们就可以来转码了"></a>7.这样我们就可以来转码了</h4><p>由于”build”: “babel src -d lib”,所以我们要创建src文件夹，里面是要转码的es6内容</p>
+<p>例如在 ES6/src/es6.js里面添加如下内容：</p>
+<pre><code>input.map(item =&gt; item + 1);
+</code></pre><p>执行命令：</p>
+<pre><code>npm run build
+</code></pre><p>就会自动生成一个lib文件夹，里面是已经转码好的内容：</p>
+<pre><code>&quot;use strict&quot;;
+
+input.map(function (item) {
+  return item + 1;
+});        
+</code></pre></div><div class="tags"><a href="/tags/babel/">babel</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/10/14/python题目/" class="pre">python题目</a><a href="/2017/10/11/bind/" class="next">bind</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#我使用的是Mac系统，webstorm，在webstorm上创建一个新的项目ES6，安装babel。（首先要安装node）"><span class="toc-text">我使用的是Mac系统，webstorm，在webstorm上创建一个新的项目ES6，安装babel。（首先要安装node）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-在ES6项目下执行"><span class="toc-text">1.在ES6项目下执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-本地安装babel命令行工具，这样就可以命令行使用babel。"><span class="toc-text">2.本地安装babel命令行工具，这样就可以命令行使用babel。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-在命令行中调用babel"><span class="toc-text">3.在命令行中调用babel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-创建-babelrc-配置文件"><span class="toc-text">4.创建 .babelrc 配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-安装babel转译器"><span class="toc-text">5.安装babel转译器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-配置-babelrc文件"><span class="toc-text">6.配置.babelrc文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-这样我们就可以来转码了"><span class="toc-text">7.这样我们就可以来转码了</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/05/NATAPP内网穿透/">NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/node版本升级/">node 版本升级</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/net/">.net</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx centOS/">Nginx 安装使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/linux操作/">Linux使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/SSH连接/">SSH连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx web服务器/">阿里云服务器nginx安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/git相关/">git相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/解决webstorm被限制读写权限的问题/">解决webstorm被限制读写权限的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/mac修改hostname/">mac修改hostname</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linx/">Linx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/automated-testing/">automated testing</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo/">demo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jquery/">jquery</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webstorm/">webstorm</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/组件开发/" style="font-size: 15px;">组件开发</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JSON/" style="font-size: 15px;">JSON</a> <a href="/tags/chrome快捷键/" style="font-size: 15px;">chrome快捷键</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/html/" style="font-size: 15px;">html</a> <a href="/tags/babel/" style="font-size: 15px;">babel</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/伪元素/" style="font-size: 15px;">伪元素</a> <a href="/tags/codepen/" style="font-size: 15px;">codepen</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.qingyun100.com/" title="青云100" target="_blank">青云100</a><ul></ul><a href="https://github.com/shleyZ" title="shleyZ" target="_blank">shleyZ</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>

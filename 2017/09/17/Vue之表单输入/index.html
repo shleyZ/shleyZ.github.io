@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><title>Vue之表单输入 | 雪林的博客</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Vue之表单输入</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Vue之表单输入</h1><div class="post-meta"><a href="/2017/09/17/Vue之表单输入/#comments" class="comment-count"></a><p><span class="date">Sep 17, 2017</span><span><a href="/categories/Vue/" class="category">Vue</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>v-model指令在表单控件元素上创建双向数据绑定。它本质上来说是一种语法糖（没有改变什么功能，只是对于程序员来说更容易理解），负责监听用户的输入事件以更新数据。<em>它会根据控件类型自动选取正确的方法来更新元素。</em></p>
+<p>注意：<br>    1.v-model会忽略掉所有表单元素的value、checked、selected特性的初始值。因为<em>它选择的是Vue的实力数据作为具体的值</em>。所以应该在vue的data中声明初始值。<br>    2.对于要求IME(input method如中文、日语、韩语等),v-model 不会在 ime 输入中得到更新。如果你也想实现更新，请使用 input 事件。</p>
+<h3 id="基础用法-v-model-绑定的-value-通常是静态字符串"><a href="#基础用法-v-model-绑定的-value-通常是静态字符串" class="headerlink" title="基础用法(v-model 绑定的 value 通常是静态字符串)"></a>基础用法(v-model 绑定的 value 通常是静态字符串)</h3><p>1.文本:</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;input v-model=&quot;message&quot; placeholder=&quot;edit me&quot;&gt;
+    &lt;p&gt;Message is: {{ message }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{message:&quot;&quot;}
+    })
+&lt;/script&gt;    
+</code></pre><p> 2.多行文本</p>
+<p>注意：在文本区域插值 <code>(&lt;textarea&gt;&lt;/textarea&gt;)</code> 并不会生效，应用 v-model 来代替。</p>
+<pre><code> &lt;div id=&quot;test&quot;&gt;
+    &lt;p&gt;多行文本：&lt;/p&gt;
+    &lt;p style=&quot;white-space: pre-line;&quot;&gt;{{message}}&lt;/p&gt;
+    &lt;textarea v-model=&quot;message&quot; placeholder=&quot;请输入多行文本&quot;&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{message:&quot;&quot;}
+    })
+&lt;/script&gt;
+</code></pre><p>3.复选框</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;p&gt;复选框：&lt;/p&gt;
+    &lt;input type=&quot;checkbox&quot; value=&quot;Joe&quot; id=&quot;Joe&quot; v-model=&quot;checkedNames&quot;&gt;
+    &lt;label for=&quot;Joe&quot;&gt;Joe&lt;/label&gt;
+    &lt;input type=&quot;checkbox&quot; value=&quot;LiLei&quot; id=&quot;LiLei&quot; v-model=&quot;checkedNames&quot;&gt;
+    &lt;label for=&quot;LiLei&quot;&gt;LiLei&lt;/label&gt;
+    &lt;input type=&quot;checkbox&quot; value=&quot;HanMeiMei&quot; id=&quot;HanMeiMei&quot; v-model=&quot;checkedNames&quot;&gt;
+    &lt;label for=&quot;HanMeiMei&quot;&gt;HanMeiMei&lt;/label&gt;
+    &lt;p&gt;{{checkedNames}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{checkedNames:[]}
+    })
+&lt;/script&gt;
+</code></pre><p>for 属性规定 label 与哪个表单元素(id)绑定。</p>
+<p>复选框v-model关联：<em>数据为数组形式时，关联的是选中的复选框的value值。是字符串形式时，关联的则是选中的状态true／false</em></p>
+<p>4.单选按钮</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;p&gt;单选框：&lt;/p&gt;
+    &lt;input type=&quot;radio&quot; value=&quot;Joe&quot; id=&quot;Joe&quot; v-model=&quot;checkedNames&quot;&gt;
+    &lt;label for=&quot;Joe&quot;&gt;Joe&lt;/label&gt;
+    &lt;input type=&quot;radio&quot; value=&quot;LiLei&quot; id=&quot;LiLei&quot; v-model=&quot;checkedNames&quot;&gt;
+    &lt;label for=&quot;LiLei&quot;&gt;LiLei&lt;/label&gt;
+    &lt;input type=&quot;radio&quot; value=&quot;HanMeiMei&quot; id=&quot;HanMeiMei&quot; v-model=&quot;checkedNames&quot;&gt;
+    &lt;label for=&quot;HanMeiMei&quot;&gt;HanMeiMei&lt;/label&gt;
+    &lt;p&gt;{{checkedNames}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{checkedNames:&apos;&apos;}
+    })
+&lt;/script&gt;
+</code></pre><p>单选框v-model关联的只是单选选中的value值。    </p>
+<p>5.下拉框<br>单选：</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;p&gt;下拉框：&lt;/p&gt;
+    &lt;select name=&quot;&quot; id=&quot;&quot; v-model=&quot;selected&quot;&gt;
+        &lt;option value=&quot;请选择&quot; disabled&gt;请选择&lt;/option&gt;
+        &lt;option value=&quot;A&quot;&gt;A&lt;/option&gt;
+        &lt;option value=&quot;B&quot;&gt;B&lt;/option&gt;
+        &lt;option value=&quot;C&quot;&gt;C&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;p&gt;选择的是：{{selected}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{selected:&apos;&apos;}
+    })
+&lt;/script&gt;
+</code></pre><p>多选下拉框只需要在select标签里面增加multiple</p>
+<p>用v-for动态渲染：</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;p&gt;v-for实现下拉框：&lt;/p&gt;
+    &lt;select v-model=&quot;selected&quot;&gt;
+        &lt;option v-for=&quot;option in options&quot; v-bind:value=&quot;option.value&quot;&gt;{{option.text}}&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;p&gt;选择的是：{{selected}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{
+            selected:&apos;A&apos;,
+            options:[
+                {text:&apos;one&apos;,value:&apos;A&apos;},
+                {text:&apos;two&apos;,value:&apos;B&apos;},
+                {text:&apos;three&apos;,value:&apos;C&apos;}
+            ]
+        }
+    })
+&lt;/script&gt;  
+</code></pre><h3 id="值绑定-绑定-value-到-Vue-实例的一个动态属性上"><a href="#值绑定-绑定-value-到-Vue-实例的一个动态属性上" class="headerlink" title="值绑定:(绑定 value 到 Vue 实例的一个动态属性上)"></a>值绑定:(绑定 value 到 Vue 实例的一个动态属性上)</h3><p>1.复选框：<br><code>v-bind:true-value=&quot;a&quot; v-bind:false-value=&quot;b&quot;</code></p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;p&gt;复选框：&lt;/p&gt;
+    &lt;input type=&quot;checkbox&quot; v-model=&quot;checkedNames&quot; v-bind:true-value=&quot;a&quot; v-bind:false-value=&quot;b&quot;&gt;
+    &lt;p&gt;{{checkedNames}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{checkedNames:&apos;&apos;,
+            a:&apos;yes&apos;,
+            b:&apos;no&apos;
+        },
+    })
+&lt;/script&gt;
+</code></pre><p>2.单选按钮<br><code>&lt;input type=&quot;radio&quot; v-model=&quot;pick&quot; v-bind:value=&quot;a&quot;&gt;</code></p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;p&gt;单选按钮：&lt;/p&gt;
+    &lt;input type=&quot;radio&quot; v-model=&quot;select&quot; v-bind:value=&quot;a&quot;&gt;
+    &lt;p&gt;{{select}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{select:&apos;&apos;,
+            a:&apos;selected&apos;
+        },
+    })
+&lt;/script&gt;
+</code></pre><p>3.下拉列表：</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;p&gt;v-for实现下拉框：&lt;/p&gt;
+    &lt;select v-model=&quot;selected&quot;&gt;
+        &lt;option v-bind:value=&quot;{number:123}&quot;&gt;123&lt;/option&gt;
+        &lt;option v-bind:value=&quot;{number:456}&quot;&gt;456&lt;/option&gt;
+        &lt;option v-bind:value=&quot;{number:789}&quot;&gt;789&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;p&gt;选择的是：{{selected}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{
+            selected:&apos;&apos;,
+        }
+    })
+&lt;/script&gt;
+</code></pre><h3 id="v-model的修饰符"><a href="#v-model的修饰符" class="headerlink" title="v-model的修饰符"></a>v-model的修饰符</h3><p>.lazy   转变为在 change 事件中同步<br>.number   自动将用户的输入值转为 Number 类型(如果原值的转换结果为 NaN 则返回原值)<br>.trim    自动过滤用户输入的首尾空格</p>
+</div><div class="tags"><a href="/tags/Vue/">Vue</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/09/19/Vue之组件/" class="pre">Vue之组件</a><a href="/2017/09/17/Vue之事件处理/" class="next">Vue之事件处理</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础用法-v-model-绑定的-value-通常是静态字符串"><span class="toc-text">基础用法(v-model 绑定的 value 通常是静态字符串)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#值绑定-绑定-value-到-Vue-实例的一个动态属性上"><span class="toc-text">值绑定:(绑定 value 到 Vue 实例的一个动态属性上)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-model的修饰符"><span class="toc-text">v-model的修饰符</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/05/NATAPP内网穿透/">NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/node版本升级/">node 版本升级</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/net/">.net</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx centOS/">Nginx 安装使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/linux操作/">Linux使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/SSH连接/">SSH连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx web服务器/">阿里云服务器nginx安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/git相关/">git相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/解决webstorm被限制读写权限的问题/">解决webstorm被限制读写权限的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/mac修改hostname/">mac修改hostname</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linx/">Linx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/automated-testing/">automated testing</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo/">demo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jquery/">jquery</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webstorm/">webstorm</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/组件开发/" style="font-size: 15px;">组件开发</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JSON/" style="font-size: 15px;">JSON</a> <a href="/tags/chrome快捷键/" style="font-size: 15px;">chrome快捷键</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/html/" style="font-size: 15px;">html</a> <a href="/tags/babel/" style="font-size: 15px;">babel</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/伪元素/" style="font-size: 15px;">伪元素</a> <a href="/tags/codepen/" style="font-size: 15px;">codepen</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.qingyun100.com/" title="青云100" target="_blank">青云100</a><ul></ul><a href="https://github.com/shleyZ" title="shleyZ" target="_blank">shleyZ</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>

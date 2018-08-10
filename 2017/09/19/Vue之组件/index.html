@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><title>Vue之组件 | 雪林的博客</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Vue之组件</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Vue之组件</h1><div class="post-meta"><a href="/2017/09/19/Vue之组件/#comments" class="comment-count"></a><p><span class="date">Sep 19, 2017</span><span><a href="/categories/Vue/" class="category">Vue</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>1.注册全局组件：</p>
+<pre><code>Vue.component(tagName, options)
+</code></pre><p>使用：</p>
+<pre><code>&lt;tagName&gt;&lt;/tagName&gt;
+</code></pre><p><em>要确保在初始化根实例之前注册了组件</em></p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;my-component&gt;&lt;/my-component&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component(&apos;my-component&apos;,{
+        template:&quot;&lt;p&gt;组件渲染的一个段落&lt;/p&gt;&quot;
+    });
+    var vm = new Vue({
+        el:&apos;#test&apos;
+    })
+&lt;/script&gt;
+</code></pre><p>2.局部注册组件：<br>使组件仅在另一个实例/组件的作用域中可用</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;my-component&gt;&lt;/my-component&gt;
+    &lt;my-component&gt;&lt;/my-component&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    var Child={
+        template:&apos;&lt;p&gt;这是child组件渲染的部分&lt;/p&gt;&apos;
+    };
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        components:{
+            &apos;my-component&apos;:Child
+        }
+    })
+&lt;/script&gt;
+</code></pre><ol start="3">
+<li>data必须是函数</li>
+</ol>
+<p>4.组合组件</p>
+<p>父子组件的关系可以总结为 props down, events up。父组件通过 props 向下传递数据给子组件，子组件通过 events 给父组件发送消息。</p>
+<h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><p>组件实例的作用域是孤立的，这意味着不能在子组件的模版内直接引用父组件的数据。如果要访问父组件的数据，子组件要显式的用props选项声明它期待获取的数据。</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;child message=&quot;hello&quot;&gt;&lt;/child&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    Vue.component(&apos;child&apos;,{
+        props:[&apos;message&apos;],
+        template: &apos;&lt;p&gt;{{message}}&lt;/p&gt;&apos;,
+    });
+
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+    })
+&lt;/script&gt;
+</code></pre><p>动态props：</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;todo-item :my-message=&quot;todo&quot;&gt;&lt;/todo-item&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    Vue.component(&apos;todo-item&apos;,{
+        props:[&apos;myMessage&apos;],
+        template: &apos;&lt;p&gt;{{myMessage.text + " " +  myMessage.isComplete}}&lt;/p&gt;&apos;,
+    });
+
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{
+            todo:{
+                text:&apos;Learn Vue&apos;,
+                isComplete:false
+            }
+        }
+    })
+&lt;/script&gt;    
+</code></pre><p><em>单向数据流：prop是单向绑定的，当父组件的属性改变时，子组件的所有prop属性都会更新。但子组件不会影响父组件。不可以在子组件中更改prop属性，否则会警告</em></p>
+<p>如果需要使用prop属性，可以定义一个局部变量活着一个计算属性：</p>
+<pre><code>&lt;div id=&quot;test&quot;&gt;
+    &lt;todo-item :my-message=&quot;todo&quot;&gt;&lt;/todo-item&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    Vue.component(&apos;todo-item&apos;,{
+        props:[&apos;myMessage&apos;],
+        template: &apos;&lt;p&gt;{{myMessage.text + " " +  myMessage.isComplete + " 大写表示:" + content}}&lt;/p&gt;&apos;,
+        computed:{
+            content:function () {
+                return this.myMessage.text.toUpperCase() + this.myMessage.isComplete;
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el:&apos;#test&apos;,
+        data:{
+            todo:{
+                text:&apos;Learn Vue&apos;,
+                isComplete:1
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre><p><em>注意在 JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。</em></p>
+<p>prop验证</p>
+<p>props 会在组件实例创建之前进行校验，所以在 default 或 validator 函数里，诸如 data、computed 或 methods 等实例属性还无法使用。</p>
+<pre><code>Vue.component(&apos;example&apos;, {
+    props: {
+        // 基础类型检测 (`null` 意思是任何类型都可以)
+        propA: Number,
+        // 多种类型
+        propB: [String, Number],
+        // 必传且是字符串
+        propC: {
+          type: String,
+          required: true
+        },
+        // 数字，有默认值
+        propD: {
+          type: Number,
+          default: 100
+        },
+        // 数组/对象的默认值应当由一个工厂函数返回
+        propE: {
+          type: Object,
+          default: function () {
+            return { message: &apos;hello&apos; }
+          }
+        },
+        // 自定义验证函数
+        propF: {
+          validator: function (value) {
+            return value &gt; 10
+          }
+        }
+    }
+})
+</code></pre><p>type 可以是下面原生构造器：</p>
+<p>String<br>Number<br>Boolean<br>Function<br>Object<br>Array<br>Symbo    </p>
+</div><div class="tags"><a href="/tags/Vue/">Vue</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/09/21/逻辑与或操作符/" class="pre">逻辑与或操作符</a><a href="/2017/09/17/Vue之表单输入/" class="next">Vue之表单输入</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#props"><span class="toc-text">props</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/05/NATAPP内网穿透/">NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/node版本升级/">node 版本升级</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/net/">.net</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx centOS/">Nginx 安装使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/linux操作/">Linux使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/SSH连接/">SSH连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx web服务器/">阿里云服务器nginx安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/git相关/">git相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/解决webstorm被限制读写权限的问题/">解决webstorm被限制读写权限的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/mac修改hostname/">mac修改hostname</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linx/">Linx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/automated-testing/">automated testing</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo/">demo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jquery/">jquery</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webstorm/">webstorm</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/组件开发/" style="font-size: 15px;">组件开发</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JSON/" style="font-size: 15px;">JSON</a> <a href="/tags/chrome快捷键/" style="font-size: 15px;">chrome快捷键</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/html/" style="font-size: 15px;">html</a> <a href="/tags/babel/" style="font-size: 15px;">babel</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/伪元素/" style="font-size: 15px;">伪元素</a> <a href="/tags/codepen/" style="font-size: 15px;">codepen</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.qingyun100.com/" title="青云100" target="_blank">青云100</a><ul></ul><a href="https://github.com/shleyZ" title="shleyZ" target="_blank">shleyZ</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>

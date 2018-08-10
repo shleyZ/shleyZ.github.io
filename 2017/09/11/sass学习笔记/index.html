@@ -1,0 +1,349 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><title>sass学习笔记 | 雪林的博客</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">sass学习笔记</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">sass学习笔记</h1><div class="post-meta"><a href="/2017/09/11/sass学习笔记/#comments" class="comment-count"></a><p><span class="date">Sep 11, 2017</span><span><a href="/categories/Sass/" class="category">Sass</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h4 id="Sass-实时编译"><a href="#Sass-实时编译" class="headerlink" title="Sass 实时编译"></a>Sass 实时编译</h4><ul>
+<li>sass –watch &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css  </li>
+</ul>
+<ul>
+<li>Grunt 和 Gulp 自动化编译</li>
+</ul>
+<hr>
+<h4 id="Sass-编译常见的错误"><a href="#Sass-编译常见的错误" class="headerlink" title="Sass 编译常见的错误"></a>Sass 编译常见的错误</h4><ul>
+<li>在Sass的编译的过程中，是不是支持“GBK”编码的。所以在创建 Sass 文件时，就需要将文件编码设置为“utf-8”。</li>
+<li>路径中的中文字符，建议在项目中文件命名或者文件目录命名不要使用中文字符</li>
+</ul>
+<hr>
+<h4 id="不同样式风格的输出方法"><a href="#不同样式风格的输出方法" class="headerlink" title="不同样式风格的输出方法"></a>不同样式风格的输出方法</h4><ul>
+<li>嵌套输出方式 nested</li>
+<li>展开输出方式 expanded</li>
+<li>紧凑输出方式 compact </li>
+<li>压缩输出方式 compressed</li>
+</ul>
+<hr>
+<h4 id="默认变量"><a href="#默认变量" class="headerlink" title="默认变量"></a>默认变量</h4><p>sass 的默认变量仅需要在值后面加上 !default 即可。</p>
+<p>$baseLineHeight:1.5 !default;<br>body{<br>line-height: $baseLineHeight;<br>}</p>
+<p>sass 的默认变量一般是用来设置默认值，然后根据需求来覆盖的，覆盖的方式也很简单，只需要在默认变量之前重新声明下变量即可。<br>默认变量的价值在进行组件化开发的时候会非常有用。</p>
+<hr>
+<h4 id="Sass嵌套"><a href="#Sass嵌套" class="headerlink" title="Sass嵌套"></a>Sass嵌套</h4><ul>
+<li>选择器嵌套</li>
+</ul>
+<p>nav {<br>a {<br>color: red;</p>
+<p>header &amp; {<br>color:green;<br>}<br>}<br>}</p>
+<ul>
+<li>属性嵌套</li>
+</ul>
+<p>.box {<br>border: {<br>top: 1px solid red;<br>bottom: 1px solid green;<br>}<br>}</p>
+<ul>
+<li>伪类嵌套</li>
+</ul>
+<p>.clearfix{<br>&amp;:before,<br>&amp;:after {<br>content:””;<br>display: table;<br>}<br>&amp;:after {<br>clear:both;<br>overflow: hidden;<br>}<br>}</p>
+<p>编译出来的 CSS：</p>
+<p>clearfix:before, .clearfix:after {<br>content: “”;<br>display: table;<br>}<br>.clearfix:after {<br>clear: both;<br>overflow: hidden;<br>}</p>
+<hr>
+<h4 id="混合宏"><a href="#混合宏" class="headerlink" title="混合宏"></a>混合宏</h4><ul>
+<li>声明混合宏</li>
+</ul>
+<p>@mixin border-radius{<br>-webkit-border-radius: 5px;<br>border-radius: 5px;<br>}</p>
+<p>使用“@mixin”来声明一个混合宏。</p>
+<ul>
+<li>调用混合宏</li>
+</ul>
+<p>button {<br>@include border-radius;<br>}</p>
+<p>关键词“@include”来调用声明好的混合宏</p>
+<ul>
+<li>混合宏的参数–传多个参数</li>
+</ul>
+<p>@mixin center($width,$height){<br>width: $width;<br>height: $height;<br>position: absolute;<br>top: 50%;<br>left: 50%;<br>margin-top: -($height) / 2;<br>margin-left: -($width) / 2;<br>}</p>
+<p>.box-center {<br>@include center(500px,300px);<br>}</p>
+<p>有一个特别的参数“…”。当混合宏传的参数过多之时，可以使用参数来替代</p>
+<p>@mixin box-shadow($shadows…){<br>@if length($shadows) &gt;= 1 {<br>-webkit-box-shadow: $shadows;<br>box-shadow: $shadows;<br>} @else {<br>$shadows: 0 0 2px rgba(#000,.25);<br>-webkit-box-shadow: $shadow;<br>box-shadow: $shadow;<br>}<br>}</p>
+<p>.box {<br>@include box-shadow(0 0 1px rgba(#000,.5),0 0 2px rgba(#000,.2));<br>}</p>
+<ul>
+<li>混合宏的不足</li>
+</ul>
+<p>混合宏在实际编码中给我们带来很多方便之处，特别是对于复用重复代码块。但其最大的不足之处是会生成冗余的代码块。</p>
+<p>@mixin border-radius{<br>-webkit-border-radius: 3px;<br>border-radius: 3px;<br>}</p>
+<p>.box {<br>@include border-radius;<br>margin-bottom: 5px;<br>}</p>
+<p>.btn {<br>@include border-radius;<br>}</p>
+<p>编译出来的 CSS：</p>
+<p>.box {<br>-webkit-border-radius: 3px;<br>border-radius: 3px;<br>margin-bottom: 5px;<br>}</p>
+<p>.btn {<br>-webkit-border-radius: 3px;<br>border-radius: 3px;<br>}</p>
+<p>不能智能的将相同的样式代码块合并在一起</p>
+<hr>
+<h4 id="Sass扩展-继承"><a href="#Sass扩展-继承" class="headerlink" title="Sass扩展/继承"></a>Sass扩展/继承</h4><p>通过关键词 “@extend”来继承已存在的类样式块，从而实现代码的继承。</p>
+<p>//SCSS<br>.btn {<br>border: 1px solid #ccc;<br>padding: 6px 10px;<br>font-size: 14px;<br>}</p>
+<p>.btn-primary {<br>background-color: #f36;<br>color: #fff;<br>@extend .btn;<br>}</p>
+<p>.btn-second {<br>background-color: orange;<br>color: #fff;<br>@extend .btn;<br>}</p>
+<p>编译出来之后：</p>
+<p>//CSS<br>.btn, .btn-primary, .btn-second {<br>border: 1px solid #ccc;<br>padding: 6px 10px;<br>font-size: 14px;<br>}</p>
+<p>.btn-primary {<br>background-color: #f36;<br>color: #fff;<br>}</p>
+<p>.btn-second {<br>background-clor: orange;<br>color: #fff;<br>}</p>
+<h4 id="Sass占位符"><a href="#Sass占位符" class="headerlink" title="Sass占位符%"></a>Sass占位符%</h4><p>%placeholder 声明的代码，如果不被 @extend 调用的话，不会产生任何代码。</p>
+<p>//SCSS<br>%mt5 {<br>margin-top: 5px;<br>}<br>%pt5{<br>padding-top: 5px;<br>}</p>
+<p>.btn {<br>@extend %mt5;<br>@extend %pt5;<br>}</p>
+<p>.block {<br>@extend %mt5;</p>
+<p>span {<br>@extend %pt5;<br>}<br>}</p>
+<p>编译出来的CSS</p>
+<p>//CSS<br>.btn, .block {<br>margin-top: 5px;<br>}</p>
+<p>.btn, .block span {<br>padding-top: 5px;<br>}</p>
+<h4 id="Sass插值"><a href="#Sass插值" class="headerlink" title="Sass插值#{}"></a>Sass插值#{}</h4><p>$properties: (margin, padding);<br>@mixin set-value($side, $value) {<br>@each $prop in $properties {</p>
+<p>#{$prop}-#{$side}: $value;<br>}<br>}<br>.login-box {<br>@include set-value(top, 14px);<br>}</p>
+<p>上面的代码编译成 CSS：</p>
+<p>.login-box {<br>margin-top: 14px;<br>padding-top: 14px;<br>}</p>
+<p>#{}语法并不是随处可用，不能在 mixin 中调用<br>可以使用 @extend 中使用插值</p>
+<p>%updated-status {<br>margin-top: 20px;<br>background: #F00;<br>}<br>.selected-status {<br>font-weight: bold;<br>}<br>$flag: “status”;<br>.navigation {<br>@extend %updated-#{$flag};<br>@extend .selected-#{$flag};<br>}</p>
+<p>上面的 Sass 代码是可以运行的，代码编译出来的 CSS:</p>
+<p>.navigation {<br>margin-top: 20px;<br>background: #F00;<br>}<br>.selected-status, .navigation {<br>font-weight: bold;<br>}</p>
+<h4 id="Sass数据类型"><a href="#Sass数据类型" class="headerlink" title="Sass数据类型"></a>Sass数据类型</h4><ul>
+<li>数字</li>
+<li>字符串</li>
+<li>颜色</li>
+<li>布尔值</li>
+<li>空值</li>
+<li>值列表</li>
+</ul>
+<h4 id="Sass指令"><a href="#Sass指令" class="headerlink" title="Sass指令"></a>Sass指令</h4><ul>
+<li>@if</li>
+</ul>
+<p>//SCSS<br>@mixin blockOrHidden($boolean:true) {<br>@if $boolean {<br>@debug “$boolean is #{$boolean}”;<br>display: block;<br>}<br>@else {<br>@debug “$boolean is #{$boolean}”;<br>display: none;<br>}<br>}</p>
+<p>.block {<br>@include blockOrHidden;<br>}</p>
+<p>.hidden{<br>@include blockOrHidden(false);<br>}</p>
+<p>编译出来的CSS:</p>
+<p>.block {<br>display: block;<br>}</p>
+<p>.hidden {<br>display: none;<br>}</p>
+<ul>
+<li>@for循环</li>
+</ul>
+<p>@for $i from <start> through <end><br>@for $i from <start> to <end></end></start></end></start></p>
+<p>$i 表示变量，start 表示起始值，end 表示结束值。<br>关键字 through 表示包括 end 这个数，而 to 则不包括 end 这个数。</p>
+<p>through:<br>@for $i from 1 through 3{<br>.item-#{$i}{<br>width:2em * $i;<br>}<br>}<br>编译出来的 CSS:</p>
+<p>.item-1 {<br>width: 2em;<br>}</p>
+<p>.item-2 {<br>width: 4em;<br>}</p>
+<p>.item-3 {<br>width: 6em;<br>}</p>
+<p>to:<br>@for $i from 1 to 3{<br>.item-#{$i}{<br>width:2em * $i;<br>}<br>}</p>
+<p>编译出来的 CSS:</p>
+<p>.item-1 {<br>width: 2em;<br>}</p>
+<p>.item-2 {<br>width: 4em;<br>}</p>
+<ul>
+<li>@while</li>
+</ul>
+<p>只要 @while 后面的条件为 true 就会执行</p>
+<ul>
+<li>@each</li>
+</ul>
+<p>遍历一个列表，然后从列表中取出对应的值</p>
+<p>@each $var in <list></list></p>
+<h4 id="Sass函数"><a href="#Sass函数" class="headerlink" title="Sass函数"></a>Sass函数</h4><ul>
+<li>unquote()函数</li>
+</ul>
+<p>删除字符串中的引号；</p>
+<ul>
+<li>quote()函数</li>
+</ul>
+<p>给字符串添加引号。如果字符串包含引号，不论单引号还是双引号，会统一替换为双引号。<br>字符串中间有单引号或者空格时，需要用单引号或双引号括起，否则编译的时候将会报错。<br>quote() 碰到特殊符号，比如： !、?、&gt; 等，除中折号-和下划线_都需要使用双引号括起，否则编译器在进行编译的时候同样会报错。</p>
+<p>.test2 {<br>content: quote(“today is sunday!”)<br>}</p>
+<ul>
+<li>To-upper-case()</li>
+</ul>
+<p>函数将字符串小写字母转换成大写字母。</p>
+<ul>
+<li>To-lower-case()</li>
+</ul>
+<p>将字符串转换成小写字母</p>
+<p>//SCSS<br>.test {<br>text: to-upper-case(aaaaa);<br>text: to-lower-case(aA-aAAA-aaa);<br>}</p>
+<ul>
+<li>percentage() 数字函数</li>
+</ul>
+<p>将一个不带单位的数字转换成百分比形式</p>
+<p>.footer{<br>width : percentage(.2)<br>}<br>如果转换的值是一个带有单位的值，那么在编译的时候会报错</p>
+<ul>
+<li>round()函数</li>
+</ul>
+<p>将一个数四舍五入为一个最接近的整数</p>
+<p>.footer1 {<br>width:round(15.8px)<br>}<br>//CSS<br>.footer1 {<br>width: 16px;<br>}</p>
+<ul>
+<li>ceil()函数<br>向上取整</li>
+</ul>
+<p>.footer1 {</p>
+<p>width:ceil(18.1px);<br>}</p>
+<p>//CSS</p>
+<p>.footer1 {</p>
+<p>width:19px;<br>}         </p>
+<ul>
+<li><p>floor()函数<br>向下取整</p>
+</li>
+<li><p>abs()函数<br>取绝对值</p>
+</li>
+</ul>
+<p>.footer {</p>
+<p>width:abs(-8.9px);<br>}</p>
+<p>//CSS<br>.footer {</p>
+<p>width:8.9px;<br>}</p>
+<ul>
+<li>min()函数、max()函数</li>
+</ul>
+<p>函数中同时出现两种不同类型的单位，将会报错误   </p>
+<ul>
+<li>random()函数</li>
+</ul>
+<p>获取一个0-1随机数  </p>
+<ul>
+<li>length()函数 列表函数</li>
+<li><p>nth()函数 列表函数</p>
+<blockquote>
+<blockquote>
+<p>nth(10px 20px 30px,1)<br>10px<br>//从1开始    </p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>join()函数 列表函数   </p>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>join(10px 20px, 30px 40px)<br>(10px 20px 30px 40px)<br>只能将两个列表连接成一个列表，如果直接连接两个以上的列表将会报错</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>append()函数 列表函数</li>
+</ul>
+<p>将某个值插入到列表中，并且处于最末位</p>
+<blockquote>
+<blockquote>
+<p>append((blue green),red,comma)<br>(#0000ff, #008000, #ff0000)<br>append((blue green),red,space)<br>(#0000ff #008000 #ff0000)<br>append((blue, green),red,comma)<br>(#0000ff, #008000, #ff0000)<br>append((blue, green),red,space)<br>(#0000ff #008000 #ff0000)<br>append(blue,red,comma)<br>(#0000ff, #ff0000)<br>append(blue,red,space)<br>(#0000ff #ff0000)</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>zip()函数 列表函数<br>将多个列表值转成一个多维的列表</li>
+</ul>
+<p>使用zip()函数时，每个单一的列表个数值必须是相同的</p>
+<blockquote>
+<blockquote>
+<p>zip(1px 2px 3px,solid dashed dotted,green blue red)<br>((1px “solid” #008000), (2px “dashed” #0000ff), (3px “dotted” #ff0000))</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>index()函数 列表函数</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>index(1px solid red, 1px)<br>1<br>index(1px solid red, solid)<br>2<br>index(1px solid red, red)<br>3</p>
+</blockquote>
+</blockquote>
+<p>如果指定的值不在列表中（没有找到相应的值），那么返回的值将是 false，相反就会返回对应的值在列表中所处的位置。</p>
+<ul>
+<li>type-of()  Introspection 函数</li>
+</ul>
+<p>判断一个值是属于什么类型：</p>
+<p>返回值：</p>
+<p>number 为数值型。<br>string 为字符串型。<br>bool 为布尔型。<br>color 为颜色型。        </p>
+<ul>
+<li>unit()函数 Introspection 函数</li>
+</ul>
+<p>获取一个值所使用的单位</p>
+<blockquote>
+<blockquote>
+<p>unit(100)<br>“”<br>unit(100px)<br>“px”<br>unit(20%)<br>“%”<br>unit(1em)<br>“em”<br>unit(10px <em> 3em)<br>“em</em>px”<br>unit(10px / 3em)<br>“px/em”<br>unit(10px * 2em / 3cm / 1rem)<br>“em/rem”</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>unitless()函数 Introspection 函数 </li>
+</ul>
+<p>判断一个值是否带有单位，如果不带单位返回的值为 true，带单位返回的值为 false<br>代码实现：用户在调用混合宏时，如果用户没有给参数值加上单位，程序会自动加入单位。<br>@mixin adjust-location($x, $y) {<br>@if unitless($x) {<br>$x: 1px <em> $x;<br>}<br>@if unitless($y) {<br>$y: 1px </em> $y;<br>}<br>position: relative;<br>left: $x;<br>top: $y;<br>}</p>
+<p>.botton{<br>@include adjust-location(20px, 30);<br>}</p>
+<ul>
+<li>comparable()函数 Introspection 函数</li>
+</ul>
+<p>判断两个数是否可以进行“加，减”以及“合并”。如果可以返回的值为 true，如果不可以返回的值是 false</p>
+<blockquote>
+<blockquote>
+<p>comparable(2px,1%)<br>false<br>comparable(2px,1em)<br>false<br>comparable(2rem,1em)<br>false<br>comparable(2px,1cm)<br>true<br>comparable(2px,1mm)<br>true</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>Miscellaneous函数</li>
+</ul>
+<p>if($condition,$if-true,$if-false)<br>当 $condition 条件成立时，返回的值为 $if-true，否则返回的是 $if-false 值。</p>
+<blockquote>
+<blockquote>
+<p>if(true,1px,2px)<br>1px<br>if(false,1px,2px)<br>2px</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>map-get($map,$key) Maps的函数<br>返回 $key 在 $map 中对应的 value 值。如果 $key 不存在 $map中，将返回 null 值。</li>
+</ul>
+<p>$social-colors: (<br>dribble: #ea4c89,<br>facebook: #3b5998,<br>github: #171515,<br>google: #db4437,<br>twitter: #55acee<br>);<br>.btn-dribble{<br>color: map-get($social-colors,facebook);<br>}<br>如果 $key 不在 $map 中，不会编译出 CSS        </p>
+<ul>
+<li>map-has-key($map,$key)  Maps的函数<br>函数将返回一个布尔值。当 $map 中有这个 $key，则函数返回 true，否则返回 false。</li>
+</ul>
+<p>@function colors($color){<br>@if not map-has-key($social-colors,$color){<br>@warn “No color found for <code>#{$color}</code> in $social-colors map. Property omitted.”;<br>}<br>@return map-get($social-colors,$color);<br>}</p>
+<p>.btn-dribble {<br>color: colors(dribble);<br>}<br>.btn-facebook {<br>color: colors(facebook);<br>}<br>.btn-github {<br>color: colors(github);<br>}        </p>
+<ul>
+<li>map-keys($map)  Maps的函数<br>返回 $map 中的所有 key</li>
+</ul>
+<p>map-keys($social-colors);</p>
+<ul>
+<li>map-values($map)  Maps的函数<br>获取的是 $map 的所有 value 值，可以说是一个列表。</li>
+</ul>
+<p>map-values($social-colors)</p>
+<ul>
+<li>map-merge($map1,$map2) Maps的函数</li>
+</ul>
+<p>map-merge($map1,$map2)<br>将 $map1 和 $map2 合并，然后得到一个新的 $map。<br>如果 $map1 和 $map2 中有相同的 $key 名，那么将 $map2 中的 $key 会取代 $map1 中的</p>
+<p>$color: (<br>text: #f36,<br>link: #f63,<br>border: #ddd,<br>backround: #fff<br>);<br>$typo:(<br>font-size: 12px,<br>line-height: 1.6,<br>border: #ccc,<br>background: #000<br>);        </p>
+<p>$newmap: map-merge($color,$typo);</p>
+<p>$newmap:(<br>text: #f36,<br>link: #f63,<br>font-size: 12px,<br>line-height: 1.6,<br>border: #ccc,<br>background: #000<br>);    </p>
+<ul>
+<li>map-remove($map,$key)  Maps的函数</li>
+</ul>
+<p>map-remove($map,$key)</p>
+<p>删除当前 $map 中的某一个 $key，从而得到一个新的 map。<br>其返回的值还是一个 map。<br>他并不能直接从一个 map 中删除另一个 map，仅能通过删除 map 中的某个 key 得到新 map。</p>
+<ul>
+<li><p>keywords($args)</p>
+</li>
+<li><p>RGBA()函数<br>将一个颜色根据透明度转换成 rgba 颜色</p>
+</li>
+</ul>
+<p>rgba($red,$green,$blue,$alpha)  //将一个rgba颜色转译出来，和未转译的值一样<br>rgba($color,$alpha)  //将一个Hex颜色转换成rgba颜色</p>
+<ul>
+<li><p>@import<br>引入 SCSS 和 Sass 文件。 所有引入的 SCSS 和 Sass 文件都会被合并并输出一个单一的 CSS 文件。 被导入的文件中所定义的变量或 mixins 都可以在主文件中使用。</p>
+</li>
+<li><p>@media<br>在样式中使用 @media 指令，它将冒泡到外面</p>
+</li>
+</ul>
+<p>.sidebar {<br>width: 300px;<br>@media screen and (orientation: landscape) {<br>width: 500px;<br>}<br>}<br>编译出来：</p>
+<p>.sidebar {<br>width: 300px; }<br>@media screen and (orientation: landscape) {<br>.sidebar {<br>width: 500px; } }</p>
+<ul>
+<li>@extend</li>
+</ul>
+<p>Sass 中的 @extend 是用来扩展选择器或占位符。比如：</p>
+<p>.error {<br>border: 1px #f00;<br>background-color: #fdd;<br>}<br>.error.intrusion {<br>background-image: url(“/image/hacked.png”);<br>}<br>.seriousError {<br>@extend .error;<br>border-width: 3px;<br>}<br>被编译为：</p>
+<p>.error, .seriousError {<br>border: 1px #f00;<br>background-color: #fdd; }</p>
+<p>.error.intrusion, .seriousError.intrusion {<br>background-image: url(“/image/hacked.png”); }</p>
+<p>.seriousError {<br>border-width: 3px; }</p>
+<ul>
+<li>@at-root<br>跳出根元素</li>
+</ul>
+<p>.a {<br>color: red;</p>
+<p>.b {<br>color: orange;</p>
+<p>.c {<br>color: yellow;</p>
+<p>@at-root .d {<br>color: green;<br>}<br>}<br>}<br>}<br>编译出来的CSS</p>
+<p>.a {<br>color: red;<br>}</p>
+<p>.a .b {<br>color: orange;<br>}</p>
+<p>.a .b .c {<br>color: yellow;<br>}</p>
+<p>.d {<br>color: green;<br>}</p>
+<ul>
+<li>@debug</li>
+</ul>
+<p>@debug 在 Sass 中是用来调试的，当你的在 Sass 的源码中使用了 @debug 指令之后，Sass 代码在编译出错时，在命令终端会输出你设置的提示 Bug:</p>
+<p>@debug 10em + 12em;<br>会输出：</p>
+<p>Line 1 DEBUG: 22em</p>
+<ul>
+<li>@warn</li>
+</ul>
+<p>@warn 和 @debug 功能类似，用来帮助我们更好的调试 Sass。如：</p>
+<p>@mixin adjust-location($x, $y) {<br>@if unitless($x) {<br>@warn “Assuming #{$x} to be in pixels”;<br>$x: 1px <em> $x;<br>}<br>@if unitless($y) {<br>@warn “Assuming #{$y} to be in pixels”;<br>$y: 1px </em> $y;<br>}<br>position: relative; left: $x; top: $y;<br>}</p>
+<ul>
+<li>@error<br>@mixin error($x){<br>@if $x &lt; 10 {<br>width: $x * 10px;<br>} @else if $x == 10 {<br>width: $x;<br>} @else {<br>@error “你需要将#{$x}值设置在10以内的数”;<br>}</li>
+</ul>
+<p>}</p>
+<p>.test {<br>@include error(15);<br>}</p>
+</div><div class="tags"><a href="/tags/sass/">sass</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/09/14/Vue之计算属性/" class="pre">Vue之计算属性</a><a href="/2017/09/09/vue之模版/" class="next">vue之模版</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass-实时编译"><span class="toc-text">Sass 实时编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass-编译常见的错误"><span class="toc-text">Sass 编译常见的错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不同样式风格的输出方法"><span class="toc-text">不同样式风格的输出方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#默认变量"><span class="toc-text">默认变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass嵌套"><span class="toc-text">Sass嵌套</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#混合宏"><span class="toc-text">混合宏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass扩展-继承"><span class="toc-text">Sass扩展/继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass占位符"><span class="toc-text">Sass占位符%</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass插值"><span class="toc-text">Sass插值#{}</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass数据类型"><span class="toc-text">Sass数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass指令"><span class="toc-text">Sass指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass函数"><span class="toc-text">Sass函数</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/05/NATAPP内网穿透/">NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/node版本升级/">node 版本升级</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/net/">.net</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx centOS/">Nginx 安装使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/linux操作/">Linux使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/SSH连接/">SSH连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/nginx web服务器/">阿里云服务器nginx安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/17/git相关/">git相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/解决webstorm被限制读写权限的问题/">解决webstorm被限制读写权限的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/mac修改hostname/">mac修改hostname</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linx/">Linx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/automated-testing/">automated testing</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/demo/">demo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jquery/">jquery</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webstorm/">webstorm</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/组件开发/" style="font-size: 15px;">组件开发</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JSON/" style="font-size: 15px;">JSON</a> <a href="/tags/chrome快捷键/" style="font-size: 15px;">chrome快捷键</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/html/" style="font-size: 15px;">html</a> <a href="/tags/babel/" style="font-size: 15px;">babel</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/伪元素/" style="font-size: 15px;">伪元素</a> <a href="/tags/codepen/" style="font-size: 15px;">codepen</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.qingyun100.com/" title="青云100" target="_blank">青云100</a><ul></ul><a href="https://github.com/shleyZ" title="shleyZ" target="_blank">shleyZ</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>
