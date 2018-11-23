@@ -4,8 +4,7 @@ date: 2018-11-22 10:52:24
 categories: nginx
 ---
 
-
-    nginx配置文件nginx.conf
+nginx配置文件nginx.conf
 
 
     http {

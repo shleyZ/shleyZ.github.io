@@ -16,11 +16,11 @@ categories: nginx
 
 找到stable版本(当前stable版本为1.14.1)，复制下载地址，进入linux你想要安装的目录
 
-  wget http://nginx.org/download/nginx-1.14.1.tar.gz
+    wget http://nginx.org/download/nginx-1.14.1.tar.gz
 
-  tar -xzf nginx-1.14.1.tar.gz 进行解压
+    tar -xzf nginx-1.14.1.tar.gz 进行解压
 
-  cd nginx-1.14.1 进入解压后的源码目录,查看目录如下：
+    cd nginx-1.14.1 进入解压后的源码目录,查看目录如下：
 
     总用量 748
     drwxr-xr-x 6 mysql mysql   4096 11月 19 10:31 auto
@@ -65,27 +65,27 @@ categories: nginx
     drwxr-xr-x  2 mysql mysql  4096 11月 19 10:31 types
     -rw-r--r--  1 mysql mysql 26859 11月  6 21:52 unix
 
-  包含四个子目录： cc--用于编译,lib--lib库,os--判断操作系统,types
+包含四个子目录： cc--用于编译,lib--lib库,os--判断操作系统,types
 
-  其他所有的都是为了配合configure脚本执行的时候去判定nginx支持哪些模块，当前操作系统有什么特性供nginx使用，
+其他所有的都是为了配合configure脚本执行的时候去判定nginx支持哪些模块，当前操作系统有什么特性供nginx使用，
 
-  2.CHANGES文件：nginx每个版本中的特性和bugfix
+2.CHANGES文件：nginx每个版本中的特性和bugfix
 
-  3.conf是一个配置示例文件
+3.conf是一个配置示例文件
 
-  4.configure脚本是用来生成中间文件，执行编译前的必备动作
+4.configure脚本是用来生成中间文件，执行编译前的必备动作
 
-  5.contrib目录,vim编辑器的nginx语法高亮显示
+5.contrib目录,vim编辑器的nginx语法高亮显示
 
-  6.html目录, 里面是500错误，重定向到的页面，还有一个是index默认页面
+6.html目录, 里面是500错误，重定向到的页面，还有一个是index默认页面
 
-  7.man目录，是linux对nginx的帮助文件
+7.man目录，是linux对nginx的帮助文件
 
-  8.src目录, 是nginx的源代码
+8.src目录, 是nginx的源代码
 
 #### 编译
 
-  configure支持哪些参数呢：
+configure支持哪些参数呢：
 
     ./configure --help | more 
 

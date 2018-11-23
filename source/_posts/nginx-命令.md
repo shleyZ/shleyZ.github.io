@@ -18,13 +18,13 @@ nginx -s reload (-s是发送信号指令，reload是参数)
 
 发送信号： -s
 
-    nginx -s stop   立即停止服务
+        nginx -s stop   立即停止服务
 
-    nginx -s quit   优雅的停止服务
+        nginx -s quit   优雅的停止服务
 
-    nginx -s reload  重载配置文件
+        nginx -s reload  重载配置文件
 
-    nginx -s reopen  重载开始记录日志文件
+        nginx -s reopen  重载开始记录日志文件
 
 测试配置文件是否有语法错误： -t -T
 
@@ -33,25 +33,25 @@ nginx版本信息： -v -V
 
 #### 重载配置文件
 
-    在/home/********/nginx/sbin目录下：
+在/home/********/nginx/sbin目录下：
 
-    ./nginx -s reload
+        ./nginx -s reload
 
-如果出现错误：
+如果出现错误./nginx可以查看错误，如下：
 
-    ./nginx可以查看错误，如下：
+        nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+        nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+        nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+        nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+        nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+        
+此时说明80端口被占用，
 
-    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
-    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
-    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
-    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
-    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
-    
-    此时说明80端口被占用，
+查看是哪个进程被占用，如果是nginx，停止nginx服务，或者kill -9 进程号进行强制杀死进程
 
-    netstat -lnp|grep 80命令查看是那个进程被占用，如果是nginx，停止nginx服务，或者kill -9 进程号进行强制杀死进程
+        netstat -lnp|grep 80命令
 
-    再重新reload即可成功
+再重新reload即可成功
 
 #### 升级nginx版本
 
@@ -64,6 +64,7 @@ nginx版本信息： -v -V
         nginx.bak 
 
 然后把已经编译好的新的二进制文件拷贝进sbin目录
+
         [root@zhao sbin]# cp -r /目录/nginx /home/zh****/nginx/sbin/
 
         [root@zhao sbin]# ls
@@ -110,7 +111,7 @@ nginx版本信息： -v -V
         -rw-r--r-- 1 root root      5 11月 22 10:09 nginx.pid.oldbin
         [root@zhao logs]# 
 
-    当我们发现log文件太大时，需要把以前的日志备份到其他文件，但是nginx还是正常运行，通过reopen命令实现
+当我们发现log文件太大时，需要把以前的日志备份到其他文件，但是nginx还是正常运行，通过reopen命令实现
 
         [root@zhao logs]# mv access.log bake.log
         [root@zhao logs]# ll
