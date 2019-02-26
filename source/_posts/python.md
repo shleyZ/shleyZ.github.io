@@ -332,7 +332,7 @@ categories: Python
 
 #### 可变数量的参数
 
-    def manyArgs(**args):
+    def manyArgs(*args):
         print(args)
         return args 
 
