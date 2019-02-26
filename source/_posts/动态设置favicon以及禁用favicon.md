@@ -4,7 +4,8 @@ date: 2019-02-26 08:57:38
 categories: javascript
 ---
 
-    // 动态加载企业logo和全名
+### 动态加载企业logo和全名
+
     (function() {
       var link =
         document.querySelector("link[rel*='icon']") ||
@@ -45,7 +46,7 @@ categories: javascript
       document.title = customerTitle;
     })();
 
-    // 禁止favicon
+### 禁止favicon
 
     <link rel="icon" href="data:;base64,=">
     // 或者详细一点
