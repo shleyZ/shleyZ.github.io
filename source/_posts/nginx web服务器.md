@@ -1,7 +1,7 @@
 ---
 title: 阿里云服务器nginx安装
 date: 2018-04-20 13:11:12
-categories: Linx
+categories: Linux
 ---
 
 ## 阿里云服务器Linux远程ssh连接

@@ -1,7 +1,7 @@
 ---
 title: seleniumIDE常用命令
 date: 2017-07-13 16:15:53
-categories: automated testing
+categories: test
 ---
 
 1、open（URL）命令

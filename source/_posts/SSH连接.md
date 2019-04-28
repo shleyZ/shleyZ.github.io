@@ -1,7 +1,7 @@
 ---
 title: SSH连接
 date: 2018-04-20 13:11:12
-categories: Linx
+categories: Linux
 ---
 
 ## 服务器端安装SSH

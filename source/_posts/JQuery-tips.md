@@ -1,7 +1,7 @@
 ---
 title: JQuery tips
 date: 2017-11-28 15:23:07
-categories: jquery
+categories: javascript
 ---
 
 #### 检查JQuery是否加载

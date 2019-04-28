@@ -1,7 +1,7 @@
 ---
 title: node 版本升级
 date: 2018-07-29 14:02:01
-categories: node
+categories: javascript
 ---
 
 

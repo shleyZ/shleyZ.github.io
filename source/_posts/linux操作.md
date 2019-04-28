@@ -1,7 +1,7 @@
 ---
 title: Linux使用
 date: 2018-04-20 13:11:12
-categories: Linx
+categories: Linux
 ---
 
 ## 软件操作

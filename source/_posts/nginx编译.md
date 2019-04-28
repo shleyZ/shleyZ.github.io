@@ -1,7 +1,7 @@
 ---
 title: nginx编译
 date: 2018-11-19 10:10:50
-categories: nginx
+categories: Linux
 ---
 
 安装nginx有两种方法，一种是直接通过yarn/apt-get直接来安装，一种就是编译

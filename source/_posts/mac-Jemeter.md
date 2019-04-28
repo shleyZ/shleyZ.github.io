@@ -1,7 +1,7 @@
 ---
 title: mac Jemeter
 date: 2018-09-07 07:35:24
-categories: automated testing
+categories: test
 ---
 
 ## 第一步

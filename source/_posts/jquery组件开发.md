@@ -1,7 +1,7 @@
 ---
 title: jquery组件开发
 date: 2017-08-15 15:12:20
-categories: jquery
+categories: javascript
 tags: 组件开发
 ---
 

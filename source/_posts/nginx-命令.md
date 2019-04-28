@@ -1,7 +1,7 @@
 ---
 title: nginx 命令
 date: 2018-11-21 15:51:03
-categories: nginx
+categories: Linux
 ---
 
 #### 格式和linux命令差不多

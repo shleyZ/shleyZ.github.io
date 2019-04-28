@@ -1,7 +1,7 @@
 ---
 title: Nginx 安装使用
 date: 2018-04-20 13:11:12
-categories: Linx
+categories: Linux
 ---
 
 ## nginx基本操作

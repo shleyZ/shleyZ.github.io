@@ -1,8 +1,7 @@
 ---
 title: ES6的babel转码器
 date: 2017-10-14 09:43:06
-categories: ES6
-tags: babel
+categories: javascript
 ---
 
 #### 我使用的是Mac系统，webstorm，在webstorm上创建一个新的项目ES6，安装babel。（首先要安装node）
