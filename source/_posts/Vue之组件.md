@@ -14,7 +14,10 @@ tags: Vue
 	<tagName></tagName>
 
 *要确保在初始化根实例之前注册了组件*
-		
+
+    
+``` html
+
 	<div id="test">
         <my-component></my-component>
     </div>
@@ -27,8 +30,12 @@ tags: Vue
         })
     </script>
 
+```
+
 2.局部注册组件：
 使组件仅在另一个实例/组件的作用域中可用
+
+``` html
 
 	<div id="test">
         <my-component></my-component>
@@ -47,15 +54,19 @@ tags: Vue
         })
     </script>
 
+```
+
 3. data必须是函数
 
-4.组合组件
+4. 组合组件
 
 父子组件的关系可以总结为 props down, events up。父组件通过 props 向下传递数据给子组件，子组件通过 events 给父组件发送消息。
 
 ### props
 
 组件实例的作用域是孤立的，这意味着不能在子组件的模版内直接引用父组件的数据。如果要访问父组件的数据，子组件要显式的用props选项声明它期待获取的数据。
+
+``` html
 
 	<div id="test">
         <child message="hello"></child>
@@ -72,7 +83,11 @@ tags: Vue
         })
     </script>
 
+```
+
 动态props：
+
+``` html
 
 	<div id="test">
         <todo-item :my-message="todo"></todo-item>
@@ -95,9 +110,13 @@ tags: Vue
         })
     </script>    
 
+```
+
 *单向数据流：prop是单向绑定的，当父组件的属性改变时，子组件的所有prop属性都会更新。但子组件不会影响父组件。不可以在子组件中更改prop属性，否则会警告*
 
 如果需要使用prop属性，可以定义一个局部变量活着一个计算属性：
+
+``` html
 
 	<div id="test">
         <todo-item :my-message="todo"></todo-item>
@@ -125,11 +144,15 @@ tags: Vue
         })
     </script>
 
+```
+
 *注意在 JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。*
 
 prop验证
 
 props 会在组件实例创建之前进行校验，所以在 default 或 validator 函数里，诸如 data、computed 或 methods 等实例属性还无法使用。
+
+``` js
 
     Vue.component('example', {
         props: {
@@ -162,6 +185,8 @@ props 会在组件实例创建之前进行校验，所以在 default 或 validat
             }
         }
     })
+
+```
 
 type 可以是下面原生构造器：
 

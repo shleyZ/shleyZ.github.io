@@ -11,6 +11,7 @@ tags: Vue
 
 原文示例：
 
+``` js
 	// 定义一个混合对象
 	var myMixin = {
 	  created: function () {
@@ -28,9 +29,13 @@ tags: Vue
 	})
 	var component = new Component() // => "hello from mixin!"
 
+``` 
+
 1.选项合并：
 
 当组件和混合对象含有同名选项时，这些选项将以恰当的方式混合。比如，同名钩子函数将混合为一个数组，因此都将被调用。另外，混合对象的 钩子将在组件自身钩子 之前 调用 
+
+``` js
 
 	var mixin = {
 	  created: function () {
@@ -46,7 +51,11 @@ tags: Vue
 	// => "混合对象的钩子被调用"
 	// => "组件钩子被调用"
 
+```
+
 值为对象的选项，例如 methods, components 和 directives，将被混合为同一个对象。两个对象键名冲突时，取组件对象的键值对。
+
+``` js
 
 	var mixin = {
 	  methods: {
@@ -73,9 +82,13 @@ tags: Vue
 	vm.bar() // => "bar"
 	vm.conflicting() // => "from self"	
 
+```
+
 2.全局混合	
 
 全局注册混合对象。一旦使用全局混合对象，将会影响到 所有 之后创建的 Vue 实例。
+
+``` js
 
 	// 为自定义的选项 'myOption' 注入一个处理器。
 	Vue.mixin({
@@ -91,4 +104,5 @@ tags: Vue
 	})
 	// => "hello!"
 
+```
 大多数情况下，全局混合只应当应用于自定义选项，就像上面示例一样。也可以将其用作 Plugins 以避免产生重复应用	

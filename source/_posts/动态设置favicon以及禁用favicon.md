@@ -6,6 +6,8 @@ categories: javascript
 
 ### 动态加载企业logo和全名
 
+``` js
+
     (function() {
       var link =
         document.querySelector("link[rel*='icon']") ||
@@ -46,8 +48,13 @@ categories: javascript
       document.title = customerTitle;
     })();
 
+```
+
 ### 禁止favicon
 
+``` html
     <link rel="icon" href="data:;base64,=">
     // 或者详细一点
     <link rel="icon" href="data:image/ico;base64,aWNv">
+
+```    

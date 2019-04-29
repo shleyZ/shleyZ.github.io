@@ -7,19 +7,30 @@ tags: Vue
 
 ## 1.条件渲染
 
+``` html
+
 	<h1 v-if="ok">YES</h1>
     <h1 v-else>No</h1>  //v-else来表示else块
 
+```
+
 #### 在template中配合v-if条件渲染一整组:
  
+``` html
+
 	<template v-if="ok">
         <p>title</p>
         <h2>第一段落</h2>
         <h2>第二段落</h2>
     </template>
+```
+
 把一个`<template>`元素当做包装元素，并在上面使用 v-if。最终的渲染结果不会包含 `<template>` 元素。
 	
 v-if／v-else-if／v-else组合使用:
+
+
+``` html
 
 	<div id="isIf">
         <div v-if="ran > 0.5">
@@ -41,7 +52,11 @@ v-if／v-else-if／v-else组合使用:
         })
     </script>
 
+```
+
 #### 用key管理可复用的元素：
+
+``` html
 
 	<div id="testKey">
 	    <template v-if="loginType === 'username'">
@@ -74,12 +89,16 @@ v-if／v-else-if／v-else组合使用:
         }
     </script>   
 
+```
+
  这样执行之后会有一些问题：如果input标签中有内容的话，每次切换，input中的内容都是不变的，不能重新渲染input标签。
 
  切换 loginType 将*不会清除用户已经输入的内容*。因为两个模板使用了相同的元素，<input> 不会被替换,仅仅是替换了它的 placeholder...
 
  
  #### 如果要不复用template的元素的话，就需要用key属性(具有唯一值):
+
+``` html
 
 	<div id="testKey">
         <template v-if="loginType === 'username'">
@@ -96,6 +115,8 @@ v-if／v-else-if／v-else组合使用:
         </div>
     </div>
 
+```
+
  现在，每次切换时，*输入框都将被重新渲染*。
 
 #### v-show 也是根据条件展示元素的指令
@@ -107,6 +128,8 @@ v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因�
 ## 2.列表渲染
 
 #### v-for根据一组数组的选项列表进行渲染:
+
+``` html
 
 	<div id="testKey">
         <div v-for="item in items">
@@ -126,11 +149,15 @@ v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因�
         })
     </script>
 
+```
+
 以v-for=“item in items”形式的特殊语法
 
 还支持一个可选的第二个参数为当前项的索引：v-for="(item, index) in items"  
 
 还可以用 of 替代 in 作为分隔符 
+
+``` html
 
 	<div id="testKey">
         <div v-for="(item,index) in items">
@@ -150,6 +177,9 @@ v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因�
             }
         })
     </script>
+
+```
+
 输出为：
 
 	Class-0-Joe
@@ -157,6 +187,8 @@ v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因�
 	Class-2-Han
 
 #### 对象的v-for：
+
+``` html
 
 	<div id="testKey">
         <div v-for="(value,key,index) in object">
@@ -175,6 +207,8 @@ v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因�
             }
         })
     </script>	
+
+```
 
 `v-for="(value,key,index) in object" `的三个参数分别对应对象的*值，键名，索引*   
 
@@ -252,6 +286,8 @@ Vue 不能检测对象属性的添加或删除，可以这样实现:
 
 可以用计算属性computed实现，当计算属性不适用时可以用方法methods
 
+``` html
+
     <div id="testKey">
         <div v-for="n in evenNumbers">
             {{n}}
@@ -273,7 +309,11 @@ Vue 不能检测对象属性的添加或删除，可以这样实现:
         })
     </script>
 
+```
+
 用methods:
+
+``` html
 
     <div id="testKey">
         <div v-for="n in even(numbers)">
@@ -296,10 +336,16 @@ Vue 不能检测对象属性的添加或删除，可以这样实现:
         })
     </script>
 
+```
+
 #### v-for和v-if
 
 当它们处于同一节点时，v-for的优先级比v-if高。意味着v-if将分别重复运行于v-for的每个循环中
 
+``` html
+
     <li v-for="todo in todos" v-if="!todo.isComplete">
         {{ todo }}
     </li>    
+
+```    

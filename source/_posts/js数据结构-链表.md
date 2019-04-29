@@ -39,6 +39,7 @@ categories: 数据结构
 
 设计的链表应该包含两个类，一个是Node类用来表示节点，一个是LinkedList用来表示对节点的操作（添加/删除等）
 
+``` js 
 
     function Node(ele) {
       this.element = ele; 
@@ -97,8 +98,11 @@ categories: 数据结构
       }
     }
 
+```
 
 测试：
+
+``` js
 
     var linkedList = new LList()
     console.log(linkedList) 
@@ -127,12 +131,15 @@ categories: 数据结构
     // head
     // node1
 
+```
 
 #### 双向链表的实现
 
 Null <-- previous | Header | next <--> previous | data1 | next <--> previous | data2 | next --> Null  
 
 要实现双向链表，需要给node类添加一个previous属性，
+
+``` js
 
     function Node(ele) {
       this.element = ele; 
@@ -213,7 +220,11 @@ Null <-- previous | Header | next <--> previous | data1 | next <--> previous | d
       }
     }
 
+```
+
 测试：
+
+``` js
 
     var lists = new LList();
 
@@ -234,7 +245,7 @@ Null <-- previous | Header | next <--> previous | data1 | next <--> previous | d
     // node
     // undefined  
 
-
+```
 
 #### 循环链表的实现
 
@@ -242,4 +253,8 @@ Header | next --> data1 | next --> data2 | next --> Header
 
 循环链表和单链表相似，节点类型都是一样，唯一的区别是，在创建循环链表的时候，让其头节点的 next 属性执行它本身，即
 
+``` js
+
         head.next = head;
+
+```        

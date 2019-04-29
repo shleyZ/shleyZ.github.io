@@ -36,6 +36,8 @@ categories: 数据结构
 
 #### 集合的实现
 
+``` js
+
     var mySet = function() {
       this.dataStore = []; //初始化为空
     }
@@ -149,7 +151,11 @@ categories: 数据结构
       }
     }())
 
+```
+
 操作：
+
+``` js
 
     var myset = new mySet()
     myset.show()  // []
@@ -173,3 +179,4 @@ categories: 数据结构
     console.log(myset.intersect(otherset)) // ["dog", "fish", "bird"]
     console.log(myset.difference(otherset)) // []
 
+```

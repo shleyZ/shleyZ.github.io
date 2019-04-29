@@ -10,6 +10,8 @@ tags: Vue
 用 v-on 指令监听 DOM 事件来触发一些 JavaScript 代码.
 当事件处理的逻辑很复杂时，v-on 可以接收一个定义的方法来调用：
 
+``` js
+
 	<div id="test">
         <button v-on:click="greet">Greet</button>
     </div>
@@ -30,9 +32,13 @@ tags: Vue
         })
     </script>
 
+``` 
+
 2.内联事件处理器
 
 如果需要在内联语句里面访问原生DOM事件，可以使用特殊变量$event把它传入方法：
+
+``` js
 
 	<div id="test">
         <button v-on:click="warn('Form cannot be submmit yet',$event)">warn</button>
@@ -50,7 +56,9 @@ tags: Vue
             }
         }
     })
-  
+
+```
+
 3.事件修饰符
 
 在事件处理程序中调用 event.preventDefault() 或 event.stopPropagation() 是非常常见的需求。尽管我们可以在 methods 中轻松实现这点，但更好的方式是：*methods 只有纯粹的数据逻辑，而不是去处理 DOM 事件细节*。
@@ -61,6 +69,8 @@ tags: Vue
 .capture
 .self
 .once    
+
+``` html
 
 	<!-- 阻止单击事件冒泡 -->
 	<a v-on:click.stop="doThis"></a>
@@ -77,9 +87,13 @@ tags: Vue
 	<!-- 点击事件将只会触发一次 -->
 	<a v-on:click.once="doThis"></a>
 
+``` 
+
 4.键值修饰符
 
 监听键盘事件的键值，Vue 为最常用的按键提供了别名。
+
+``` html
 
 	<div id="test">
         <input v-on:keyup.enter="sub">
@@ -94,6 +108,8 @@ tags: Vue
             }
         })
     </script>
+
+```
 
 全部的按键别名：
 

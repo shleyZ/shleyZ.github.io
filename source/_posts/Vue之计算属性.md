@@ -6,6 +6,8 @@ tags: Vue
 ---
 当模版比较复杂，不容易理解的时候可以使用计算属性：
 
+``` html
+
     <div id="app">
         <p>message:"{{msg}}"</p>
         <p>reverseMessage:"{{reversedMessage}}"</p>
@@ -23,11 +25,16 @@ tags: Vue
             }
         })
     </script>
+
+```
+
     这样模版reversedMessage的属性值就与模版msg的属性值进行绑定。
 
 ### 计算属性的缓存VS方法：
 
 上面的计算属性可以用**方法**表示如下：
+
+``` html
 
 	<div id="app">
         <p>message:"{{msg}}"</p>
@@ -47,6 +54,8 @@ tags: Vue
         })
     </script>
 
+```
+
 这里计算属性和方法的结果都是一致的。  
 计算属性是基于它们的依赖进行缓存的,当msg的值没有改变时,多次访问reversedMessage时,计算属性会立即**返回之前缓存的计算结果,**而不会执行reversedMessage函数。  
 而方法(methods),每次访问reversedMessage时，**都会执行一次reversedMessage函数**。  
@@ -54,6 +63,8 @@ tags: Vue
 ### 计算属性VS被观察的属性(watch)
 
 watch属性：
+
+``` html
 
     <div id="watch">FullName:{{fullName}}</div>
 
@@ -76,7 +87,11 @@ watch属性：
         })
     </script>
 
+```
+
 如果用计算属性来实现相同的效果(相对watch属性来说简单)：
+
+``` js
 
 	computed:{
         fullName: function () {
@@ -84,7 +99,12 @@ watch属性：
         }
     }
 
+```
+
 ### 计算属性默认只有getter,但是可以自定义setter:
+
+
+``` html
 
     <div id="watch">FullName:{{fullName}}</div>
 
@@ -110,10 +130,15 @@ watch属性：
             }
         })
     </script>
+
+```
+
 运行 vm.fullName = 'John Doe' 时，setter 会被调用，vm.firstName 和 vm.lastName 也相应地会被更新。
 
 
 ### watch
+
+``` html
 
 	<div id="watch-example">
         <p>
@@ -157,6 +182,8 @@ watch属性：
             }
         })
     </script>
+
+```
 
 这里,使用 watch 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这是计算属性无法做到的。  
 

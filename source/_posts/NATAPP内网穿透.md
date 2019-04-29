@@ -1,5 +1,5 @@
 ---
-title: NATAPP内网穿透与 webpack 一同食用出现invalid host header 问题
+title: NATAPP内网穿透与 webpack 一同使用出现invalid host header 问题
 date: 2018-08-05 20:05:19
 categories: javascript
 ---

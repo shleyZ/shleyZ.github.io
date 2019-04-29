@@ -23,6 +23,8 @@ javascript中的Object就是由字典形式设计的
 
 #### 字典的实现
 
+``` js
+
     var Dictionary = function() {
       this.dataStore = []; //初始化为空
     }
@@ -80,7 +82,11 @@ javascript中的Object就是由字典形式设计的
       
     }())
 
+```    
+
 操作：
+
+``` js
 
     var dict = new Dictionary();
 
@@ -110,3 +116,4 @@ javascript中的Object就是由字典形式设计的
 
     console.log(dict.count()) // 0
 
+```

@@ -28,6 +28,8 @@ Vue组件的API包括三个部分：
 虽然有props和events来实现外部环境向内部传递数据，内部触发事件影响外部环境，但是我们仍然需要在javascript中直接访问子组件。  
 这时我们就需要在子组件中添加ref索引ID。
 
+``` html
+
 	<div id="app">
         <navbar ref="navbar"></navbar>
         <pagefooter ref="pagefooter"></pagefooter>
@@ -66,6 +68,8 @@ Vue组件的API包括三个部分：
             }
         })
     </script>
+
+```
 
 #### 3.异步组件
 

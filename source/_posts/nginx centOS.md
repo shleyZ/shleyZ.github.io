@@ -56,6 +56,8 @@ categories: Linux
 
 主配置文件如下：
 
+``` nginx
+
 		# For more information on configuration, see:
 		#   * Official English Documentation: http://nginx.org/en/docs/
 		#   * Official Russian Documentation: http://nginx.org/ru/docs/
@@ -115,14 +117,14 @@ categories: Linux
 	 	     }
 	 	 }
 
-
+```
 
 
 1. 首先主配置文件，修改用户组
 
 	user root;
 
-2.然后进行操作：
+2. 然后进行操作：
 
 	cd conf.d
 	touch ******.conf  //新建文件

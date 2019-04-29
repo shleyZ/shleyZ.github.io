@@ -21,6 +21,8 @@ categories: 数据结构
 
 #### 队列的实现
 
+``` js
+
     var Quene = function() {
       this.dataStore = []; //初始化为空
     }
@@ -88,8 +90,11 @@ categories: 数据结构
       }
     }())
 
+```
 
 操作：
+
+``` js
 
     var que = new Quene()
     que.enquene(1)
@@ -107,6 +112,7 @@ categories: 数据结构
     que.clear()
     console.log(que.empty())  // true
 
+```
 
 #### 队列的应用
 
@@ -123,6 +129,7 @@ categories: 数据结构
 
 然后根据十位数字排序，14, 22, 28, 39, 43, 55, 65, 73, 81, 93
 
+``` js
 
     //基数排序
     var queues = [];    //定义队列数组
@@ -168,5 +175,6 @@ categories: 数据结构
         }
     }
 
+```
 
 优先队列/循环队列    

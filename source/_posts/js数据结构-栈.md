@@ -25,6 +25,8 @@ categories: 数据结构
 
 #### 栈的实现
 
+``` js
+
     var Stack = function() {
       this.top = 0;   //记录栈顶位置
       this.dataStore = []; //初始化为空
@@ -71,10 +73,11 @@ categories: 数据结构
       
     }())
 
-
+```
 
 操作：
 
+``` js
 
     var stack = new Stack()
     console.log(stack.peek())  // empty
@@ -87,11 +90,14 @@ categories: 数据结构
     stack.clear()
     console.log(stack.peek())  // empty
 
+```
 
 ####  栈的应用
 
 
 判断回文字符串，即反转后的字符串和原字符串一样
+
+``` js
 
     function isPalindrome(word) {
       var s = new Stack()
@@ -109,8 +115,11 @@ categories: 数据结构
       }
     }
 
+```
+
 实现一个阶乘算法 5! = 5 * 4 * 3 * 2 * 1 = 120
 
+``` js
 
     function fact(n) {
       var s = new Stack()
@@ -126,3 +135,5 @@ categories: 数据结构
     }
 
     fact(6)  // 720
+
+```    

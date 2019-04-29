@@ -8,6 +8,8 @@ tags: Vue
 
 `<component v-bind:is="which_to_show"></component>`,根据which_to_show的值来决定显示哪个组件,which_to_show值的改变相对显示的组件也会改变。
 
+``` html
+
 	<div id="app">
         <button @click="toShow">点击切换组件</button>
         <my_component v-bind:is="which_to_show"></my_component>
@@ -43,6 +45,7 @@ tags: Vue
         });
     </script>
 
+```
 
 #### keep-alive
 

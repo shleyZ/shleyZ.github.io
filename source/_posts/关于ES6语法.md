@@ -12,6 +12,8 @@ categories: javascript
 
 2.for循环有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。
 
+``` js
+
 	for (let i = 0; i < 3; i++) {
 	  let i = 'abc';
 	  console.log(i);
@@ -20,9 +22,13 @@ categories: javascript
 	// abc
 	// abc
 
+```
+
 上面代码正确运行，输出了3次abc。这表明函数内部的变量i与循环变量i不在同一个作用域，有各自单独的作用域。	
 
 3.let不存在变量提升，即不可以没有声明就使用。否则会报错。
+
+``` js
 
 	// var 的情况
 	console.log(foo); // 输出undefined
@@ -31,6 +37,8 @@ categories: javascript
 	// let 的情况
 	console.log(bar); // 报错ReferenceError
 	let bar = 2;
+
+```
 
 这表示在let声明bar之前，变量bar是不存在的，这时如果用到它，就会抛出一个错误。
 
@@ -45,6 +53,8 @@ ES6 规定暂时性死区和let、const语句不出现变量提升，主要是�
 
 let不允许在*相同作用域内*，重复声明同一个变量。
 
+``` js
+
 	// 报错
 	function func() {
 	  let a = 10;
@@ -57,7 +67,11 @@ let不允许在*相同作用域内*，重复声明同一个变量。
 	  let a = 1;
 	}
 
+```
+
 因此，不能在函数内部重新声明参数。
+
+``` js
 
 	function func(arg) {
 	  let arg; // 报错
@@ -69,12 +83,16 @@ let不允许在*相同作用域内*，重复声明同一个变量。
 	  }
 	}
 
+```
+
 #### 块级作用域
 
 ES5的作用域只有全局作用域和函数作用域
 ES6中的let相当于增加了块级作用域
 
 1.块级作用域的出现，实际上使得获得广泛应用的立即执行函数表达式（IIFE）不再必要了。
+
+``` js
 
 	// IIFE 写法
 	(function () {
@@ -88,9 +106,13 @@ ES6中的let相当于增加了块级作用域
 	  ...
 	}
 
+```
+
 2.块级作用域与函数声明
 
 ES5 规定，函数只能在顶层作用域和函数作用域之中声明，不能在块级作用域声明。
+
+``` js
 
 	// 情况一（在ES5规定中是非法的，但是实际可以运行不会报错）
 	if (true) {
@@ -104,6 +126,8 @@ ES5 规定，函数只能在顶层作用域和函数作用域之中声明，不�
 	  // ...
 	}	
 
+```
+
 ES6 规定，块级作用域之中，函数声明语句的行为类似于let，在块级作用域之外不可引用。
 
 ES6在附录B里面规定，浏览器的实现可以不遵守上面的规定，有自己的行为方式。
@@ -115,6 +139,8 @@ ES6在附录B里面规定，浏览器的实现可以不遵守上面的规定，�
 注意，上面三条规则只对 ES6 的浏览器实现有效，其他环境的实现不用遵守，还是将块级作用域的函数声明当作let处理。
 
 考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。
+
+``` js
 
 	// 函数声明语句
 	{
@@ -132,10 +158,13 @@ ES6在附录B里面规定，浏览器的实现可以不遵守上面的规定，�
 	  };
 	}
 
+```
 
 #### const 声明一个只读的常量
 
 1.一旦声明，常量的值不能改变。并且声明的时候必须赋值，不能先声明后赋值。
+
+``` js
 
 	const PI = 3.1415;
 	PI // 3.1415
@@ -143,12 +172,18 @@ ES6在附录B里面规定，浏览器的实现可以不遵守上面的规定，�
 	PI = 3;
 	// TypeError: Assignment to constant variable.
 
+```
+
 2.const与let的作用域一样，只在声明所在的块级作用域内有效。
+
+``` js
 
 	if (true) {
 	  const MAX = 5;
 	}
 	MAX // Uncaught ReferenceError: MAX is not defined	
+
+```
 
 3.const同样存在暂时性死区，只能在声明的位置后面使用。	
 
@@ -167,15 +202,21 @@ ES6有:var,function,let,const,import,class六种方法
 
 ES5之中，顶层对象的属性与全局变量是等价的。
 
+``` js
+
 	window.a = 1;
 	a // 1
 
 	a = 2;
 	window.a // 2
 
+```
+
 顶层对象的属性与全局变量挂钩，被认为是JavaScript语言最大的设计败笔之一。这样的设计带来了几个很大的问题，首先是没法在编译时就报出变量未声明的错误，只有运行时才能知道（因为全局变量可能是顶层对象的属性创造的，而属性的创造是动态的）；其次，程序员很容易不知不觉地就创建了全局变量（比如打字出错）；最后，顶层对象的属性是到处可以读写的，这非常不利于模块化编程。另一方面，window对象有实体含义，指的是浏览器的窗口对象，顶层对象是一个有实体含义的对象，也是不合适的。	
 
 ES6为了改变这一点，一方面规定，为了保持兼容性，var命令和function命令声明的全局变量，依旧是顶层对象的属性；另一方面规定，let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。也就是说，从ES6开始，全局变量将逐步与顶层对象的属性脱钩。
+
+``` js
 
 	var a = 1;
 	// 如果在Node的REPL环境，可以写成global.a
@@ -184,6 +225,8 @@ ES6为了改变这一点，一方面规定，为了保持兼容性，var命令�
 
 	let b = 1;
 	window.b // undefined
+
+```
 
 全局变量a由var命令声明，所以它是顶层对象的属性；  
 全局变量b由let命令声明，所以它不是顶层对象的属性，返回undefined。
@@ -201,10 +244,14 @@ ES6 允许按照一定模式，从数组和对象中提取值，对变量进行�
 
 解构赋值允许指定默认值。（如果一个数组成员不严格等于undefined，默认值是不会生效的。）
 
+``` js
+
 	let [foo = true] = [];
 	foo // true
 	let [x, y = 'b'] = ['a']; // x='a', y='b'
 	let [x, y = 'b'] = ['a', undefined]; // x='a', y='b'
+
+```
 
 如果默认值是一个表达式，那么这个表达式是惰性求值的，即只有在用到的时候，才会求值。	
 
@@ -212,12 +259,16 @@ ES6 允许按照一定模式，从数组和对象中提取值，对变量进行�
 
 对象的解构与数组有一个重要的不同。数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。
 
+``` js
+
 	let { bar, foo } = { foo: "aaa", bar: "bbb" };
 	foo // "aaa"
 	bar // "bbb"
 
 	let { baz } = { foo: "aaa", bar: "bbb" };
 	baz // undefined
+
+```
 
 对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。	
 
@@ -245,19 +296,29 @@ ES6 的规则是，只要有可能导致解构的歧义，就不得使用圆括�
 
 只有一种：赋值语句的非模式部分，可以使用圆括号。
 
+``` js
+
 	[(b)] = [3]; // 正确
 	({ p: (d) } = {}); // 正确
 	[(parseInt.prop)] = [3]; // 正确
+
+```
 
 #### 变量解构赋值的用途
 
 1.交换变量的值
 
+``` js
+
 	let x = 1;
 	let y = 2;
 	[x, y] = [y, x];
 
+```
+
 2.从函数返回多个值
+
+``` js
 
 	// 返回一个数组
 	function example() {
@@ -274,7 +335,11 @@ ES6 的规则是，只要有可能导致解构的歧义，就不得使用圆括�
 	}
 	let { foo, bar } = example();
 
+```
+
 3.函数参数的定义
+
+``` js
 
 	// 参数是一组有次序的值
 	function f([x, y, z]) { ... }
@@ -284,7 +349,11 @@ ES6 的规则是，只要有可能导致解构的歧义，就不得使用圆括�
 	function f({x, y, z}) { ... }
 	f({z: 3, y: 2, x: 1});
 
+```
+
 4.提取JSON数据
+
+``` js
 
 	let jsonData = {
 	  id: 42,
@@ -297,7 +366,11 @@ ES6 的规则是，只要有可能导致解构的歧义，就不得使用圆括�
 	console.log(id, status, number);
 	// 42, "OK", [867, 5309]
 
+```
+
 5.函数参数的默认值
+
+``` js
 
 	jQuery.ajax = function (url, {
 	  async = true,
@@ -311,9 +384,13 @@ ES6 的规则是，只要有可能导致解构的歧义，就不得使用圆括�
 	  // ... do stuff
 	};
 
+```
+
 6.遍历Map结构
 	
-	任何部署了Iterator接口的对象，都可以用for...of循环遍历。
+``` js
+
+	// 任何部署了Iterator接口的对象，都可以用for...of循环遍历。
 	const map = new Map();
 	map.set('first', 'hello');
 	map.set('second', 'world');
@@ -324,6 +401,7 @@ ES6 的规则是，只要有可能导致解构的歧义，就不得使用圆括�
 	// first is hello
 	// second is world
 
+```
 
 7.输入模块的指定方法
 
@@ -538,15 +616,22 @@ Function.length 是函数形参的个数，即期望得到的参数的个数
 
 当函数制定了默认值，函数的length属性将失真，即不包含默认值的参数（也不包含设置默认值参数之后的参数）
 
+``` js
+
 	(function (a) {}).length // 1
 	(function (a = 5) {}).length // 0
 	(function (a, b, c = 5) {}).length // 2
 
+```
+
 如果设置了默认值的参数不是尾参数，那么length属性也不再计入后面的参数了。
+
+``` js
 
 	(function (a = 0, b, c) {}).length // 0
 	(function (a, b = 1, c) {}).length // 1
 
+```
 
 #### 3.rest参数
 
@@ -556,6 +641,8 @@ Function.length 是函数形参的个数，即期望得到的参数的个数
 	function add(...values){}
 
 栗子：
+
+``` js
 
 	function add(...values) {
         let sum = 0;
@@ -568,15 +655,23 @@ Function.length 是函数形参的个数，即期望得到的参数的个数
 
     add(1,2,3,4,5);  //15
 
+```
+
 注意，rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。
 
 函数的length属性，不包括 rest 参数。
+
+``` js
 
 	(function(a) {}).length  // 1
 	(function(...a) {}).length  // 0
 	(function(a, ...b) {}).length  // 1
 
+```
+
 函数的arguments对象不是数组，而是一个类似数组的对象。所以为了使用数组的方法，必须使用Array.prototype.slice.call先将其转为数组。rest 参数就不存在这个问题，它就是一个真正的数组，数组特有的方法都可以使用。
+
+``` js
 
 	function push(array, ...items) {
 	  items.forEach(function(item) {
@@ -586,6 +681,8 @@ Function.length 是函数形参的个数，即期望得到的参数的个数
 	}
 	var a = [];
 	push(a, 1, 2, 3)
+
+```
 
 #### 4.严格模式
 
@@ -597,13 +694,19 @@ ES2016 做了一点修改，规定只要函数参数使用了默认值、解构�
 
 1.设定全局性的严格模式，这是合法的。
 
+``` js
+
 	'use strict';
 
 	function doSomething(a, b = a) {
 	  // code
 	}
 
+```
+
 2.把函数包在一个无参数的立即执行函数里面。
+
+``` js
 
 	const doSomething = (function () {
 	  'use strict';
@@ -611,6 +714,8 @@ ES2016 做了一点修改，规定只要函数参数使用了默认值、解构�
 	    return value;
 	  };
 	}());
+
+```
 
 #### 5.name属性
 
@@ -621,11 +726,15 @@ ES2016 做了一点修改，规定只要函数参数使用了默认值、解构�
 
 匿名函数在ES5和ES6中返回结果不一样，ES5返回空，ES6返回函数名
 
+``` js
+
 	var f = function () {};
 	// ES5
 	f.name // ""
 	// ES6
 	f.name // "f"	
+
+```
 
 构造函数的name返回值为：anonymous
 
@@ -633,11 +742,14 @@ ES2016 做了一点修改，规定只要函数参数使用了默认值、解构�
 
 bind返回的函数，name属性值会加上bound前缀。
 
+``` js
+
 	function foo() {};
 	foo.bind({}).name // "bound foo"
 
 	(function(){}).bind({}).name // "bound "	
 
+```
 
 #### 6.箭头函数
 
@@ -649,11 +761,17 @@ ES6允许使用“箭头”（=>）定义函数。
 
 如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分。
 
+``` js
+
 	var f = () => 5;
 	// 等同于
 	var f = function () { return 5 };
 
+```
+
 由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。
+
+``` js
 
 	// 报错
 	let getTempItem = id => { id: id, name: "Temp" };
@@ -661,8 +779,11 @@ ES6允许使用“箭头”（=>）定义函数。
 	// 不报错
 	let getTempItem = id => ({ id: id, name: "Temp" });	
 
+```
 
 箭头函数的一个用处是简化回调函数。
+
+``` js
 
 	// 正常函数写法
 	[1,2,3].map(function (x) {
@@ -672,7 +793,11 @@ ES6允许使用“箭头”（=>）定义函数。
 	// 箭头函数写法
 	[1,2,3].map(x => x * x);
 
+```
+
 rest 参数与箭头函数结合的例子：
+
+``` js
 
 	const numbers = (...nums) => nums;
 
@@ -683,6 +808,8 @@ rest 参数与箭头函数结合的例子：
 
 	headAndTail(1, 2, 3, 4, 5)
 	// [1,[2,3,4,5]]	
+
+```
 
 箭头函数的注意点（箭头函数没有自己的this）：
 
@@ -695,6 +822,8 @@ rest 参数与箭头函数结合的例子：
 #### 7.绑定this
 
 函数绑定运算符::，运算符左边是对象，右边是函数，将对象绑定到函数的this对象上。
+
+``` js
 
 	foo::bar;
 	// 等同于
@@ -709,7 +838,11 @@ rest 参数与箭头函数结合的例子：
 	  return obj::hasOwnProperty(key);
 	}
 
+```
+
 如果双冒号左边为空，右边是一个对象的方法，则等于将该方法绑定在该对象上面。
+
+``` js
 
 	var method = obj::obj.foo;
 	// 等同于
@@ -719,7 +852,11 @@ rest 参数与箭头函数结合的例子：
 	// 等同于
 	var log = console.log.bind(console);
 
+```
+
 由于双冒号运算符返回的还是原对象，因此可以采用链式写法。
+
+``` js
 
 	// 例一
 	import { map, takeWhile, forEach } from "iterlib";
@@ -736,6 +873,8 @@ rest 参数与箭头函数结合的例子：
 	::find("p")
 	::html("hahaha");
 
+```
+
 #### 8.尾调用优化
 
 尾调用就是函数的最后一步是调用另一个函数。
@@ -743,6 +882,8 @@ rest 参数与箭头函数结合的例子：
 “尾调用优化”（Tail call optimization），即只保留内层函数的调用帧。如果所有函数都是尾调用，那么完全可以做到每次执行时，调用帧只有一项，这将大大节省内存。这就是“尾调用优化”的意义。
 
 注意，只有不再用到外层函数的内部变量，内层函数的调用帧才会取代外层函数的调用帧，否则就无法进行“尾调用优化”。
+
+``` js
 
 	function f() {
 	  let m = 1;
@@ -760,9 +901,13 @@ rest 参数与箭头函数结合的例子：
 	// 等同于
 	g(3);	
 
+```
+
 尾递归：尾调用自身的情况
 
 递归非常耗费内存，因为需要同时保存成千上百个调用帧，很容易发生“栈溢出”错误（stack overflow）。但对于尾递归来说，由于只存在一个调用帧，所以永远不会发生“栈溢出”错误。
+
+``` js
 
 	function factorial(n) {
 	  if (n === 1) return 1;
@@ -771,7 +916,11 @@ rest 参数与箭头函数结合的例子：
 
 	factorial(5) // 120	
 
+```
+
 上面代码是一个阶乘函数，计算n的阶乘，最多需要保存n个调用记录，复杂度 O(n) 。	
+
+``` js
 
 	function factorial(n, total) {
 	  if (n === 1) return total;
@@ -780,9 +929,13 @@ rest 参数与箭头函数结合的例子：
 
 	factorial(5, 1) // 120
 
+```
+
 如果改写成尾递归，只保留一个调用记录，复杂度 O(1) 。	
 
 非尾递归的 Fibonacci 数列实现如下。
+
+``` js
 
 	function Fibonacci (n) {
 	  if ( n <= 1 ) {return 1};
@@ -794,7 +947,11 @@ rest 参数与箭头函数结合的例子：
 	Fibonacci(100) // 堆栈溢出
 	Fibonacci(500) // 堆栈溢出
 
+```
+
 尾递归优化过的 Fibonacci 数列实现如下。
+
+``` js
 
 	function Fibonacci2 (n , ac1 = 1 , ac2 = 1) {
 	  if( n <= 1 ) {return ac2};
@@ -806,6 +963,8 @@ rest 参数与箭头函数结合的例子：
 	Fibonacci2(1000) // 7.0330367711422765e+208
 	Fibonacci2(10000) // Infinity
 
+```
+
 *ES6 的尾调用优化只在严格模式下开启，正常模式是无效的。*
 
 ## 7.数组的扩展
@@ -813,6 +972,8 @@ rest 参数与箭头函数结合的例子：
 #### 1.扩展运算符spread（...）
 
 它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。主要用于函数的调用
+
+``` js
 
 	function push(array, ...items) {
 	  array.push(...items);
@@ -825,13 +986,21 @@ rest 参数与箭头函数结合的例子：
 	const numbers = [4, 38];
 	add(...numbers) // 42
 
+```
+
 扩展运算符与正常的函数参数可以结合使用，非常灵活。
+
+``` js
 
 	function f(v, w, x, y, z) { }
 	const args = [0, 1];
 	f(-1, ...args, 2, ...[3]);
 
+```
+
 扩展运算符可以替换apply方法（把数组转换为函数的参数）：
+
+``` js
 
 	// ES5 的写法
 	Math.max.apply(null, [14, 3, 77])
@@ -842,6 +1011,8 @@ rest 参数与箭头函数结合的例子：
 	// 等同于
 	Math.max(14, 3, 77);
 
+```
+
 上面代码中，由于 JavaScript 不提供求数组最大元素的函数，所以只能套用Math.max函数，将数组转为一个参数序列，然后求最大值。有了扩展运算符以后，就可以直接用Math.max了。
 
 扩展运算符的应用：
@@ -850,11 +1021,15 @@ rest 参数与箭头函数结合的例子：
 
 对于ES5，一维数组可以用slice或者concat实现深拷贝。
 
+``` js
+
 	const a1 = [1, 2];
 	const a2 = a1.concat();
 
 	a2[0] = 2;
 	a1 // [1, 2]
+
+```
 
 用扩展运算符...实现：
 
@@ -863,10 +1038,14 @@ rest 参数与箭头函数结合的例子：
 
 2.合并数组
 
+``` js
+
 	// ES5
 	[1, 2].concat(more)
 	// ES6
 	[1, 2, ...more]
+
+```
 
 3.与解构赋值结合
 
@@ -887,11 +1066,15 @@ rest 参数与箭头函数结合的例子：
 
 将类数组对象和可遍历的对象转换为数组
 
+``` js
+
 	Array.from('hello')
 	// ['h', 'e', 'l', 'l', 'o']
 
 	let namesSet = new Set(['a', 'b'])
 	Array.from(namesSet) // ['a', 'b']	
+
+```
 
 对于还没有部署该方法的浏览器，可以用Array.prototype.slice方法替代。
 
@@ -904,9 +1087,13 @@ Array.from的第一个参数指定了第二个参数运行的次数。这种特�
 
 将一组值，转换为数组。	
 
+``` js
+
 	Array.of(3, 11, 8) // [3,11,8]
 	Array.of(3) // [3]
 	Array.of(3).length // 1
+
+```
 
 #### 4.数组实例的copyWithin()
 
@@ -959,6 +1146,8 @@ fill方法还可以接受第二个和第三个参数，用于指定填充的起�
 
 ES6 提供三个新的方法——entries()，keys()和values()——用于遍历数组。它们都返回一个遍历器对象，可以用for...of循环进行遍历，唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历。
 
+``` js
+
 	for (let index of ['a', 'b'].keys()) {
 	  console.log(index);
 	}
@@ -976,6 +1165,8 @@ ES6 提供三个新的方法——entries()，keys()和values()——用于遍�
 	}
 	// 0 "a"
 	// 1 "b"
+
+```
 
 #### 8.数组实例的	includes()
 
@@ -1000,6 +1191,8 @@ Array.prototype.includes方法返回一个布尔值，表示某个数组是否�
 
 ES6 允许在对象之中，直接写变量。这时，属性名为变量名, 属性值为变量的值。
 
+``` js
+
 	function f(x, y) {
 	  return {x, y};
 	}
@@ -1012,7 +1205,11 @@ ES6 允许在对象之中，直接写变量。这时，属性名为变量名, �
 
 	f(1, 2) // Object {x: 1, y: 2}
 
+```
+
 方法的简写：
+
+``` js
 
 	let birth = '2000/01/01';
 
@@ -1028,9 +1225,13 @@ ES6 允许在对象之中，直接写变量。这时，属性名为变量名, �
 
 	};	
 
+```
+
 #### 2.属性名表达式
 
 ES6允许用表达式定义对象的属性名。
+
+``` js
 
 	let propKey = 'foo';
 	let obj = {
@@ -1038,7 +1239,11 @@ ES6允许用表达式定义对象的属性名。
 	  ['a' + 'bc']: 123
 	};
 
+```
+
 S6允许用表达式定义对象的方法名：
+
+``` js
 
 	let obj = {
 	  ['h' + 'ello']() {
@@ -1048,7 +1253,11 @@ S6允许用表达式定义对象的方法名：
 
 	obj.hello() // hi	
 
+```
+
 注意，属性名表达式如果是一个对象，默认情况下会自动将对象转为字符串[object Object]，这一点要特别小心。
+
+``` js
 
 	const keyA = {a: 1};
 	const keyB = {b: 2};
@@ -1060,12 +1269,16 @@ S6允许用表达式定义对象的方法名：
 
 	myObject // Object {[object Object]: "valueB"}	
 
+```
+
 上面代码中，[keyA]和[keyB]得到的都是[object Object]，所以[keyB]会把[keyA]覆盖掉，而myObject最后只有一个[object Object]属性。
 
 
 #### 3.方法的name属性
 
 函数的name属性，返回函数名。对象方法也是函数，因此也有name属性。
+
+``` js
 
 	const person = {
 	  sayName() {
@@ -1075,9 +1288,13 @@ S6允许用表达式定义对象的方法名：
 
 	person.sayName.name   // "sayName"
 
+```
+
 如果对象的方法使用了取值函数（getter）和存值函数（setter），则name属性不是在该方法上面，而是该方法的属性的描述对象的get和set属性上面，返回值是方法名前加上get和set。
 
 有两种特殊情况：bind方法创造的函数，name属性返回bound加上原函数的名字；Function构造函数创造的函数，name属性返回anonymous。
+
+``` js
 
 	(new Function()).name // "anonymous"
 
@@ -1086,6 +1303,7 @@ S6允许用表达式定义对象的方法名：
 	};
 	doSomething.bind().name // "bound doSomething"
 
+```
 
 #### 4.Object.is()比较两个值是否严格相等
 
@@ -1093,13 +1311,19 @@ S6允许用表达式定义对象的方法名：
 
 它们的不同是(+0与-0，NaN与NaN)：
 
+``` js
+
 	+0 === -0     //true
 	NaN === NaN   //false
 
 	Object.is(+0,-0)     //false
 	Object.is(NaN,NaN)   //true
-	 
+
+```
+
 #### 5.Object.assign()用于对象的合并
+
+``` js
 
 	const target = { a: 1 };
 
@@ -1108,6 +1332,8 @@ S6允许用表达式定义对象的方法名：
 
 	Object.assign(target, source1, source2);
 	target // {a:1, b:2, c:3}
+
+```
 
 注意，如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。
 
@@ -1131,12 +1357,16 @@ Object.assign拷贝的属性是有限制的，只拷贝源对象的自身属性�
 
 Object.getOwnPropertyDescriptor方法可以获取该属性的描述对象。
 
+``` js
+
 	let obj = { foo: 123 };
 	Object.getOwnPropertyDescriptor(obj, 'foo')
 	//configurable:true
 	//enumerable:true
 	//value:123
 	//writable:true
+
+```
 
 其中的enumerable枚举属性，如果为false，那么for...in,Object.keys(),JSON.stringfy(),Object.assign()这些操作都会忽略该属性。
 （for...in会遍历继承的属性，而Object.keys()则不会，因此当我们只关心对象自身的属性时，最好不要用for...in,而选用Object.keys()）.
@@ -1155,6 +1385,8 @@ Object.getOwnPropertyDescriptor方法可以获取该属性的描述对象。
 
 设置对象的prototype，ES6建议用Object.setPropertyOf().返回对象本身。
 
+``` js
+
 	let proto = {};
 	let obj = { x: 10 };
 	Object.setPrototypeOf(obj, proto);
@@ -1165,6 +1397,8 @@ Object.getOwnPropertyDescriptor方法可以获取该属性的描述对象。
 	obj.x // 10
 	obj.y // 20
 	obj.z // 40
+
+```
 
 3.Object.getPrototypeOf()
 
@@ -1209,6 +1443,8 @@ Symbol 值作为属性名时，该属性还是公开属性，不是私有属性�
 
 ES6提供新的数据结构SET。它类似于数组，但是其内部成员的值都是唯一的，没有重复值(判断的方法类似于全等判断)。
 
+``` js
+
 	const s = new Set();
 	[2,3,5,4,5,2,2].forEach(x => s.add(x));
 
@@ -1216,9 +1452,13 @@ ES6提供新的数据结构SET。它类似于数组，但是其内部成员的�
 	    console.log(i);
 	}
 
+```
+
 返回结果是：2 3 5 4。结果表明 Set 结构不会添加重复的值。
 
 Set函数可以接受一个数组作为参数来初始化：
+
+``` js
 
 	const set = new Set([1, 2, 3, 4, 4]);
 	[...set]
@@ -1228,12 +1468,18 @@ Set函数可以接受一个数组作为参数来初始化：
 	items.size // 5	
 	items.length //undefined
 
+```
+
 利用Set的成员唯一性，可以用来数组去重：
+
+``` js
 
 	let myArray = [1,2,3,4,3,2,4,1];
 	let arr = [...new Set(myArray)];
 	console.log(arr);
 	//[1, 2, 3, 4]
+
+```
 
 #### 2.Set实例的属性和方法
 
@@ -1243,6 +1489,8 @@ Set函数可以接受一个数组作为参数来初始化：
 2.delete(value)  删除某个值，返回布尔值，是否删除成功
 3.has(value)     判断某个值是不是Set成员，返回布尔值
 4.clear()        清空Set成员，没有返回值
+
+``` js
 
 	s.add(1).add(2).add(2);
 	// 注意2被加入了两次
@@ -1255,6 +1503,8 @@ Set函数可以接受一个数组作为参数来初始化：
 
 	s.delete(2);
 	s.has(2) // false
+
+```
 
 Array.from方法可以将 Set 结构转为数组。
 
@@ -1282,12 +1532,16 @@ Array.from方法可以将 Set 结构转为数组。
 
 作为构造函数，WeakSet 可以接受一个数组或类似数组的对象作为参数。这个类数组对象的成员必须是对象。否则会报错
 
+``` js
+
 	const a = [[1, 2], [3, 4]];
 	const ws = new WeakSet(a);
 	// WeakSet {[1, 2], [3, 4]}
 	const b = [3, 4];
 	const ws = new WeakSet(b);
 	// Uncaught TypeError: Invalid value used in weak set(…)
+
+```
 
 WeakSet的方法：
 
@@ -1301,6 +1555,8 @@ WeakSet的方法：
 
 Object 结构提供了“字符串—值”的对应，Map结构提供了“值—值”的对应。即对象的属性名（键）不只是字符串形式了，还可以是各种类型的值或对象。
 
+``` js
+
 	const m = new Map();
 	const o = {p: 'Hello World'};
 
@@ -1311,7 +1567,11 @@ Object 结构提供了“字符串—值”的对应，Map结构提供了“值�
 	m.delete(o) // true
 	m.has(o) // false
 
+```
+
 作为构造函数，Map 也可以接受一个数组作为参数。该数组的成员是一个个表示键值对的数组。
+
+``` js
 
 	const map = new Map([
 	  ['name', '张三'],
@@ -1324,6 +1584,7 @@ Object 结构提供了“字符串—值”的对应，Map结构提供了“值�
 	map.has('title') // true
 	map.get('title') // "Author"
 
+```
 
 #### 5.WeakMap
 
@@ -1337,6 +1598,8 @@ WeakMap结构与Map结构类似，也是用于生成键值对的集合。
 
 一个典型应用场景是，在网页的 DOM 元素上添加数据，就可以使用WeakMap结构。当该 DOM 元素被清除，其所对应的WeakMap记录就会自动被移除。
 
+``` js
+
 	const wm = new WeakMap();
 
 	const element = document.getElementById('example');
@@ -1344,9 +1607,13 @@ WeakMap结构与Map结构类似，也是用于生成键值对的集合。
 	wm.set(element, 'some information');
 	wm.get(element) // "some information"
 
+```
+
 总之，WeakMap的专用场合就是，它的键所对应的对象，可能会在将来消失。WeakMap结构有助于防止内存泄漏。
 
 注意，WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用。
+
+``` js
 
 	const wm = new WeakMap();
 	let key = {};
@@ -1357,9 +1624,13 @@ WeakMap结构与Map结构类似，也是用于生成键值对的集合。
 	wm.get(key)
 	// Object {foo: 1}
 
+```
+
 上面代码中，键值obj是正常引用。所以，即使在 WeakMap 外部消除了obj的引用，WeakMap 内部的引用依然存在。
 
 WeakMap规定不能取到键名,无法清空.即不支持clear方法。因此，WeakMap只有四个方法可用：get()、set()、has()、delete()。
+
+``` js
 
 	const wm = new WeakMap();
 
@@ -1368,6 +1639,7 @@ WeakMap规定不能取到键名,无法清空.即不支持clear方法。因此，
 	wm.forEach // undefined
 	wm.clear // undefined
 
+```
 
 ## 12.Proxy
 
@@ -1411,6 +1683,8 @@ Promise的缺点：
 
 Promise对象是一个构造函数。
 
+``` js
+
 	var promise = new Promise(function(resolve,reject){
 	    //some coding ....
 
@@ -1421,6 +1695,8 @@ Promise对象是一个构造函数。
 	        reject(err);
 	    }
 	})
+
+```
 
 其中的回调函数中的两个参数resolve和reject分别是两个函数，它们由javascript引擎提供，不需要自己部署。
 

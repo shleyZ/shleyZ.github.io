@@ -7,6 +7,8 @@ tags: JSON
 
 JSON没有length属性
 
+``` js
+
         var json = {name:"xiaoming",sex:"male"}
 
         function getJsonLength(jsonData){
@@ -25,3 +27,5 @@ JSON没有length属性
 
         getJsonLength(json);
         //2
+
+```        

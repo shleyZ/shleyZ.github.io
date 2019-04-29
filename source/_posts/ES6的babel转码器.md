@@ -31,6 +31,8 @@ babel命令行工具可以全局安装也可本地安装，不过官方推荐本
 
 这时的package.json文件如下：
 
+``` json
+
 	{
 	  "name": "ES6-babel",
 	  "version": "1.0.0",
@@ -47,11 +49,15 @@ babel命令行工具可以全局安装也可本地安装，不过官方推荐本
 	  }
 	}
 
+```
+
 #### 3.在命令行中调用babel
 
 本地安装的babel是不能够在直接命令行中运行的，为了在命令行中运行babel，有两种方法，不过推荐第一种：
 
 方法一：配置package.json文件的scripts项（在script中添加 "build": "babel src -d lib","babel": "babel"）
+
+``` json
 
 	{
 	  "name": "ES6-babel",
@@ -70,6 +76,8 @@ babel命令行工具可以全局安装也可本地安装，不过官方推荐本
 	    "babel-cli": "^6.26.0"
 	  }
 	}
+
+```	
 
 方法二：进入node_modules文件夹，再进入.bin文件夹，然后执行在命令行中执行babel src -d lib。
 
@@ -109,12 +117,16 @@ babel命令行工具可以全局安装也可本地安装，不过官方推荐本
 
 添加：
 
+``` json
+
 	{
 	    "presets": [
 	      "es2015"
 	    ],
 	    "plugins": []
-	  }
+		}
+		
+```		
 
 #### 7.这样我们就可以来转码了
 

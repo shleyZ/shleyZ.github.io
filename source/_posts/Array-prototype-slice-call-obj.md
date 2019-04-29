@@ -17,11 +17,19 @@ Array.prototype.slice()
 
 	call()方法的语法是：
 
+``` js
+
 		fun.call(thisArg, arg1, arg2, ...)
+
+```
 
 	applay()方法的语法：
 		
+``` js
+
 		fun.apply(thisArg, [argsArray])
+
+```
 
 	（两者差不多，唯一的区别就是call接受的是若干个参数的列表，而apply接受的是一个参数数组,这样实现了对象的继承）
 
@@ -31,9 +39,15 @@ thisArg是在fun函数运行时指定的this值，后面的arg1, arg2, ...是指
 
 也就相当于：
 
+``` js
+
 	obj.slice()
 
+```
+
 看栗子：
+
+``` js
 
 	var a = {length:4,0:'a',1:'b',2:'c',3:'d'}
 	Array.prototype.slice.call(a)
@@ -43,13 +57,19 @@ thisArg是在fun函数运行时指定的this值，后面的arg1, arg2, ...是指
 	Array.prototype.slice.call(a,2,3)
 	//["c"]
 
+```
+
 用在函数参数中：
+
+``` js
 
 	function comp(a,b,c,d) {
         var newArr = Array.prototype.slice.call(arguments);
         console.log(arguments);
         console.log(newArr);
     }
-    comp('a','b','c','d','e');	
+		comp('a','b','c','d','e');	
+
+```
 
 这样从控制台看到：arguments是一个对象，而newArr则是一个数组。

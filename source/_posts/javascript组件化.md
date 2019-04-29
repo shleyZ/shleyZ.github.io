@@ -26,7 +26,9 @@ tags: 组件开发
 嗯 所谓的入门级写法呢，就是完完全全的全局函数全局变量的写法。（就我所知，现在好多外包还是这种写法）
 
 代码如下：
-```
+
+``` js
+
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -70,6 +72,7 @@ tags: 组件开发
 	<input type="text" id="J_input"/>
 	</body>
 	</html>
+
 ```
 
 这段代码跑也是可以跑的，但是呢，各种变量混乱，没有很好的隔离作用域,当页面变的复杂的时候,会很难去维护。目前这种代码基本是用不了的。当然少数的活动页面可以简单用用。
@@ -80,7 +83,9 @@ tags: 组件开发
 
 让我们对上面的代码作些改动，使用单个变量模拟命名空间。
 
-```	var textCount = {
+``` js
+
+  	var textCount = {
 	  input:null,
 	  init:function(config){
 	    this.input = $(config.id);
@@ -113,6 +118,7 @@ tags: 组件开发
 	  //在domready后调用
 	  textCount.init({id:'#J_input'}).render();
 	})
+
 ```
 
 这样一改造，立马变的清晰了很多，所有的功能都在一个变量下面。代码更清晰，并且有统一的入口调用方法。
@@ -121,7 +127,9 @@ tags: 组件开发
 
 于是又出现了一种函数闭包的写法：
 
-```	var TextCount = (function(){
+``` js
+
+  	var TextCount = (function(){
 	  //私有方法，外面将访问不到
 	  var _bind = function(that){
 	    that.input.on('keyup',function(){
@@ -161,6 +169,7 @@ tags: 组件开发
 	$(function() {
 	  new TextCount().init({id:'#J_input'}).render();
 	})
+
 ```
 
 这种写法，把所有的东西都包在了一个自动执行的闭包里面，所以不会受到外面的影响，并且只对外公开了TextCountFun构造函数，生成的对象只能访问到init,render方法。这种写法已经满足绝大多数的需求了。事实上大部分的jQuery插件都是这种写法。
@@ -176,6 +185,8 @@ tags: 组件开发
 在编程的圈子里，面向对象一直是被认为最佳的编写代码方式。比如java，就是因为把面向对象发挥到了极致，所以多个人写出来的代码都很接近，维护也很方便。但是很不幸的是，javascript不支持class类的定义。但是我们可以模拟。
 
 下面我们先实现个简单的javascript类：
+
+``` js
 
 	var Class = (function() {
 	  var _mix = function(r, s) {
@@ -227,11 +238,14 @@ tags: 组件开发
 	  return Class
 	})()
 
+```	
+
 这是拿John Resig的class简单修改了下。
 
 这边只是很简陋的实现了类的继承机制。如果对类的实现有兴趣可以参考我另一篇文章[javascript oo](http://purplebamboo.github.io/2014/07/13/javascript-oo-class/)实现
 我们看下使用方法：
 
+``` js
 	//继承超级父类，生成个子类Animal，并且混入一些方法。这些方法会到Animal的原型上。
 	//另外这边不仅支持混入{}，还支持混入Function
 	var Animal = Class.extend({
@@ -258,11 +272,15 @@ tags: 组件开发
 
 	new Dog({msg:'hi'}).say()
 
+```	
+
 使用很简单，超级父类具有extend方法，可以继承出一个子类。子类也具有extend方法。
 
 这边要强调的是，继承的父类都是一个也就是单继承。但是可以通过extend实现多重混入。详见下面用法。
 
 有了这个类的扩展，我们可以这么编写代码了：
+
+``` js
 
 	var TextCount = Class.extend({
 	  init:function(config){
@@ -297,6 +315,8 @@ tags: 组件开发
 	  });
 	})
 
+```	
+
 这边可能还没看见class的真正好处，不急我们继续往下。
 
 抽象出base
@@ -311,6 +331,8 @@ tags: 组件开发
 当然这也是一种约定俗成的规范了。如果大家全部按照这种风格来写代码，开发大规模组件库就变得更加规范，相互之间配合也更容易。
 
 这个时候面向对象的好处就来了，我们抽象出一个Base类。其他组件编写时都继承它。
+
+``` js
 
 	var Base = Class.extend({
 	  init:function(config){
@@ -337,9 +359,13 @@ tags: 组件开发
 	  }
 	})
 
+```	
+
 base类主要把组件的一般性内容都提取了出来，这样我们编写组件时可以直接继承base类，覆盖里面的bind和render方法。
 
 于是我们可以这么写代码：
+
+``` js
 
 	var TextCount = Base.extend({
 	  _getNum:function(){
@@ -370,6 +396,8 @@ base类主要把组件的一般性内容都提取了出来，这样我们编写�
 	  });
 	})
 
+```	
+
 可以看到我们直接实现一些固定的方法，bind，render就行了。其他的base会自动处理（这里只是简单处理了配置属性的赋值）。
 
 事实上，这边的init，bind，render就已经有了点生命周期的影子，但凡是组件都会具有这几个阶段，初始化，绑定事件，以及渲染。当然这边还可以加一个destroy销毁的方法，用来清理现场。
@@ -386,6 +414,8 @@ base类主要把组件的一般性内容都提取了出来，这样我们编写�
 
 小白可能会说，那简单啊直接改下bind方法：
 
+``` js 
+
 	var TextCount = Base.extend({
 	  ...
 	  bind:function(){
@@ -400,6 +430,8 @@ base类主要把组件的一般性内容都提取了出来，这样我们编写�
 	  ...
 	})
 
+```
+
 的确也是一种方法，但是太low了，代码严重耦合。当这种需求特别特别多，代码会越来越乱。
 
 这个时候就要引入事件机制，也就是经常说的观察者模式。
@@ -412,6 +444,8 @@ base类主要把组件的一般性内容都提取了出来，这样我们编写�
 所以这分为两个部分，一个是通知，一个是监听。
 
 假设通知是 fire方法，监听是on。于是我们可以这么写代码：
+
+``` js
 
 	var TextCount = Base.extend({
 	  ...
@@ -439,11 +473,15 @@ base类主要把组件的一般性内容都提取了出来，这样我们编写�
 	  })
 	})
 
+```
+
 fire用来触发一个事件，可以传递数据。而on用来添加一个监听。这样组件里面只负责把一些关键的事件抛出来，至于具体的业务逻辑都可以添加监听来实现。没有事件的组件是不完整的。
 
 下面我们看看怎么实现这套事件机制。
 
 我们首先抛开base，想想怎么实现一个具有这套机制的类。
+
+``` js
 
 	//辅组函数，获取数组里某个元素的索引 index
 	var _indexOf = function(array,key){
@@ -524,9 +562,13 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 
 	a.fire('test','你应该看不到我了')
 
+```
+
 实现起来并不复杂，只要使用this.\_\_events存下所有的监听函数。在fire的时候去找到并且执行就行了。
 
 这个时候面向对象的好处就来了，如果我们希望base拥有事件机制。只需要这么写:
+
+``` js 
 
 	var Base = Class.extend(Event,{
 	  ...
@@ -540,6 +582,8 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 	// a.on(xxx,fn)
 	//
 	// a.fire()
+
+```
 
 是的只要extend的时候多混入一个Event，这样Base或者它的子类生成的对象都会自动具有事件机制。
 
@@ -559,6 +603,8 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 模板渲染：用户不需要覆盖render方法，而是覆盖实现setUp方法。可以通过在setUp里面调用render来达到渲染对应html的目的。
 单向绑定：通过setChuckdata方法，更新数据，同时会更新html内容，不再需要dom操作。
 我们看下我们实现richbase后怎么写组件：
+
+``` js
 
 	var TextCount = RichBase.extend({
 	  //事件直接在这里注册，会代理到parentNode节点，parentNode节点在下面指定
@@ -611,12 +657,16 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 
 	*/
 
+```	
+
 看下上面的用法，可以看到变得更简单清晰了：
 
   1.事件不需要自己绑定，直接注册在EVENTS属性上。程序会自动将事件代理到parentNode上。
   2.引入了模板机制，使用template规定组件的模板，然后在setUp里面使用render(data)的方式渲染模板，程序会自动帮你append到parentNode下面。
   3.单向绑定，无需操作dom，后面要改动内容，不需要操作dom，只需要调用setChuckdata(key,新的值)，选择性的更新某个数据，相应的html会自动重新渲染。
 下面我们看下richebase的实现：
+
+``` js
 
 	var RichBase = Base.extend({
 	  EVENTS:{},
@@ -739,6 +789,8 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 	  }
 	})
 
+```
+
 主要做了两件事，一个就是事件的解析跟代理，全部代理到parentNode上面。另外就是把render抽出来，用户只需要实现setUp方法。如果需要模板支持就在setUp里面调用render来渲染模板，并且可以通过setChuckdata来刷新模板，实现单向绑定。
 
 结语
@@ -751,5 +803,5 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 
 当然这些东西已经不属于组件里面的内容了。再进一步其实已经是一个框架了。实际上最近比较流行的react，ploymer还有我们的brix等等都是实现了这套东西。受限于篇幅，这个以后有空再写篇文章详细分析下。
 
-鉴于有人跟我要完整代码，其实上面都列出来了。好吧 那我就再整理下，放在github了包含具体的demo，请点[这里](https://github.com/purplebamboo/demo-richbase/tree/master/example)。不过仅仅作为理解使用最好不要用于生产环境。如果觉得有帮助就给我个star吧。
+鉴于有人跟我要完整代码，其实上面都列出来了。好吧 那我就再整理下，放在github了包含具体的demo，请点[这里](https://github.com/purplebamboo/demo-richbase/tree/master/example)。
 

@@ -12,6 +12,8 @@ antd Form 表单中onChange事件中setFieldsValue 无效
 
 想要在Input输入框中，禁止输入空格等特殊字符
 
+``` js
+
     {
       key: 'name',
       label: '姓名',
@@ -34,6 +36,7 @@ antd Form 表单中onChange事件中setFieldsValue 无效
       }
     }
 
+```
 
 想要在onChange方法中正则替换非法字符为空
 可是最后发现无效
@@ -46,6 +49,8 @@ antd Form 表单中onChange事件中setFieldsValue 无效
   一个例子： https://codepen.io/afc163/pen/JJVXzG?editors=001
 
 综上实现方法：
+
+``` js
 
     {
       key: 'name',
@@ -70,8 +75,12 @@ antd Form 表单中onChange事件中setFieldsValue 无效
       }
     }
 
+```
 
     // 禁止输入空格/表情/特殊字符
+
+``` js
+
     onNameSelect1 = (value: any, preValue: any) => {
       let res = value.replace(/(^\s+)|(\s+$)/g, ''); // 去掉空格
       res = res.replace(/[&\|\\\*^%$#@\-]/g, ''); // 去掉特殊字符
@@ -82,5 +91,5 @@ antd Form 表单中onChange事件中setFieldsValue 无效
       return res;
     };
 
-    
+```
 

@@ -12,12 +12,16 @@ background-clip默认为border-box，也就是说border的颜色会把元素背�
 
 #### 2.box-shadow可以进行多重投影
 
+``` css
+
 	button{
 		background: yellowgreen; 
 		box-shadow: 0 0 0 10px #655,
             		0 0 0 15px deeppink,
             		0 2px 5px 15px rgba(0,0,0,.6);
     }
+
+```
 
 box-shadow语法：
 	box-shadow: h-shadow v-shadow blur spread color inset;    
@@ -31,17 +35,23 @@ inset将外部阴影变为内部阴影
 
 #### 3.使用border+outline实现两层边框
 
+``` css
+
 	button{
 		background: yellowgreen; 
 		border: 10px solid #655; 
 		outline: 5px solid deeppink;
     }
 
+```
+
 不过当outline的内部border设置圆角时，outline边框就不能与border相贴合了。
 
 #### 4.实现边框内圆角
 
 用两个元素实现：
+
+``` css
 
 	<div class="example">
         <div class="ex1"></div>
@@ -58,8 +68,12 @@ inset将外部阴影变为内部阴影
         }
     </style>    
 
+```
+
 用一个元素实现：
 	
+``` css
+
 	.ex1{
             background: tan;
             border-radius: .8em;
@@ -67,6 +81,9 @@ inset将外部阴影变为内部阴影
             box-shadow: 0 0 0 .4em #655;
             outline: .6em solid #655;
         }
+
+```
+
 原理就是outline和border圆角之间的空白用box-shadow填补上。
 
 #### 5.条纹背景

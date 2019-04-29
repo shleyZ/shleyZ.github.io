@@ -44,15 +44,23 @@ tags: CSS
 
 1.相邻的兄弟元素
 
+``` html
+
 	<p style="margin-bottom: 30px;">这个段落的下外边距被合并...</p>
 	<p style="margin-top: 20px;">...这个段落的上外边距被合并。</p>
+
+```
 
 2.块级元素与它的第一个或最后一个子元素（前提是父元素与子元素中间没有border、padding、inline content、height、min-height、 max-height来分隔时）
 3.一个空的块级元素，其 border、padding、inline content、height、min-height 都不存在。那么此时它的上下边距中间将没有任何阻隔，此时它的上下外边距将会合并。
 
+``` html
+
 	<p style="margin-bottom: 0px;">这个段落的和下面段落的距离将为20px</p>
 	<div style="margin-top: 20px; margin-bottom: 20px;"></div>
 	<p style="margin-top: 0px;">这个段落的和上面段落的距离将为20px</p>
+
+```
 
 当有负边距存在时，合并后的外边距将是最大正边距加上最小负边距（即负边距中绝对值最大的一个）。
 
@@ -75,6 +83,8 @@ box-sizing设置为padding-box时：(只有Firefox实现了这个值，它在Fir
 
 实现兼容各个浏览器：
 
+``` css
+
 	Element {
 	     -moz-box-sizing: content-box;  
 	     -webkit-box-sizing: content-box; 
@@ -92,6 +102,7 @@ box-sizing设置为padding-box时：(只有Firefox实现了这个值，它在Fir
 	     box-sizing: border-box; 
 	  }
 
+```
 
 #### margin越界
 
@@ -106,6 +117,8 @@ box-sizing设置为padding-box时：(只有Firefox实现了这个值，它在Fir
 （4）父元素加前置内容生成。（推荐）
 
 第四种方法的实现：
+
+``` css
 
 	.parent{
 	    width: 300px;
@@ -123,8 +136,11 @@ box-sizing设置为padding-box时：(只有Firefox实现了这个值，它在Fir
 	    background-color: #9ea040;
 	}
 
+```
+
 #### 绘制三角形
 
+``` css
 	.child{
 	    width: 0;
 	    height: 0;
@@ -132,7 +148,11 @@ box-sizing设置为padding-box时：(只有Firefox实现了这个值，它在Fir
 	    border-right: 100px solid yellow;
 	}
 
+```
+
 #### 子元素浮动后父元素高度为0（父元素不设置高度）
+
+``` css
 
 	.parent{
 	    width: 300px;
@@ -145,12 +165,16 @@ box-sizing设置为padding-box时：(只有Firefox实现了这个值，它在Fir
 	    background-color: #4932ff;
 	}
 
+```
+
 css如上,这时parent高度为0，不显示。
 
 要解决这个问题
 
 （1）overflow：hidden，但是这样有副作用。	
 （2）为父元素设置后置内容生成：
+
+``` css
 
 	.parent{
 	    width: 300px;
@@ -167,6 +191,8 @@ css如上,这时parent高度为0，不显示。
 	    float:left;
 	    background-color: #4932ff;
 	}
+
+```
 
 
 

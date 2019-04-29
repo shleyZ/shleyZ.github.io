@@ -8,6 +8,8 @@ tags: Vue
 
 对象语法：
 
+``` html
+
 	<div id="app">
         <div class="static" v-bind:class="classObj">aaaa</div>
     </div>
@@ -23,7 +25,11 @@ tags: Vue
         })
     </script>
 
+```
+
 数组语法：
+
+``` html
 
 	<div id="app">
         <div class="static" v-bind:class="[activeClass,errorClass]">aaaa</div>
@@ -38,11 +44,15 @@ tags: Vue
         })
     </script>    
 
+```
+
 绑定到组件上时，这些类将被添加到根元素上面。这个元素上已经存在的类不会被覆盖。  
 
 2.绑定到内联样式：
 
 对象语法：
+
+``` html
 
 	<div id="app">
         <div v-bind:style="styleObj">aaa</div>
@@ -61,7 +71,11 @@ tags: Vue
         })
     </script>
 
+```
+
 数组语法：
+
+``` html
 
 	<div id="app">
         <div v-bind:style="[baseStyles, overridingStyles]">aaa</div>
@@ -83,8 +97,14 @@ tags: Vue
         })
     </script>    
 
+```
+
 当 v-bind:style 使用需要特定前缀的 CSS 属性时，如 transform，Vue.js 会自动侦测并添加相应的前缀。
 
 多重值:
 
+``` html
+
 	<div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
+
+```

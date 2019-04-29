@@ -31,6 +31,8 @@ categories: 数据结构
 
 ####  模拟列表来构造函数以及对应迭代器
 
+``` js
+
     var List = function() {
       this.listSize = 0;
       this.pos = 0;
@@ -172,3 +174,5 @@ categories: 数据结构
         return this.pos
       }
     }())
+
+```

@@ -16,6 +16,8 @@ tags: Vue
 如果子组件有一个插槽时，父组件的整个内容片段就会插入到插槽所在的DOM位置，并替换掉插槽标签slot。  
 最初在 `<slot> `标签中的任何内容都被视为备用内容。备用内容在子组件的作用域内编译，并且只有在宿主元素为空，且没有要插入的内容时才显示备用内容。
 
+``` html
+
     <div id="test">
         <h1>我是父组件的标题</h1>
         <my-component>
@@ -34,7 +36,9 @@ tags: Vue
             el: '#test',
         })
     </script>
-	
+
+```
+
 如果子组件中没有slot插槽，那么父元素的内容（两个p标签）都会被丢弃。
 
 
@@ -44,6 +48,7 @@ tags: Vue
 父组件在要分发的标签内添加：  slot = ‘slotName’,  
 子组件在对应分发的位置的slot标签内添加：`<slot name = 'slotName'>`.
 
+``` html
 
     <div id="test">
         <my-component>
@@ -68,12 +73,16 @@ tags: Vue
         })
     </script>
 
+```
+
 3.作用域插槽
 
 使用一个 (能够传递数据到) 可重用模板替换已渲染元素。  
 在子组件中，只需将数据传递到插槽，就像你将 props 传递给组件一样  
 在父级中，具有特殊属性 scope 的 `<template>` 元素必须存在，表示它是作用域插槽的模板。scope 的值对应一个临时变量名，此变量接收从子组件中传递的 props 对象:
-    
+ 
+``` html   
+
     <div id="test">
         <div class="parent">
             <child>
@@ -95,7 +104,11 @@ tags: Vue
         })
     </script>
 
+```
+
 作用域插槽更具代表性的用例是列表组件，允许组件自定义应该如何渲染列表每一项：
+
+``` html
 
     <div id="test">
         <my-awesome-list :items="items">
@@ -124,8 +137,4 @@ tags: Vue
         })
     </script>
 
-
-
-    
-
-
+```

@@ -12,8 +12,10 @@ v-model指令在表单控件元素上创建双向数据绑定。它本质上来�
 
 ### 基础用法(v-model 绑定的 value 通常是静态字符串)
 
-1.文本:
-	
+1. 文本:
+
+``` html
+
 	<div id="test">
         <input v-model="message" placeholder="edit me">
         <p>Message is: {{ message }}</p>
@@ -25,9 +27,13 @@ v-model指令在表单控件元素上创建双向数据绑定。它本质上来�
         })
     </script>	
 
- 2.多行文本
+```
+
+ 2. 多行文本
 
 注意：在文本区域插值 `(<textarea></textarea>)` 并不会生效，应用 v-model 来代替。
+
+``` html
 
  	<div id="test">
         <p>多行文本：</p>
@@ -41,7 +47,11 @@ v-model指令在表单控件元素上创建双向数据绑定。它本质上来�
         })
     </script>
 
+```
+
 3.复选框
+
+``` html
 
 	<div id="test">
         <p>复选框：</p>
@@ -60,11 +70,15 @@ v-model指令在表单控件元素上创建双向数据绑定。它本质上来�
         })
     </script>
 
+```
+
 for 属性规定 label 与哪个表单元素(id)绑定。
 
 复选框v-model关联：*数据为数组形式时，关联的是选中的复选框的value值。是字符串形式时，关联的则是选中的状态true／false*
 
 4.单选按钮
+
+``` html
 
 	<div id="test">
         <p>单选框：</p>
@@ -83,10 +97,14 @@ for 属性规定 label 与哪个表单元素(id)绑定。
         })
     </script>
 
+```
+
 单选框v-model关联的只是单选选中的value值。    
 
 5.下拉框
 单选：
+
+``` html
 
 	<div id="test">
         <p>下拉框：</p>
@@ -105,9 +123,13 @@ for 属性规定 label 与哪个表单元素(id)绑定。
         })
     </script>
 
+```
+
 多选下拉框只需要在select标签里面增加multiple
 
 用v-for动态渲染：
+
+``` html
 
 	<div id="test">
         <p>v-for实现下拉框：</p>
@@ -130,12 +152,14 @@ for 属性规定 label 与哪个表单元素(id)绑定。
         })
     </script>  
 
-
+```
 
 ### 值绑定:(绑定 value 到 Vue 实例的一个动态属性上)
 
 1.复选框：
 `v-bind:true-value="a" v-bind:false-value="b"`
+
+``` html
 
 	<div id="test">
         <p>复选框：</p>
@@ -152,8 +176,12 @@ for 属性规定 label 与哪个表单元素(id)绑定。
         })
     </script>
 
+```
+
 2.单选按钮
 `<input type="radio" v-model="pick" v-bind:value="a">`
+
+``` html
 
 	<div id="test">
         <p>单选按钮：</p>
@@ -169,7 +197,11 @@ for 属性规定 label 与哪个表单元素(id)绑定。
         })
     </script>
 
+``` 
+
 3.下拉列表：
+
+``` html
 
 	<div id="test">
         <p>v-for实现下拉框：</p>
@@ -188,6 +220,8 @@ for 属性规定 label 与哪个表单元素(id)绑定。
             }
         })
     </script>
+
+```
 
 ### v-model的修饰符
 

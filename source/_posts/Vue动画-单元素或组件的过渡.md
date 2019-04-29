@@ -14,6 +14,7 @@ tags: Vue
 	动态组件
 	组件根节点
 
+``` css 
 	<style>
         .fade-enter-active, .fade-leave-active {
             transition: opacity .5s
@@ -37,6 +38,7 @@ tags: Vue
         })
     </script>
 
+```
 
 当插入或删除包含在 transition 组件中的元素时，Vue 将会做以下处理：
 1.自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名。
@@ -66,6 +68,8 @@ leave-to-class
 
 例如：
 	
+``` html
+
 	<link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
 	<div id="demo">
         <button v-on:click="show=!show">Toggle</button>
@@ -82,6 +86,8 @@ leave-to-class
         })
     </script>
 
+```
+
 这样方便于结合其他的动画库，比如上面的Animate.css动画库    
 
 
@@ -92,6 +98,7 @@ leave-to-class
 
 5.多个组件的过渡可以用动态组件来实现：
 
+``` css
 	<style>
         .component-fade-enter-active, .component-fade-leave-active {
             transition: opacity .3s ease;
@@ -135,6 +142,8 @@ leave-to-class
             }
         })
     </script>
+
+```
 
 6.Vue的过渡模式
 
