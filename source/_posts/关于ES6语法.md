@@ -1,7 +1,7 @@
 ---
 title: 关于ES6语法
 date: 2017-09-28 10:39:20
-categories: javascript
+categories: es6
 ---
 
 ## 1.let和const命令
