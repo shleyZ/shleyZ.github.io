@@ -1,7 +1,7 @@
 ---
 title: vscode 备份
 date: 2019-04-11 15:14:21
-tags: vscode
+categories: vscode
 ---
 使用Visual Studio  Code需要安装一些常用插件及根据个人的喜好进行一些设置,但如果换电脑,或者重装了系统,那么又要重新安装及设置,所以最好还是备份一下
 

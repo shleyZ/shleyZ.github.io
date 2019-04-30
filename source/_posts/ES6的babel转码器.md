@@ -58,7 +58,6 @@ babel命令行工具可以全局安装也可本地安装，不过官方推荐本
 方法一：配置package.json文件的scripts项（在script中添加 "build": "babel src -d lib","babel": "babel"）
 
 ``` json
-
 	{
 	  "name": "ES6-babel",
 	  "version": "1.0.0",
@@ -98,18 +97,21 @@ babel命令行工具可以全局安装也可本地安装，不过官方推荐本
 下面是一些转译器，可以选择一个或多个，根据自己需要安装：
 
 	##ES2015转码规则
-	npm install --save-dev babel-preset-es2015
-	 
+``` js
+npm install --save-dev babel-preset-es2015
+```	 
 	##react转码规则
-	npm install --save-dev babel-preset-react
-	 
+``` js	
+npm install --save-dev babel-preset-react
+```	 
 	##ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个
+
+``` js
 	npm install --save-dev babel-preset-stage-0
 	npm install --save-dev babel-preset-stage-1
 	npm install --save-dev babel-preset-stage-2
 	npm install --save-dev babel-preset-stage-3
-
-	
+```	
 
 #### 6.配置.babelrc文件
 
@@ -118,14 +120,12 @@ babel命令行工具可以全局安装也可本地安装，不过官方推荐本
 添加：
 
 ``` json
-
 	{
 	    "presets": [
 	      "es2015"
 	    ],
 	    "plugins": []
-		}
-		
+		}	
 ```		
 
 #### 7.这样我们就可以来转码了
@@ -142,12 +142,13 @@ babel命令行工具可以全局安装也可本地安装，不过官方推荐本
 
 就会自动生成一个lib文件夹，里面是已经转码好的内容：
 
+``` js
 	"use strict";
 
 	input.map(function (item) {
 	  return item + 1;
 	});		
-
+```
 
 
 

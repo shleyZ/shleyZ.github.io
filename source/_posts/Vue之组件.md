@@ -2,7 +2,6 @@
 title: Vue之组件
 date: 2017-09-19 15:13:02
 categories: Vue
-tags: Vue
 ---
 
 1.注册全局组件：

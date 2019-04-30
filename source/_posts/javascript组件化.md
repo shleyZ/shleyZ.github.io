@@ -2,7 +2,6 @@
 title: javascript组件化
 date: 2017-10-28 20:46:39
 categories: javascript
-tags: 组件开发
 ---
 
 文章来源于purplebamboo的博客：https://github.com/purplebamboo/blog/issues/16
@@ -28,7 +27,6 @@ tags: 组件开发
 代码如下：
 
 ``` js
-
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -72,7 +70,6 @@ tags: 组件开发
 	<input type="text" id="J_input"/>
 	</body>
 	</html>
-
 ```
 
 这段代码跑也是可以跑的，但是呢，各种变量混乱，没有很好的隔离作用域,当页面变的复杂的时候,会很难去维护。目前这种代码基本是用不了的。当然少数的活动页面可以简单用用。
@@ -84,41 +81,39 @@ tags: 组件开发
 让我们对上面的代码作些改动，使用单个变量模拟命名空间。
 
 ``` js
+var textCount = {
+	input:null,
+	init:function(config){
+		this.input = $(config.id);
+		this.bind();
+		//这边范围对应的对象，可以实现链式调用
+		return this;
+	},
+	bind:function(){
+		var self = this;
+		this.input.on('keyup',function(){
+			self.render();
+		});
+	},
+	getNum:function(){
+		return this.input.val().length;
+	},
+	//渲染元素
+	render:function(){
+		var num = this.getNum();
 
-  	var textCount = {
-	  input:null,
-	  init:function(config){
-	    this.input = $(config.id);
-	    this.bind();
-	    //这边范围对应的对象，可以实现链式调用
-	    return this;
-	  },
-	  bind:function(){
-	    var self = this;
-	    this.input.on('keyup',function(){
-	      self.render();
-	    });
-	  },
-	  getNum:function(){
-	    return this.input.val().length;
-	  },
-	  //渲染元素
-	  render:function(){
-	    var num = this.getNum();
+		if ($('#J_input_count').length == 0) {
+			this.input.after('<span id="J_input_count"></span>');
+		};
 
-	    if ($('#J_input_count').length == 0) {
-	      this.input.after('<span id="J_input_count"></span>');
-	    };
-
-	    $('#J_input_count').html(num+'个字');
-	  }
+		$('#J_input_count').html(num+'个字');
 	}
+}
 
-	$(function() {
-	  //在domready后调用
-	  textCount.init({id:'#J_input'}).render();
-	})
-
+$(function() {
+	//在domready后调用
+	textCount.init({id:'#J_input'}).render();
+})
 ```
 
 这样一改造，立马变的清晰了很多，所有的功能都在一个变量下面。代码更清晰，并且有统一的入口调用方法。
@@ -128,48 +123,46 @@ tags: 组件开发
 于是又出现了一种函数闭包的写法：
 
 ``` js
+var TextCount = (function(){
+	//私有方法，外面将访问不到
+	var _bind = function(that){
+		that.input.on('keyup',function(){
+			that.render();
+		});
+	}
 
-  	var TextCount = (function(){
-	  //私有方法，外面将访问不到
-	  var _bind = function(that){
-	    that.input.on('keyup',function(){
-	      that.render();
-	    });
-	  }
+	var _getNum = function(that){
+		return that.input.val().length;
+	}
 
-	  var _getNum = function(that){
-	    return that.input.val().length;
-	  }
+	var TextCountFun = function(config){
 
-	  var TextCountFun = function(config){
+	}
 
-	  }
+	TextCountFun.prototype.init = function(config) {
+		this.input = $(config.id);
+		_bind(this);
 
-	  TextCountFun.prototype.init = function(config) {
-	    this.input = $(config.id);
-	    _bind(this);
+		return this;
+	};
 
-	    return this;
-	  };
+	TextCountFun.prototype.render = function() {
+		var num = _getNum(this);
 
-	  TextCountFun.prototype.render = function() {
-	    var num = _getNum(this);
+		if ($('#J_input_count').length == 0) {
+			this.input.after('<span id="J_input_count"></span>');
+		};
 
-	    if ($('#J_input_count').length == 0) {
-	      this.input.after('<span id="J_input_count"></span>');
-	    };
+		$('#J_input_count').html(num+'个字');
+	};
+	//返回构造函数
+	return TextCountFun;
 
-	    $('#J_input_count').html(num+'个字');
-	  };
-	  //返回构造函数
-	  return TextCountFun;
+})();
 
-	})();
-
-	$(function() {
-	  new TextCount().init({id:'#J_input'}).render();
-	})
-
+$(function() {
+	new TextCount().init({id:'#J_input'}).render();
+})
 ```
 
 这种写法，把所有的东西都包在了一个自动执行的闭包里面，所以不会受到外面的影响，并且只对外公开了TextCountFun构造函数，生成的对象只能访问到init,render方法。这种写法已经满足绝大多数的需求了。事实上大部分的jQuery插件都是这种写法。
@@ -187,57 +180,55 @@ tags: 组件开发
 下面我们先实现个简单的javascript类：
 
 ``` js
+var Class = (function() {
+	var _mix = function(r, s) {
+		for (var p in s) {
+			if (s.hasOwnProperty(p)) {
+				r[p] = s[p]
+			}
+		}
+	}
 
-	var Class = (function() {
-	  var _mix = function(r, s) {
-	    for (var p in s) {
-	      if (s.hasOwnProperty(p)) {
-	        r[p] = s[p]
-	      }
-	    }
-	  }
+	var _extend = function() {
 
-	  var _extend = function() {
+		//开关 用来使生成原型时,不调用真正的构成流程init
+		this.initPrototype = true
+		var prototype = new this()
+		this.initPrototype = false
 
-	    //开关 用来使生成原型时,不调用真正的构成流程init
-	    this.initPrototype = true
-	    var prototype = new this()
-	    this.initPrototype = false
+		var items = Array.prototype.slice.call(arguments) || []
+		var item
 
-	    var items = Array.prototype.slice.call(arguments) || []
-	    var item
-
-	    //支持混入多个属性，并且支持{}也支持 Function
-	    while (item = items.shift()) {
-	      _mix(prototype, item.prototype || item)
-	    }
+		//支持混入多个属性，并且支持{}也支持 Function
+		while (item = items.shift()) {
+			_mix(prototype, item.prototype || item)
+		}
 
 
-	    // 这边是返回的类，其实就是我们返回的子类
-	    function SubClass() {
-	      if (!SubClass.initPrototype && this.init)
-	        this.init.apply(this, arguments)//调用init真正的构造函数
-	    }
+		// 这边是返回的类，其实就是我们返回的子类
+		function SubClass() {
+			if (!SubClass.initPrototype && this.init)
+				this.init.apply(this, arguments)//调用init真正的构造函数
+		}
 
-	    // 赋值原型链，完成继承
-	    SubClass.prototype = prototype
+		// 赋值原型链，完成继承
+		SubClass.prototype = prototype
 
-	    // 改变constructor引用
-	    SubClass.prototype.constructor = SubClass
+		// 改变constructor引用
+		SubClass.prototype.constructor = SubClass
 
-	    // 为子类也添加extend方法
-	    SubClass.extend = _extend
+		// 为子类也添加extend方法
+		SubClass.extend = _extend
 
-	    return SubClass
-	  }
-	  //超级父类
-	  var Class = function() {}
-	  //为超级父类添加extend方法
-	  Class.extend = _extend
+		return SubClass
+	}
+	//超级父类
+	var Class = function() {}
+	//为超级父类添加extend方法
+	Class.extend = _extend
 
-	  return Class
-	})()
-
+	return Class
+})()
 ```	
 
 这是拿John Resig的class简单修改了下。
@@ -246,32 +237,31 @@ tags: 组件开发
 我们看下使用方法：
 
 ``` js
-	//继承超级父类，生成个子类Animal，并且混入一些方法。这些方法会到Animal的原型上。
-	//另外这边不仅支持混入{}，还支持混入Function
-	var Animal = Class.extend({
-	  init:function(opts){
-	    this.msg = opts.msg
-	    this.type = "animal"
-	  },
-	  say:function(){
-	    alert(this.msg+":i am a "+this.type)
-	  }
-	})
+//继承超级父类，生成个子类Animal，并且混入一些方法。这些方法会到Animal的原型上。
+//另外这边不仅支持混入{}，还支持混入Function
+var Animal = Class.extend({
+	init:function(opts){
+		this.msg = opts.msg
+		this.type = "animal"
+	},
+	say:function(){
+		alert(this.msg+":i am a "+this.type)
+	}
+})
 
-	//继承Animal，并且混入一些方法
-	var Dog = Animal.extend({
-	  init:function(opts){
-	    //并未实现super方法，直接简单使用父类原型调用即可
-	    Animal.prototype.init.call(this,opts)
-	    //修改了type类型
-	    this.type = "dog"
-	  }
-	})
+//继承Animal，并且混入一些方法
+var Dog = Animal.extend({
+	init:function(opts){
+		//并未实现super方法，直接简单使用父类原型调用即可
+		Animal.prototype.init.call(this,opts)
+		//修改了type类型
+		this.type = "dog"
+	}
+})
 
-	//new Animal({msg:'hello'}).say()
+//new Animal({msg:'hello'}).say()
 
-	new Dog({msg:'hi'}).say()
-
+new Dog({msg:'hi'}).say()
 ```	
 
 使用很简单，超级父类具有extend方法，可以继承出一个子类。子类也具有extend方法。
@@ -281,40 +271,38 @@ tags: 组件开发
 有了这个类的扩展，我们可以这么编写代码了：
 
 ``` js
+var TextCount = Class.extend({
+	init:function(config){
+		this.input = $(config.id);
+		this._bind();
+		this.render();
+	},
+	render:function() {
+		var num = this._getNum();
 
-	var TextCount = Class.extend({
-	  init:function(config){
-	    this.input = $(config.id);
-	    this._bind();
-	    this.render();
-	  },
-	  render:function() {
-	    var num = this._getNum();
+		if ($('#J_input_count').length == 0) {
+			this.input.after('<span id="J_input_count"></span>');
+		};
 
-	    if ($('#J_input_count').length == 0) {
-	      this.input.after('<span id="J_input_count"></span>');
-	    };
+		$('#J_input_count').html(num+'个字');
 
-	    $('#J_input_count').html(num+'个字');
+	},
+	_getNum:function(){
+		return this.input.val().length;
+	},
+	_bind:function(){
+		var self = this;
+		self.input.on('keyup',function(){
+			self.render();
+		});
+	}
+})
 
-	  },
-	  _getNum:function(){
-	    return this.input.val().length;
-	  },
-	  _bind:function(){
-	    var self = this;
-	    self.input.on('keyup',function(){
-	      self.render();
-	    });
-	  }
-	})
-
-	$(function() {
-	  new TextCount({
-	    id:"#J_input"
-	  });
-	})
-
+$(function() {
+	new TextCount({
+		id:"#J_input"
+	});
+})
 ```	
 
 这边可能还没看见class的真正好处，不急我们继续往下。
@@ -333,32 +321,30 @@ tags: 组件开发
 这个时候面向对象的好处就来了，我们抽象出一个Base类。其他组件编写时都继承它。
 
 ``` js
+var Base = Class.extend({
+	init:function(config){
+		//自动保存配置项
+		this.__config = config
+		this.bind()
+		this.render()
+	},
+	//可以使用get来获取配置项
+	get:function(key){
+		return this.__config[key]
+	},
+	//可以使用set来设置配置项
+	set:function(key,value){
+		this.__config[key] = value
+	},
+	bind:function(){
+	},
+	render:function() {
+	},
+	//定义销毁的方法，一些收尾工作都应该在这里
+	destroy:function(){
 
-	var Base = Class.extend({
-	  init:function(config){
-	    //自动保存配置项
-	    this.__config = config
-	    this.bind()
-	    this.render()
-	  },
-	  //可以使用get来获取配置项
-	  get:function(key){
-	    return this.__config[key]
-	  },
-	  //可以使用set来设置配置项
-	  set:function(key,value){
-	    this.__config[key] = value
-	  },
-	  bind:function(){
-	  },
-	  render:function() {
-	  },
-	  //定义销毁的方法，一些收尾工作都应该在这里
-	  destroy:function(){
-
-	  }
-	})
-
+	}
+})
 ```	
 
 base类主要把组件的一般性内容都提取了出来，这样我们编写组件时可以直接继承base类，覆盖里面的bind和render方法。
@@ -366,36 +352,34 @@ base类主要把组件的一般性内容都提取了出来，这样我们编写�
 于是我们可以这么写代码：
 
 ``` js
+var TextCount = Base.extend({
+	_getNum:function(){
+		return this.get('input').val().length;
+	},
+	bind:function(){
+		var self = this;
+		self.get('input').on('keyup',function(){
+			self.render();
+		});
+	},
+	render:function() {
+		var num = this._getNum();
 
-	var TextCount = Base.extend({
-	  _getNum:function(){
-	    return this.get('input').val().length;
-	  },
-	  bind:function(){
-	    var self = this;
-	    self.get('input').on('keyup',function(){
-	      self.render();
-	    });
-	  },
-	  render:function() {
-	    var num = this._getNum();
+		if ($('#J_input_count').length == 0) {
+			this.get('input').after('<span id="J_input_count"></span>');
+		};
 
-	    if ($('#J_input_count').length == 0) {
-	      this.get('input').after('<span id="J_input_count"></span>');
-	    };
+		$('#J_input_count').html(num+'个字');
 
-	    $('#J_input_count').html(num+'个字');
+	}
+})
 
-	  }
-	})
-
-	$(function() {
-	  new TextCount({
-	  //这边直接传input的节点了，因为属性的赋值都是自动的。
-	    input:$("#J_input")
-	  });
-	})
-
+$(function() {
+	new TextCount({
+	//这边直接传input的节点了，因为属性的赋值都是自动的。
+		input:$("#J_input")
+	});
+})
 ```	
 
 可以看到我们直接实现一些固定的方法，bind，render就行了。其他的base会自动处理（这里只是简单处理了配置属性的赋值）。
@@ -415,21 +399,19 @@ base类主要把组件的一般性内容都提取了出来，这样我们编写�
 小白可能会说，那简单啊直接改下bind方法：
 
 ``` js 
-
-	var TextCount = Base.extend({
-	  ...
-	  bind:function(){
-	    var self = this;
-	    self.get('input').on('keyup',function(){
-	      if(self._getNum() > 5){
-	        alert('超过了5个字了。。。')
-	      }
-	      self.render();
-	    });
-	  },
-	  ...
-	})
-
+var TextCount = Base.extend({
+	...
+	bind:function(){
+		var self = this;
+		self.get('input').on('keyup',function(){
+			if(self._getNum() > 5){
+				alert('超过了5个字了。。。')
+			}
+			self.render();
+		});
+	},
+	...
+})
 ```
 
 的确也是一种方法，但是太low了，代码严重耦合。当这种需求特别特别多，代码会越来越乱。
@@ -446,33 +428,31 @@ base类主要把组件的一般性内容都提取了出来，这样我们编写�
 假设通知是 fire方法，监听是on。于是我们可以这么写代码：
 
 ``` js
+var TextCount = Base.extend({
+	...
+	bind:function(){
+		var self = this;
+		self.get('input').on('keyup',function(){
+			//通知,每当有输入的时候，就报告出去。
+			self.fire('Text.input',self._getNum())
+			self.render();
+		});
+	},
+	...
+})
 
-	var TextCount = Base.extend({
-	  ...
-	  bind:function(){
-	    var self = this;
-	    self.get('input').on('keyup',function(){
-	      //通知,每当有输入的时候，就报告出去。
-	      self.fire('Text.input',self._getNum())
-	      self.render();
-	    });
-	  },
-	  ...
+$(function() {
+	var t = new TextCount({
+		input:$("#J_input")
+	});
+	//监听这个输入事件
+	t.on('Text.input',function(num){
+		//可以获取到传递过来的值
+		if(num>5){
+				alert('超过了5个字了。。。')
+		}
 	})
-
-	$(function() {
-	  var t = new TextCount({
-	    input:$("#J_input")
-	  });
-	  //监听这个输入事件
-	  t.on('Text.input',function(num){
-	    //可以获取到传递过来的值
-	    if(num>5){
-	       alert('超过了5个字了。。。')
-	    }
-	  })
-	})
-
+})
 ```
 
 fire用来触发一个事件，可以传递数据。而on用来添加一个监听。这样组件里面只负责把一些关键的事件抛出来，至于具体的业务逻辑都可以添加监听来实现。没有事件的组件是不完整的。
@@ -482,86 +462,84 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 我们首先抛开base，想想怎么实现一个具有这套机制的类。
 
 ``` js
+//辅组函数，获取数组里某个元素的索引 index
+var _indexOf = function(array,key){
+	if (array === null) return -1
+	var i = 0, length = array.length
+	for (; i < length; i++) if (array[i] === item) return i
+	return -1
+}
 
-	//辅组函数，获取数组里某个元素的索引 index
-	var _indexOf = function(array,key){
-	  if (array === null) return -1
-	  var i = 0, length = array.length
-	  for (; i < length; i++) if (array[i] === item) return i
-	  return -1
+var Event = Class.extend({
+	//添加监听
+	on:function(key,listener){
+		//this.__events存储所有的处理函数
+		if (!this.__events) {
+			this.__events = {}
+		}
+		if (!this.__events[key]) {
+			this.__events[key] = []
+		}
+		if (_indexOf(this.__events,listener) === -1 && typeof listener === 'function') {
+			this.__events[key].push(listener)
+		}
+
+		return this
+	},
+	//触发一个事件，也就是通知
+	fire:function(key){
+
+		if (!this.__events || !this.__events[key]) return
+
+		var args = Array.prototype.slice.call(arguments, 1) || []
+
+		var listeners = this.__events[key]
+		var i = 0
+		var l = listeners.length
+
+		for (i; i < l; i++) {
+			listeners[i].apply(this,args)
+		}
+
+		return this
+	},
+	//取消监听
+	off:function(key,listener){
+
+		if (!key && !listener) {
+			this.__events = {}
+		}
+		//不传监听函数，就去掉当前key下面的所有的监听函数
+		if (key && !listener) {
+			delete this.__events[key]
+		}
+
+		if (key && listener) {
+			var listeners = this.__events[key]
+			var index = _indexOf(listeners, listener)
+
+			(index > -1) && listeners.splice(index, 1)
+		}
+
+		return this;
 	}
-
-	var Event = Class.extend({
-	  //添加监听
-	  on:function(key,listener){
-	    //this.__events存储所有的处理函数
-	    if (!this.__events) {
-	      this.__events = {}
-	    }
-	    if (!this.__events[key]) {
-	      this.__events[key] = []
-	    }
-	    if (_indexOf(this.__events,listener) === -1 && typeof listener === 'function') {
-	      this.__events[key].push(listener)
-	    }
-
-	    return this
-	  },
-	  //触发一个事件，也就是通知
-	  fire:function(key){
-
-	    if (!this.__events || !this.__events[key]) return
-
-	    var args = Array.prototype.slice.call(arguments, 1) || []
-
-	    var listeners = this.__events[key]
-	    var i = 0
-	    var l = listeners.length
-
-	    for (i; i < l; i++) {
-	      listeners[i].apply(this,args)
-	    }
-
-	    return this
-	  },
-	  //取消监听
-	  off:function(key,listener){
-
-	    if (!key && !listener) {
-	      this.__events = {}
-	    }
-	    //不传监听函数，就去掉当前key下面的所有的监听函数
-	    if (key && !listener) {
-	      delete this.__events[key]
-	    }
-
-	    if (key && listener) {
-	      var listeners = this.__events[key]
-	      var index = _indexOf(listeners, listener)
-
-	      (index > -1) && listeners.splice(index, 1)
-	    }
-
-	    return this;
-	  }
-	})
+})
 
 
-	var a = new Event()
+var a = new Event()
 
-	//添加监听 test事件
-	a.on('test',function(msg){
-	  alert(msg)
-	})
+//添加监听 test事件
+a.on('test',function(msg){
+	alert(msg)
+})
 
-	//触发 test事件
-	a.fire('test','我是第一次触发')
-	a.fire('test','我又触发了')
+//触发 test事件
+a.fire('test','我是第一次触发')
+a.fire('test','我又触发了')
 
-	a.off('test')
+a.off('test')
 
-	a.fire('test','你应该看不到我了')
-
+a.fire('test','你应该看不到我了')
 ```
 
 实现起来并不复杂，只要使用this.\_\_events存下所有的监听函数。在fire的时候去找到并且执行就行了。
@@ -569,20 +547,18 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 这个时候面向对象的好处就来了，如果我们希望base拥有事件机制。只需要这么写:
 
 ``` js 
-
-	var Base = Class.extend(Event,{
-	  ...
-	  destroy:function(){
-	    //去掉所有的事件监听
-	    this.off()
-	  }
-	})
-	//于是可以
-	//var a  = new Base()
-	// a.on(xxx,fn)
-	//
-	// a.fire()
-
+var Base = Class.extend(Event,{
+	...
+	destroy:function(){
+		//去掉所有的事件监听
+		this.off()
+	}
+})
+//于是可以
+//var a  = new Base()
+// a.on(xxx,fn)
+//
+// a.fire()
 ```
 
 是的只要extend的时候多混入一个Event，这样Base或者它的子类生成的对象都会自动具有事件机制。
@@ -605,58 +581,56 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 我们看下我们实现richbase后怎么写组件：
 
 ``` js
+var TextCount = RichBase.extend({
+	//事件直接在这里注册，会代理到parentNode节点，parentNode节点在下面指定
+	EVENTS:{
+		//选择器字符串，支持所有jQuery风格的选择器
+		'input':{
+			//注册keyup事件
+			keyup:function(self,e){
+				//单向绑定，修改数据直接更新对应模板
+				self.setChuckdata('count',self._getNum())
 
-	var TextCount = RichBase.extend({
-	  //事件直接在这里注册，会代理到parentNode节点，parentNode节点在下面指定
-	  EVENTS:{
-	    //选择器字符串，支持所有jQuery风格的选择器
-	    'input':{
-	      //注册keyup事件
-	      keyup:function(self,e){
-	        //单向绑定，修改数据直接更新对应模板
-	        self.setChuckdata('count',self._getNum())
+			}
+		}
+	},
+	//指定当前组件的模板
+	template:'<span id="J_input_count"><%= count %>个字</span>',
+	//私有方法
+	_getNum:function(){
+		return this.get('input').val().length || 0
+	},
+	//覆盖实现setUp方法，所有逻辑写在这里。最后可以使用render来决定需不需要渲染模板
+	//模板渲染后会append到parentNode节点下面，如果未指定，会append到document.body
+	setUp:function(){
+		var self = this;
 
-	      }
-	    }
-	  },
-	  //指定当前组件的模板
-	  template:'<span id="J_input_count"><%= count %>个字</span>',
-	  //私有方法
-	  _getNum:function(){
-	    return this.get('input').val().length || 0
-	  },
-	  //覆盖实现setUp方法，所有逻辑写在这里。最后可以使用render来决定需不需要渲染模板
-	  //模板渲染后会append到parentNode节点下面，如果未指定，会append到document.body
-	  setUp:function(){
-	    var self = this;
+		var input = this.get('parentNode').find('#J_input')
+		self.set('input',input)
 
-	    var input = this.get('parentNode').find('#J_input')
-	    self.set('input',input)
+		var num = this._getNum()
+		//赋值数据，渲染模板，选用。有的组件没有对应的模板就可以不调用这步。
+		self.render({
+			count:num
+		})
 
-	    var num = this._getNum()
-	    //赋值数据，渲染模板，选用。有的组件没有对应的模板就可以不调用这步。
-	    self.render({
-	      count:num
-	    })
+	}
+})
 
-	  }
-	})
+$(function() {
+	//传入parentNode节点，组件会挂载到这个节点上。所有事件都会代理到这个上面。
+	new TextCount({
+		parentNode:$("#J_test_container")
+	});
+})
 
-	$(function() {
-	  //传入parentNode节点，组件会挂载到这个节点上。所有事件都会代理到这个上面。
-	  new TextCount({
-	    parentNode:$("#J_test_container")
-	  });
-	})
+/**对应的html,做了些修改，主要为了加上parentNode，这边就是J_test_container
 
-	/**对应的html,做了些修改，主要为了加上parentNode，这边就是J_test_container
+<div id="J_test_container">
+	<input type="text" id="J_input"/>
+</div>
 
-	<div id="J_test_container">
-	  <input type="text" id="J_input"/>
-	</div>
-
-	*/
-
+*/
 ```	
 
 看下上面的用法，可以看到变得更简单清晰了：
@@ -667,128 +641,126 @@ fire用来触发一个事件，可以传递数据。而on用来添加一个监�
 下面我们看下richebase的实现：
 
 ``` js
+var RichBase = Base.extend({
+	EVENTS:{},
+	template:'',
+	init:function(config){
+		//存储配置项
+		this.__config = config
+		//解析代理事件
+		this._delegateEvent()
+		this.setUp()
+	},
+	//循环遍历EVENTS，使用jQuery的delegate代理到parentNode
+	_delegateEvent:function(){
+		var self = this
+		var events = this.EVENTS || {}
+		var eventObjs,fn,select,type
+		var parentNode = this.get('parentNode') || $(document.body)
 
-	var RichBase = Base.extend({
-	  EVENTS:{},
-	  template:'',
-	  init:function(config){
-	    //存储配置项
-	    this.__config = config
-	    //解析代理事件
-	    this._delegateEvent()
-	    this.setUp()
-	  },
-	  //循环遍历EVENTS，使用jQuery的delegate代理到parentNode
-	  _delegateEvent:function(){
-	    var self = this
-	    var events = this.EVENTS || {}
-	    var eventObjs,fn,select,type
-	    var parentNode = this.get('parentNode') || $(document.body)
+		for (select in events) {
+			eventObjs = events[select]
 
-	    for (select in events) {
-	      eventObjs = events[select]
+			for (type in eventObjs) {
+				fn = eventObjs[type]
 
-	      for (type in eventObjs) {
-	        fn = eventObjs[type]
+				parentNode.delegate(select,type,function(e){
+					fn.call(null,self,e)
+				})
+			}
 
-	        parentNode.delegate(select,type,function(e){
-	          fn.call(null,self,e)
-	        })
-	      }
+		}
 
-	    }
+	},
+	//支持underscore的极简模板语法
+	//用来渲染模板，这边是抄的underscore的。非常简单的模板引擎，支持原生的js语法
+	_parseTemplate:function(str,data){
+		/**
+		 * http://ejohn.org/blog/javascript-micro-templating/
+		 * https://github.com/jashkenas/underscore/blob/0.1.0/underscore.js#L399
+		 */
+		var fn = new Function('obj',
+				'var p=[],print=function(){p.push.apply(p,arguments);};' +
+				'with(obj){p.push(\'' + str
+						.replace(/[\r\t\n]/g, " ")
+						.split("<%").join("\t")
+						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
+						.replace(/\t=(.*?)%>/g, "',$1,'")
+						.split("\t").join("');")
+						.split("%>").join("p.push('")
+						.split("\r").join("\\'") +
+				"');}return p.join('');")
+		return data ? fn(data) : fn
+	},
+	//提供给子类覆盖实现
+	setUp:function(){
+		this.render()
+	},
+	//用来实现刷新，只需要传入之前render时的数据里的key还有更新值，就可以自动刷新模板
+	setChuckdata:function(key,value){
+		var self = this
+		var data = self.get('__renderData')
 
-	  },
-	  //支持underscore的极简模板语法
-	  //用来渲染模板，这边是抄的underscore的。非常简单的模板引擎，支持原生的js语法
-	  _parseTemplate:function(str,data){
-	    /**
-	     * http://ejohn.org/blog/javascript-micro-templating/
-	     * https://github.com/jashkenas/underscore/blob/0.1.0/underscore.js#L399
-	     */
-	    var fn = new Function('obj',
-	        'var p=[],print=function(){p.push.apply(p,arguments);};' +
-	        'with(obj){p.push(\'' + str
-	            .replace(/[\r\t\n]/g, " ")
-	            .split("<%").join("\t")
-	            .replace(/((^|%>)[^\t]*)'/g, "$1\r")
-	            .replace(/\t=(.*?)%>/g, "',$1,'")
-	            .split("\t").join("');")
-	            .split("%>").join("p.push('")
-	            .split("\r").join("\\'") +
-	        "');}return p.join('');")
-	    return data ? fn(data) : fn
-	  },
-	  //提供给子类覆盖实现
-	  setUp:function(){
-	    this.render()
-	  },
-	  //用来实现刷新，只需要传入之前render时的数据里的key还有更新值，就可以自动刷新模板
-	  setChuckdata:function(key,value){
-	    var self = this
-	    var data = self.get('__renderData')
+		//更新对应的值
+		data[key] = value
 
-	    //更新对应的值
-	    data[key] = value
+		if (!this.template) return;
+		//重新渲染
+		var newHtmlNode = $(self._parseTemplate(this.template,data))
+		//拿到存储的渲染后的节点
+		var currentNode = self.get('__currentNode')
+		if (!currentNode) return;
+		//替换内容
+		currentNode.replaceWith(newHtmlNode)
 
-	    if (!this.template) return;
-	    //重新渲染
-	    var newHtmlNode = $(self._parseTemplate(this.template,data))
-	    //拿到存储的渲染后的节点
-	    var currentNode = self.get('__currentNode')
-	    if (!currentNode) return;
-	    //替换内容
-	    currentNode.replaceWith(newHtmlNode)
+		self.set('__currentNode',newHtmlNode)
 
-	    self.set('__currentNode',newHtmlNode)
+	},
+	//使用data来渲染模板并且append到parentNode下面
+	render:function(data){
+		var self = this
+		//先存储起来渲染的data,方便后面setChuckdata获取使用
+		self.set('__renderData',data)
 
-	  },
-	  //使用data来渲染模板并且append到parentNode下面
-	  render:function(data){
-	    var self = this
-	    //先存储起来渲染的data,方便后面setChuckdata获取使用
-	    self.set('__renderData',data)
+		if (!this.template) return;
 
-	    if (!this.template) return;
+		//使用_parseTemplate解析渲染模板生成html
+		//子类可以覆盖这个方法使用其他的模板引擎解析
+		var html = self._parseTemplate(this.template,data)
 
-	    //使用_parseTemplate解析渲染模板生成html
-	    //子类可以覆盖这个方法使用其他的模板引擎解析
-	    var html = self._parseTemplate(this.template,data)
+		var parentNode = this.get('parentNode') || $(document.body)
 
-	    var parentNode = this.get('parentNode') || $(document.body)
+		var currentNode = $(html)
+		//保存下来留待后面的区域刷新
+		//存储起来，方便后面setChuckdata获取使用
+		self.set('__currentNode',currentNode)
+		parentNode.append(currentNode)
+	},
+	destroy:function(){
 
-	    var currentNode = $(html)
-	    //保存下来留待后面的区域刷新
-	    //存储起来，方便后面setChuckdata获取使用
-	    self.set('__currentNode',currentNode)
-	    parentNode.append(currentNode)
-	  },
-	  destroy:function(){
+		var self = this
+		//去掉自身的事件监听
+		self.off()
+		//删除渲染好的dom节点
+		self.get('__currentNode').remove()
+		//去掉绑定的代理事件
+		var events = self.EVENTS || {}
+		var eventObjs,fn,select,type
+		var parentNode = self.get('parentNode')
 
-	    var self = this
-	    //去掉自身的事件监听
-	    self.off()
-	    //删除渲染好的dom节点
-	    self.get('__currentNode').remove()
-	    //去掉绑定的代理事件
-	    var events = self.EVENTS || {}
-	    var eventObjs,fn,select,type
-	    var parentNode = self.get('parentNode')
+		for (select in events) {
+			eventObjs = events[select]
 
-	    for (select in events) {
-	      eventObjs = events[select]
+			for (type in eventObjs) {
+				fn = eventObjs[type]
 
-	      for (type in eventObjs) {
-	        fn = eventObjs[type]
+				parentNode.undelegate(select,type,fn)
+			}
 
-	        parentNode.undelegate(select,type,fn)
-	      }
+		}
 
-	    }
-
-	  }
-	})
-
+	}
+})
 ```
 
 主要做了两件事，一个就是事件的解析跟代理，全部代理到parentNode上面。另外就是把render抽出来，用户只需要实现setUp方法。如果需要模板支持就在setUp里面调用render来渲染模板，并且可以通过setChuckdata来刷新模板，实现单向绑定。

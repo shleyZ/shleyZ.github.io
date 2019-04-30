@@ -120,7 +120,6 @@ categories: 数据结构
 实现一个阶乘算法 5! = 5 * 4 * 3 * 2 * 1 = 120
 
 ``` js
-
     function fact(n) {
       var s = new Stack()
       while (n > 1) {
@@ -135,5 +134,4 @@ categories: 数据结构
     }
 
     fact(6)  // 720
-
 ```    

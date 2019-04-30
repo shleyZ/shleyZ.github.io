@@ -13,29 +13,27 @@ antd Form 表单中onChange事件中setFieldsValue 无效
 想要在Input输入框中，禁止输入空格等特殊字符
 
 ``` js
-
-    {
-      key: 'name',
-      label: '姓名',
-      labelCol: { span: 7 },
-      wrapperCol: { span: 13 },
-      style: {
-        display: 'inline-block',
-        marginTop: '18px',
-        paddingLeft: '20px'
-      },
-      node: (
-        <Input
-          style={{ width: '110px' }}
-          placeholder="请输入姓名"
-          onChange={this.onNameSelect}
-        />
-      ),
-      options: {
-        initialValue: this.state.name
-      }
-    }
-
+{
+  key: 'name',
+  label: '姓名',
+  labelCol: { span: 7 },
+  wrapperCol: { span: 13 },
+  style: {
+    display: 'inline-block',
+    marginTop: '18px',
+    paddingLeft: '20px'
+  },
+  node: (
+    <Input
+      style={{ width: '110px' }}
+      placeholder="请输入姓名"
+      onChange={this.onNameSelect}
+    />
+  ),
+  options: {
+    initialValue: this.state.name
+  }
+}
 ```
 
 想要在onChange方法中正则替换非法字符为空
@@ -51,45 +49,42 @@ antd Form 表单中onChange事件中setFieldsValue 无效
 综上实现方法：
 
 ``` js
-
-    {
-      key: 'name',
-      label: '姓名',
-      labelCol: { span: 7 },
-      wrapperCol: { span: 13 },
-      style: {
-        display: 'inline-block',
-        marginTop: '18px',
-        paddingLeft: '20px'
-      },
-      node: (
-        <Input
-          style={{ width: '110px' }}
-          placeholder="请输入姓名"
-          onChange={this.onNameSelect}
-        />
-      ),
-      options: {
-        initialValue: this.state.name,
-        normalize: this.onNameSelect1
-      }
-    }
-
+{
+  key: 'name',
+  label: '姓名',
+  labelCol: { span: 7 },
+  wrapperCol: { span: 13 },
+  style: {
+    display: 'inline-block',
+    marginTop: '18px',
+    paddingLeft: '20px'
+  },
+  node: (
+    <Input
+      style={{ width: '110px' }}
+      placeholder="请输入姓名"
+      onChange={this.onNameSelect}
+    />
+  ),
+  options: {
+    initialValue: this.state.name,
+    normalize: this.onNameSelect1
+  }
+}
 ```
 
-    // 禁止输入空格/表情/特殊字符
+禁止输入空格/表情/特殊字符
 
 ``` js
-
-    onNameSelect1 = (value: any, preValue: any) => {
-      let res = value.replace(/(^\s+)|(\s+$)/g, ''); // 去掉空格
-      res = res.replace(/[&\|\\\*^%$#@\-]/g, ''); // 去掉特殊字符
-      res = res.replace(
-        /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/gi,
-        ''
-      ); //去除表情
-      return res;
-    };
+onNameSelect1 = (value: any, preValue: any) => {
+  let res = value.replace(/(^\s+)|(\s+$)/g, ''); // 去掉空格
+  res = res.replace(/[&\|\\\*^%$#@\-]/g, ''); // 去掉特殊字符
+  res = res.replace(
+    /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/gi,
+    ''
+  ); //去除表情
+  return res;
+};
 
 ```
 

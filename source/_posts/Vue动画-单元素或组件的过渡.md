@@ -2,7 +2,6 @@
 title: Vue动画--单元素或组件的过渡
 date: 2017-09-22 15:35:15
 categories: Vue
-tags: Vue
 ---
 
 #### 单元素／组件的过渡

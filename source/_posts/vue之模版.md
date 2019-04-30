@@ -2,7 +2,6 @@
 title: vue之模版
 date: 2017-09-09 15:29:19
 categories: Vue
-tags: Vue
 ---
 ### 模版语法:
 

@@ -11,4 +11,8 @@ categories: javascript
 
 解决方法：
 
-运行：sudo chown -R myusername my-project-folder
+运行：
+``` js
+sudo chown -R myusername my-project-folder
+
+```

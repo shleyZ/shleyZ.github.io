@@ -5,7 +5,5 @@ categories: javascript
 ---
 
 ``` js
-    
-    <img src=`data:image/jpg;base64,${bese64码}` alt=''>
-
+<img src=`data:image/jpg;base64,${bese64码}` alt=''>
 ```    

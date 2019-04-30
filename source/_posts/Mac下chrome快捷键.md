@@ -2,7 +2,6 @@
 title: Mac下chrome快捷键
 date: 2017-09-17 09:54:27
 categories: Mac
-tags: chrome快捷键
 ---
 
 1.标签页和窗口快捷键

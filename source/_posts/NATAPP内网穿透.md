@@ -5,7 +5,7 @@ categories: javascript
 ---
 
 
-disableHostCheck: true       
+    disableHostCheck: true       
 
 在webpack配置文件中加入以上。
 

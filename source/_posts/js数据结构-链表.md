@@ -148,7 +148,7 @@ Null <-- previous | Header | next <--> previous | data1 | next <--> previous | d
     }
 
     function LList() {
-      this.head = new Node('head);
+      this.head = new Node('head');
       this.find = find;
       this.findLast = findLast;
       this.insert = insert;

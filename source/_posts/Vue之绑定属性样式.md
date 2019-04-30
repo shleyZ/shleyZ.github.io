@@ -2,7 +2,6 @@
 title: Vue之绑定属性样式
 date: 2017-09-15 16:06:12
 categories: Vue
-tags: Vue
 ---
 1.绑定Class:
 

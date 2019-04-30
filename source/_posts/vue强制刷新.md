@@ -6,8 +6,10 @@ categories: vue
 
 使用vue-router进行路由跳转刷新有时候不管用
 
-    this.$router.push(`/user/role-manage/modify/${this.roleId}`);
-
+``` js
+this.$router.push(`/user/role-manage/modify/${this.roleId}`);
+```
 可以使用    
-
-    location.reload(); // 强制刷新
+``` js
+location.reload(); // 强制刷新
+```

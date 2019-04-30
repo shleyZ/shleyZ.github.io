@@ -2,7 +2,6 @@
 title: Vue之计算属性
 date: 2017-09-14 15:57:09
 categories: Vue
-tags: Vue
 ---
 当模版比较复杂，不容易理解的时候可以使用计算属性：
 

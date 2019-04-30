@@ -2,7 +2,6 @@
 title: Vue之事件处理
 date: 2017-09-17 15:58:58
 categories: Vue
-tags: Vue
 ---
 
 1.方法事件处理器

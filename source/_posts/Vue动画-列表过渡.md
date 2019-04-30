@@ -2,7 +2,6 @@
 title: Vue动画--列表过渡
 date: 2017-09-22 16:48:21
 categories: Vue
-tags: Vue
 ---
 
 列表过渡要使用：`<transition-group>`组件:

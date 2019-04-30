@@ -2,7 +2,6 @@
 title: Vue组件--可复用的组件等杂项
 date: 2017-09-22 14:05:51
 categories: Vue
-tags: Vue
 ---
 
 #### 1.可复用的组件

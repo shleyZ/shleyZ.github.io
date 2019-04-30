@@ -2,7 +2,6 @@
 title: Array.prototype.slice.call(obj)
 date: 2017-10-11 14:01:38
 categories: javascript
-tags: 
 ---
 
 Array.prototype.slice.call(obj)能将具有length属性的对象obj转换为数组。
