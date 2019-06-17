@@ -2,6 +2,7 @@
 title: gitlab-jenkins自动构建
 date: 2019-01-17 13:49:25
 categories: javascript
+tags: jenkins
 ---
 
 

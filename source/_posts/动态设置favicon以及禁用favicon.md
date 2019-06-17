@@ -2,6 +2,7 @@
 title: 动态设置favicon以及禁用favicon
 date: 2019-02-26 08:57:38
 categories: javascript
+tags: favicon
 ---
 
 ### 动态加载企业logo和全名

@@ -2,6 +2,7 @@
 title: svg animation
 date: 2018-09-04 06:11:12
 categories: css
+tags: svg
 ---
 
 ## 基础知识：

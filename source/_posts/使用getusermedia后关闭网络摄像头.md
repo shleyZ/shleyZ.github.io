@@ -1,7 +1,8 @@
 ---
 title: 使用getusermedia后关闭网络摄像头
 date: 2019-05-08 14:02:02
-tags: javascript
+categories: javascript
+tags: 调用摄像头
 ---
 
 

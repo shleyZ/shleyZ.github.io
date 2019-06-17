@@ -2,6 +2,7 @@
 title: Linux使用
 date: 2018-04-20 13:11:12
 categories: Linux
+tags: linux
 ---
 
 ## 软件操作

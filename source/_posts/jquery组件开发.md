@@ -2,6 +2,7 @@
 title: jquery组件开发
 date: 2017-08-15 15:12:20
 categories: javascript
+tags: jquery
 ---
 
 jQuery插件就是用来扩展jQuery原型对象的一个方法，即是jQuery对象的一个方法。jQuery插件的使用方法就是jQuery对象方法的调用。

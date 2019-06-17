@@ -2,6 +2,7 @@
 title: mac修改hostname
 date: 2017-12-13 20:10:07
 categories: Mac
+tags: mac
 ---
 
 修改Mac终端～前面的计算机名：

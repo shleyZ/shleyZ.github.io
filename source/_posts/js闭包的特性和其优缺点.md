@@ -2,6 +2,7 @@
 title: js闭包的特性和其优缺点
 date: 2018-05-09 09:19:34
 categories: javascript
+tags: 闭包
 ---
 
 javascript有 全局变量和局部变量
