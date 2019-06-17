@@ -5,6 +5,8 @@ categories: javascript
 tags: favicon
 ---
 
+最近项目有一个需求就是在企业管理后台一键登录到对应的企业时，需要实现不同的企业显示不同的favicon图标。当然这个企业的信息包括favicon是已经从后台获取到了的。
+
 ### 动态加载企业logo和全名
 
 ``` js

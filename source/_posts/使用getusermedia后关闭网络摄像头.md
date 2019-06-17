@@ -5,6 +5,9 @@ categories: javascript
 tags: 调用摄像头
 ---
 
+使用js 的navigator.getUserMedia打开了摄像头，应该怎样关闭呢
+下面是摄像头的开启和关闭
+需要注意的是浏览器调用摄像头必须是安全访问的情况下才可以，即localhost或者https访问的页面才可以，否则不能获取到浏览器的getUserMedia方法。
 
 ``` javascript
 
