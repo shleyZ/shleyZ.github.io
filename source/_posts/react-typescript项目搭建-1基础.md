@@ -1,6 +1,6 @@
 ---
-title: react typescript项目搭建（一）
-date: 2019-07-24 11:19:10
+title: react typescript项目搭建-1基础
+date: 2019-07-20 11:19:10
 categories: react
 tags: typescript
 ---
@@ -93,6 +93,7 @@ import * as ReactDOM from "react-dom";
 const render = () => {
   ReactDOM.render(<div>123</div>, document.querySelector("#app"));
 };
+render();
 ```
 
 > 添加页面模板
