@@ -12,7 +12,7 @@ categories: javascript
 
 比如我们要实现这样一个组件，就是一个输入框里面字数的计数。这个应该是个很简单的需求。
 
-![components](http://ow3w1zm3t.bkt.clouddn.com/components.gif)
+![components](https://camo.githubusercontent.com/37c22c388ece3a107bedadb95015facde8e4bf04/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f54423151544f61485858585858626b615858583054516f4b4658582d3236312d36312e676966)
 
 我们来看看，下面的各种写法。
 
@@ -35,34 +35,26 @@ categories: javascript
 	  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	  <script>
 	    $(function() {
-
 	      var input = $('#J_input');
-
-	      //用来获取字数
+	      // 用来获取字数
 	      function getNum(){
 	        return input.val().length;
 	      }
-
-	      //渲染元素
+	      // 渲染元素
 	      function render(){
 	        var num = getNum();
-
-	        //没有字数的容器就新建一个
+	        // 没有字数的容器就新建一个
 	        if ($('#J_input_count').length == 0) {
 	          input.after('<span id="J_input_count"></span>');
 	        };
-
 	        $('#J_input_count').html(num+'个字');
 	      }
-
-	      //监听事件
+	      // 监听事件
 	      input.on('keyup',function(){
 	        render();
 	      });
-
-	      //初始化，第一次渲染
+	      // 初始化，第一次渲染
 	      render();
-
 	    })
 	  </script>
 	</head>
@@ -86,7 +78,7 @@ var textCount = {
 	init:function(config){
 		this.input = $(config.id);
 		this.bind();
-		//这边范围对应的对象，可以实现链式调用
+		// 这边范围对应的对象，可以实现链式调用
 		return this;
 	},
 	bind:function(){
@@ -98,20 +90,18 @@ var textCount = {
 	getNum:function(){
 		return this.input.val().length;
 	},
-	//渲染元素
+	// 渲染元素
 	render:function(){
 		var num = this.getNum();
-
 		if ($('#J_input_count').length == 0) {
 			this.input.after('<span id="J_input_count"></span>');
 		};
-
 		$('#J_input_count').html(num+'个字');
 	}
 }
 
 $(function() {
-	//在domready后调用
+	// 在domready后调用
 	textCount.init({id:'#J_input'}).render();
 })
 ```
@@ -124,40 +114,30 @@ $(function() {
 
 ``` js
 var TextCount = (function(){
-	//私有方法，外面将访问不到
+	// 私有方法，外面将访问不到
 	var _bind = function(that){
 		that.input.on('keyup',function(){
 			that.render();
 		});
 	}
-
 	var _getNum = function(that){
 		return that.input.val().length;
 	}
-
-	var TextCountFun = function(config){
-
-	}
-
+	var TextCountFun = function(config){}
 	TextCountFun.prototype.init = function(config) {
 		this.input = $(config.id);
 		_bind(this);
-
 		return this;
 	};
-
 	TextCountFun.prototype.render = function() {
 		var num = _getNum(this);
-
 		if ($('#J_input_count').length == 0) {
 			this.input.after('<span id="J_input_count"></span>');
 		};
-
 		$('#J_input_count').html(num+'个字');
 	};
-	//返回构造函数
+	// 返回构造函数
 	return TextCountFun;
-
 })();
 
 $(function() {
@@ -188,57 +168,46 @@ var Class = (function() {
 			}
 		}
 	}
-
 	var _extend = function() {
+		// 开关 用来使生成原型时,不调用真正的构成流程init
+		this.initPrototype = true;
+		var prototype = new this();
+		this.initPrototype = false;
 
-		//开关 用来使生成原型时,不调用真正的构成流程init
-		this.initPrototype = true
-		var prototype = new this()
-		this.initPrototype = false
-
-		var items = Array.prototype.slice.call(arguments) || []
-		var item
-
-		//支持混入多个属性，并且支持{}也支持 Function
+		var items = Array.prototype.slice.call(arguments) || [];
+		var item;
+		// 支持混入多个属性，并且支持{}也支持 Function
 		while (item = items.shift()) {
-			_mix(prototype, item.prototype || item)
+			_mix(prototype, item.prototype || item);
 		}
-
-
 		// 这边是返回的类，其实就是我们返回的子类
 		function SubClass() {
-			if (!SubClass.initPrototype && this.init)
-				this.init.apply(this, arguments)//调用init真正的构造函数
+			if (!SubClass.initPrototype && this.init);
+				this.init.apply(this, arguments); // 调用init真正的构造函数
 		}
-
 		// 赋值原型链，完成继承
 		SubClass.prototype = prototype
-
 		// 改变constructor引用
 		SubClass.prototype.constructor = SubClass
-
 		// 为子类也添加extend方法
 		SubClass.extend = _extend
-
 		return SubClass
 	}
-	//超级父类
+	// 超级父类
 	var Class = function() {}
-	//为超级父类添加extend方法
+	// 为超级父类添加extend方法
 	Class.extend = _extend
-
 	return Class
 })()
 ```	
 
 这是拿John Resig的class简单修改了下。
-
 这边只是很简陋的实现了类的继承机制。如果对类的实现有兴趣可以参考我另一篇文章[javascript oo](http://purplebamboo.github.io/2014/07/13/javascript-oo-class/)实现
 我们看下使用方法：
 
 ``` js
-//继承超级父类，生成个子类Animal，并且混入一些方法。这些方法会到Animal的原型上。
-//另外这边不仅支持混入{}，还支持混入Function
+// 继承超级父类，生成个子类Animal，并且混入一些方法。这些方法会到Animal的原型上。
+// 另外这边不仅支持混入{}，还支持混入Function
 var Animal = Class.extend({
 	init:function(opts){
 		this.msg = opts.msg
@@ -248,8 +217,7 @@ var Animal = Class.extend({
 		alert(this.msg+":i am a "+this.type)
 	}
 })
-
-//继承Animal，并且混入一些方法
+// 继承Animal，并且混入一些方法
 var Dog = Animal.extend({
 	init:function(opts){
 		//并未实现super方法，直接简单使用父类原型调用即可
@@ -258,9 +226,7 @@ var Dog = Animal.extend({
 		this.type = "dog"
 	}
 })
-
 //new Animal({msg:'hello'}).say()
-
 new Dog({msg:'hi'}).say()
 ```	
 
@@ -279,13 +245,10 @@ var TextCount = Class.extend({
 	},
 	render:function() {
 		var num = this._getNum();
-
 		if ($('#J_input_count').length == 0) {
 			this.input.after('<span id="J_input_count"></span>');
 		};
-
 		$('#J_input_count').html(num+'个字');
-
 	},
 	_getNum:function(){
 		return this.input.val().length;
@@ -309,7 +272,6 @@ $(function() {
 
 抽象出base
 ------------
-***
 
 可以看到，我们的组件有些方法，是大部分组件都会有的。
 
@@ -323,16 +285,16 @@ $(function() {
 ``` js
 var Base = Class.extend({
 	init:function(config){
-		//自动保存配置项
+		// 自动保存配置项
 		this.__config = config
 		this.bind()
 		this.render()
 	},
-	//可以使用get来获取配置项
+	// 可以使用get来获取配置项
 	get:function(key){
 		return this.__config[key]
 	},
-	//可以使用set来设置配置项
+	// 可以使用set来设置配置项
 	set:function(key,value){
 		this.__config[key] = value
 	},
@@ -340,9 +302,8 @@ var Base = Class.extend({
 	},
 	render:function() {
 	},
-	//定义销毁的方法，一些收尾工作都应该在这里
+	// 定义销毁的方法，一些收尾工作都应该在这里
 	destroy:function(){
-
 	}
 })
 ```	
@@ -364,19 +325,16 @@ var TextCount = Base.extend({
 	},
 	render:function() {
 		var num = this._getNum();
-
 		if ($('#J_input_count').length == 0) {
 			this.get('input').after('<span id="J_input_count"></span>');
 		};
-
 		$('#J_input_count').html(num+'个字');
-
 	}
 })
 
 $(function() {
 	new TextCount({
-	//这边直接传input的节点了，因为属性的赋值都是自动的。
+	// 这边直接传input的节点了，因为属性的赋值都是自动的。
 		input:$("#J_input")
 	});
 })
@@ -390,7 +348,6 @@ $(function() {
 
 引入事件机制（观察者模式）
 ----------------------
-***
 
 有了base应该说我们编写组件更加的规范化，体系化了。下面我们继续深挖。
 
