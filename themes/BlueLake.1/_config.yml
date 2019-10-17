@@ -29,7 +29,7 @@ widgets:
   - category
   - tag
   - archive
-  #- weibo
+  - weibo
   - links
 
 # Toc
@@ -44,14 +44,13 @@ share_path: share
 
 # Date_formats
 date_formats:
-  archive: "MM月DD日"
-  category: "YYYY/MM/DD"
-  post: "MMM DD, YYYY"
-  tag: "YYYY/MM/DD"
+  archive: 'MM月DD日'
+  category: 'YYYY/MM/DD'
+  post: 'MMM DD, YYYY'
+  tag: 'YYYY/MM/DD'
 
 # Extensions
-Plugins:
-  hexo-generator-feed
+Plugins: hexo-generator-feed
   hexo-generator-sitemap
   hexo-generator-baidu-sitemap
 
@@ -71,13 +70,13 @@ baidusitemap:
 local_search: true ## Use a javascript-based local search engine, true/false.
 
 #Copyright
-copyright: 
+copyright:
   enable: true #display article copyright information, true/false.
   describe: #copyright description
 
 # MathJax Support
 mathjax:
-  enable: false  #true/false.
+  enable: false #true/false.
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 
 #Cmments
@@ -125,19 +124,19 @@ busuanzi: true ## If you want to use Busuanzi page views please set the value to
 
 # About page
 about:
-  photo_url: ## Your photo e.g. http://cdn.chaooo.top/blog/themeauthor.jpg
+  photo_url: http://ww1.sinaimg.cn/large/8c85763dly1g81c8usdssj20u014079e.jpg ## Your photo e.g. http://cdn.chaooo.top/blog/themeauthor.jpg
   items:
-  - label: email
-    url: ## Your email with mailto: e.g.  mailto:zhenggchaoo@gmail.com
-    title: ## Your email e.g.  zhenggchaoo@gmail.com
-  - label: github
-    url: ## Your github'url e.g.  https://github.com/chaooo
-    title: ## Your github'name e.g.  chaooo
-  - label: weibo
-    url: ## Your weibo's url e.g.  http://weibo.com/zhengchaooo
-    title: ## Your weibo's name e.g.  秋过冬漫长
+    - label: email
+      url: mailto:xuelin.zhao7@gmail.com ## Your email with mailto: e.g.  mailto:zhenggchaoo@gmail.com
+      title: xuelin.zhao7@gmail.com ## Your email e.g.  zhenggchaoo@gmail.com
+    - label: github
+      url: https://github.com/shleyZ ## Your github'url e.g.  https://github.com/chaooo
+      title: ShleyZ ## Your github'name e.g.  chaooo
+    - label: weibo
+      url: https://weibo.com/u/2357556797/home ## Your weibo's url e.g.  http://weibo.com/zhengchaooo
+      title: 地球人ye莺 ## Your weibo's name e.g.  秋过冬漫长
 # - label: twitter
-#   url: 
+#   url:
 #   title:
 # - label: facebook
 #   url:
@@ -145,9 +144,9 @@ about:
 
 # Links widget. Empty links will hide widget.
 links:
-  - title: site-name1
-    url: http://www.example1.com/
-  - title: site-name2
-    url: http://www.example2.com/
-  - title: site-name3
-    url: http://www.example3.com/
+  - title: 青云公考
+    url: http://weixin.qingyun100.cn/
+  # - title: site-name2
+  #  url: http://www.example2.com/
+  # - title: site-name3
+  #  url: http://www.example3.com/
