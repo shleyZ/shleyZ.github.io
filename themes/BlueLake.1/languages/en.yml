@@ -1,3 +1,4 @@
+# English（英语）
 blog: Blog
 albums: Albums
 categories: Categories
@@ -22,3 +23,12 @@ belongsto: Categorized in
 contents: Contents
 shareto: Share
 reading_label: Reading articles in
+search: search
+baidusitemap: Site Map
+footer_rss: Subscribe to this site
+contact_author: Contact the blogger
+topped: Topped
+copyright_author: Original author
+copyright_link: Original link
+copyright_notice: Copyright Notice
+copyright_details: Please indicate the source of the reprint (must retain the author's signature and link)

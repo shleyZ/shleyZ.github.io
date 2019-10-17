@@ -4,9 +4,9 @@
 
 一个简洁轻量化的响应式[Hexo](https://hexo.io/)博客主题。
 
-- [点击预览](http://chaoo.oschina.io/)
+- [点击预览](https://chaooo.github.io/)
 
-[![BlueLake template preview](http://obzf7z93c.bkt.clouddn.com/themeBlueLake.png "BlueLake template preview")](http://chaoo.oschina.io/)
+[![BlueLake template preview](http://cdn.chaooo.top/hexo/BlueLake.jpg "BlueLake template preview")](https://chaooo.github.io/)
 
 ## 安装
 
@@ -46,7 +46,10 @@ git pull
 ##########################
 
 # Theme version
-version: 2.0.1
+version: 2.0.2
+
+# Theme tone
+dark: false #true/false  #切换为true,即可体验深色主题
 
 # Header
 menu:
@@ -80,6 +83,7 @@ toc:
 # Static files
 js: js
 css: css
+share_path: share
 
 # Extensions
 Plugins:
@@ -102,6 +106,16 @@ baidusitemap:
 #Local search
 local_search: true ## Use a javascript-based local search engine, true/false.
 
+#Copyright
+copyright: 
+  enable: true #display article copyright information, true/false.
+  describe: #copyright description
+  
+# MathJax Support
+mathjax:
+  enable: false  #true/false.
+  cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+
 #Cmments
 comment:
   duoshuo: #chaooo ## duoshuo_shortname
@@ -112,11 +126,29 @@ comment:
   changyan: ## 畅言需在下方配置两个参数，此处不填。
     appid: ## 畅言(appid)
     appkey: ##畅言(appkey)
+  gitalk:
+    enable: false ## If you want to use Gitment comment system please set the value to true.
+    owner: ## Your GitHub ID, e.g. username
+    repo: ## The repository to store your comments, make sure you're the repo's owner, e.g. gitalk.github.io
+    client_id: ## GitHub client ID, e.g. 75752dafe7907a897619
+    client_secret: ## GitHub client secret, e.g. ec2fb9054972c891289640354993b662f4cccc50
+    admin: ## Github repo owner and collaborators, only these guys can initialize github issues.
+    language: zh-CN ## Language
+    pagerDirection: last # Comment sorting direction, available values are last and first.
 
 #Share
-baidu_share: true ## 百度分享
-JiaThis_share: ##true ##JiaThis分享
-duoshuo_share: #true ##true 多说分享必须和多说评论一起使用。
+share:
+  local_share: true ##本地分享
+  baidu_share: #true ## 百度分享
+  JiaThis_share: ##true ##JiaThis分享
+  duoshuo_share: #true ##true 多说分享必须和多说评论一起使用。
+  addToAny_share: # AddToAny share. Empty list hides. List items are service name at url. For ex: email for '<a href="https://www.addtoany.com/add_to/email?linkurl=...'
+  #  - twitter
+  #  - baidu
+  #  - facebook
+  #  - google_plus
+  #  - linkedin
+  #  - email
 
 # Analytics
 google_analytics: ## Your Google Analytics tracking id, e.g. UA-42025684-2
@@ -125,11 +157,11 @@ baidu_analytics: ## Your Baidu Analytics tracking id, e.g. 1006843030519956000
 # Miscellaneous
 show_category_count: true ## If you want to show the count of categories in the sidebar widget please set the value to true.
 widgets_on_small_screens: true ## Set to true to enable widgets on small screens.
-busuanzi: false ## If you want to use Busuanzi page views please set the value to true.
+busuanzi: true ## If you want to use Busuanzi page views please set the value to true.
 
 # About page
 about:
-  photo_url: ## Your photo e.g. http://obzf7z93c.bkt.clouddn.com/themeauthor.jpg
+  photo_url: ## Your photo e.g. http://cdn.chaooo.top/hexo/Avatar.jpg
   items:
   - label: email
     url: ## Your email with mailto: e.g.  mailto:zhenggchaoo@gmail.com
@@ -215,7 +247,7 @@ $ hexo new page 'about'
 ```YAML
 # About page
 about:
-  photo_url: ## Your photo e.g. http://obzf7z93c.bkt.clouddn.com/themeauthor.jpg
+  photo_url: ## Your photo e.g. http://cdn.chaooo.top/hexo/Avatar.jpg
   items:
   - label: email
     icon: fa-email
