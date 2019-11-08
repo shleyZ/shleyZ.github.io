@@ -28,8 +28,8 @@ widgets:
   - recent_posts
   - category
   - tag
-  - archive
-  - weibo
+  # - archive
+  # - weibo
   - links
 
 # Toc

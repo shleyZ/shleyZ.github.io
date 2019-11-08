@@ -48,3 +48,9 @@ module.exports = {
   }
 }
 ```
+
+5. svgo 报错：
+
+方法一： 可以在 package.json 锁定， "svgo": "1.3.0"
+
+方法二： svgo 1.3.2 已经发布，应该也可以解决该问题。

@@ -9,7 +9,7 @@ pre
     display block
     box-sizing: border-box
     overflow-x: auto
-    font-family: Source Code Pro, Monaco, Menlo, Consolas, monospace
+    font-family: Fira Mono,monospace
     margin: 1.2em 0
     padding 15px 15px 10px 15px
     line-height: 1.2em
@@ -46,7 +46,7 @@ figure.highlight,.codeblock
     overflow-x: auto
   pre,.gutter,.code,.tag
     background-color: inherit
-    font-family: Source Code Pro, Monaco, Menlo, Consolas, monospace
+    font-family: Fira Mono,monospace
     border: none
     padding: 0
     margin: 0
@@ -57,13 +57,13 @@ figure.highlight,.codeblock
     .gutter
       display: none
   .gutter
-    border-right: 1px solid #40759b
+    border-right: 1px solid #aaa
     padding: 0.3em 15px
     .line
       color: #aaaaaa
   .line
     font-size: 13px
-    color: #999
+    color: #fff
     &.marked
       background: #f5e3de
 
@@ -72,7 +72,7 @@ figure.highlight,.codeblock
     width: 100%
 
 .gist .line,.gist .line-number
-  font-family: Source Code Pro, Monaco, Menlo, Consolas, monospace
+  font-family: Fira Mono,monospace
   font-size: 1em
   margin: 0 0 5px 0
 /* code highlight color*/
@@ -94,7 +94,7 @@ figure.highlight,.codeblock
     color:  #920000
   .keyword,
   .javascript .function
-    color: #ec25ec
+    color: #cc99cd
   .number,
   .preprocessor,
   .built_in,
@@ -105,7 +105,7 @@ figure.highlight,.codeblock
   &.apacheconf
     .code
       .common,.nomarkup,.attribute,.variable,.cbracket,.keyword
-        color: #0086b3
+        color: #cc99cd
       .sqbracket
         color: #df5000
       .section,.tag
@@ -143,7 +143,7 @@ figure.highlight,.codeblock
   &.cs 
     .code 
       .preprocessor,.preprocessor .keyword
-        color: #999
+        color: #cc99cd
       .xmlDocTag,.doctag
         color: #63a35c
       .number,.built_in
@@ -157,7 +157,7 @@ figure.highlight,.codeblock
       .attr_selector,.value
         color: #999
       .attribute,.hexcolor,.number,.function
-        color: #0086b3
+        color: #f08d49
       .at_rule,.important,.meta
         color: #a71d5d    
       .tag,.selector-tag
@@ -181,7 +181,7 @@ figure.highlight,.codeblock
   &.ini
     .code
       .value,.keyword
-        color: #999
+        color: #cc99cd
       .setting,.attr
         color: #a71d5d
       .chunk,.meta
@@ -203,7 +203,7 @@ figure.highlight,.codeblock
       .built_in,.title
         color: #795da3
       .tag,.javadoctag
-        color: #a71d5d
+        color: #a7925a
   &.java
     .code
       .title
@@ -223,7 +223,7 @@ figure.highlight,.codeblock
       .constant
         color: #999
       .keyword,.meta-keyword
-        color: #0086b3        
+        color: #cc99cd       
   &.json
     .code
       .attribute
@@ -287,7 +287,7 @@ figure.highlight,.codeblock
   &.ruby
     .code
       .prompt,.constant,.number,.subst .keyword,.symbol
-        color: #0086b3
+        color: #cc99cd
       .parent,.title
         color: #795da3
   &.sql
@@ -313,13 +313,13 @@ figure.highlight,.codeblock
       .name
         color: #a71d5d
       .function
-        color: #0086b3
+        color: #f08d49
       .attr
         color: #0086b3
   &.less
     .code
       .number,.hexcolor,.function,.attribute
-        color: #0086b3
+        color: #f08d49
       .id,.pseudo,.class,.selector-id,.selector-class,.selector-tag
         color: #795da3
       .tag,.at_rule
@@ -329,7 +329,7 @@ figure.highlight,.codeblock
   &.sass
     .code
       .number,.hexcolor,.function,.attribute
-        color: #0086b3
+        color: #f08d49
       .tag,.selector-tag
         color: #63a35c
       .built_in
