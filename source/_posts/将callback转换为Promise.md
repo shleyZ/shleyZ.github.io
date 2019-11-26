@@ -8,7 +8,7 @@ tags: javascript
 
 下面，我们来看看如何将回调转换成 Promise 。
 
-在这之前我们需要详细了解 [Promise]()
+在这之前我们需要详细了解 [Promise](https://zellwk.com/blog/js-promises/)
 
 ## 将 Node 样式的回调转换为 Promise
 
@@ -198,3 +198,5 @@ growTreesPromise(options)
   })
   .catch(err => {});
 ```
+
+> 文章参考自 [zellwk](https://zellwk.com/blog/converting-callbacks-to-promises/)
