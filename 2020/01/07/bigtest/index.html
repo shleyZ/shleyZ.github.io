@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><title>@bigtest介绍 | 雪林的博客</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">@bigtest介绍</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">@bigtest介绍</h1><div class="post-meta"><a href="/2020/01/07/bigtest/#comments" class="comment-count"></a><p><span class="date">Jan 07, 2020</span><span><a href="/categories/bigtest/" class="category">bigtest</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>知道应用程序是否正常运行的最可靠方法是实际运行它。大型测试会在每个测试用例之前启动整个应用程序。</p>
+<p>您的应用程序是否在浏览器中运行？然后，如果测试要衡量其是否有效，它还需要在真实用户可能使用的真实浏览器中运行，并且应该针对真实 DOM 分配真实的 UI 事件。</p>
+<p>进行大型测试很困难，因为在您的应用程序中可能同时发生数百甚至数千个事情。包括用户互动。</p>
+<p>BigTest 是一个旨在简化和快速接受所有单页应用程序（SPA）的框架，无论框架或库如何。</p>
+<p>当我们在网络上构建应用时，我们希望能够在接近用户的地方对其进行测试。</p>
+<p>真实用户将使用真实的浏览器来访问你的应用；那么测试是否是在真实的浏览器中进行的呢？<br>并非每个人都使用相同的浏览器，那么测试是否可以在多个不同的浏览器和设备上进行呢？<br>网络呢？您的应用可能会与网络进行对话，而您的测试也应该考虑到这一点，对吧？<br>更不用说一个人不会在组件级别上与您的应用进行交互。<br>他们正在一起使用整个应用程序。 您的所有组件相互协作以创造一种体验。</p>
+<p>如果测试无法以与人使用应用程序相同的方式测试应用程序，那么你会对自己的 app 有信心吗？</p>
+<p>在开始寻找最适合 SPA 的测试工具时，我们有一些要求：</p>
+<ul>
+<li>快速</li>
+<li>构建组件（包括可组合的组件）</li>
+<li>跨浏览器（Firefox，IE，Safari 等</li>
+<li>跨设备（Windows，macOS，iOS，Android 等）</li>
+<li>跨框架（React，Vue，Ember，Angular 等）</li>
+<li>跨测试框架（Mocha，Jasmine 等）</li>
+</ul>
+<p>目前已经有类似的工具，如 Jest，但是这些测试无法在真正的浏览器中运行。还有赛普拉斯（Cypress），但截至本文撰写之时，您目前无法在 Chrome 之外使用它（其他不久将通过 webdriver 推出），并且还没有在组件中进行编写。</p>
+<p>下面的对比：</p>
+<table>
+<thead>
+<tr>
+<th>Test Framework</th>
+<th>Fast</th>
+<th>Cross Browser</th>
+<th>Cross Device</th>
+<th>Cross Test Runner</th>
+<th>Cross Framework</th>
+<th>Composable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BigTest</td>
+<td>🏎</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Cypress</td>
+<td>🚗</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Selenium</td>
+<td>🚌</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Jest</td>
+<td>🏎</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p>大多数现有框架都选中了其中一些（或部分选中了它们），但不是全部。<br>随着移动浏览在当今世界变得如此普遍，我们需要一种可以轻松地在我们手边的任何设备上运行测试（通过访问 URL）的工具。</p>
+<h2 id="测试理念"><a href="#测试理念" class="headerlink" title="测试理念"></a>测试理念</h2><p>使用 BigTest 编写测试时，务必像用户将使用您的应用程序一样编写测试。<br>当某人与您的应用进行交互时，他们使用的鼠标和键盘将转换为您的应用响应的浏览器事件。<br>他们正在点击事物，期望取得成果。 这也是我们应用程序的测试所要做的：发送浏览器事件并断言有反馈。<br>我们都知道存在跨浏览器的错误！</p>
+<p>如果是要访问组件或控制状态的测试，那不是适当的 BigTest。 所有互动都应来自用户群。<br>需要注意的另一件事是，确保您断言的是用户在应用中看到或交互的状态。</p>
+<p>目的是进行交互，并观察由交互引发的页面上的正确变更。</p>
+<h2 id="BigTest-如何运作？"><a href="#BigTest-如何运作？" class="headerlink" title="BigTest 如何运作？"></a>BigTest 如何运作？</h2><p>BigTest 会将您的应用程序安装并呈现到浏览器中。然后将执行您编写的测试。<br>Interactor 驱动应用程序，它位于浏览器内部，带有 tests 和 render 的应用程序。<br>这是 BigTest 与其他测试框架之间的主要区别，BigTest 没有控制浏览器的单独过程。</p>
+<p>这就是为什么您只需访问 URL 即可运行 BigTests 的原因。</p>
+<p>在高层的 BigTest 中：</p>
+<ul>
+<li>启动您的应用程序服务器（捆绑测试和应用程序）</li>
+<li>启动浏览器</li>
+<li>开始运行测试运行器</li>
+<li>Interactor 驱动应用程序（单击此处，访问路由等）</li>
+<li>结果报告回 CLI</li>
+</ul>
+<h2 id="组成-BigTest-的软件包"><a href="#组成-BigTest-的软件包" class="headerlink" title="组成 BigTest 的软件包"></a>组成 BigTest 的软件包</h2><p>BigTest 框架由几个小程序包组成，这些程序包也可以单独使用。了解这些软件包及其在 BigTest 框架中的作用是有帮助的。</p>
+<h3 id="Convergence"><a href="#Convergence" class="headerlink" title="Convergence"></a>Convergence</h3><p><a href="https://bigtestjs.io/docs/convergence/" target="_blank" rel="noopener">Convergence</a> 是不可变，可重用和可组合的断言，使您可以立即知道何时达到期望的状态。<br>简而言之：它每 10 毫秒检查一次 DOM（默认情况下为 2 秒），以查看您要检查的状态是否存在。</p>
+<p>Convergence 是 BigTest 中所有事物的基础。这就是使 interactors 可靠的原因。<br>CLI 中甚至将 Convergence 用于等待浏览器连接状态。</p>
+<h3 id="Interactor"><a href="#Interactor" class="headerlink" title="Interactor"></a>Interactor</h3><p>在生物学中， interactor 被定义为自然选择所作用的有机体的一部分。<br>BigTest interactor 定义了要对其进行测试的应用程序的一部分。<br>您可以将 interactor 视为现代组件的可组合页面对象。</p>
+<p>interactor 是 BigTest 的灵魂，简而言之，我们将应用程序呈现到浏览器中，而交互器将其驱动。<br>他们使用 Convergence 来确保元素存在并且可以在执行所需的交互之前与之交互。</p>
+<p>interactor 还与您使用现代组件获得的可组合性相匹配。这意味着您可以以类似于编写 UI 的方式来编写测试。</p>
+<p>要了解有关 interactor 的更多信息，请务必查看<a href="https://bigtestjs.io/guides/interactors/introduction" target="_blank" rel="noopener">interactor guides</a>。</p>
+<h3 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h3><p>BigTest CLI 旨在简化 SPA 中的验收测试设置（例如 setup，build tool integration 和浏览器启动）</p>
+<p>您可以将 CLI 视为 Karma 或 Testem，但更易于设置并包含其他可与 BigTest 框架配合使用的有用 CLI 命令（例如 bigtest init）。</p>
+</div><div class="post-copyright"><blockquote><p>原文作者: 雪林</p><p>原文链接: <a href="https://shleyz.github.io/2020/01/07/bigtest/">https://shleyz.github.io/2020/01/07/bigtest/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/bigtest/">bigtest</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2020/01/07/bigtest使用/" class="pre">@bigtest使用</a><a href="/2019/12/19/LRU-缓存淘汰算法/" class="next">LRU 缓存淘汰算法</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试理念"><span class="toc-text">测试理念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BigTest-如何运作？"><span class="toc-text">BigTest 如何运作？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组成-BigTest-的软件包"><span class="toc-text">组成 BigTest 的软件包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Convergence"><span class="toc-text">Convergence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Interactor"><span class="toc-text">Interactor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CLI"><span class="toc-text">CLI</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/08/bigtest-react/">@bigtest/react</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/08/bigtest-convergence/">@bigtest/convergence</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor开箱即用的方法和属性/">@bigtest/interactor开箱即用的方法和属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor使用/">@bigtest/interactor使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor/">@bigtest/interactor介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest使用/">@bigtest使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest/">@bigtest介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/LRU-缓存淘汰算法/">LRU 缓存淘汰算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/06/在移动端避免使用100vh/">在移动端避免使用100vh</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/display：flex和position-absolute-fixed/">display:flex和position:absolute/fixed一起用产生的问题</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RestfulAPI/">RestfulAPI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/antd/">antd</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bigtest/">bigtest</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/flutter/">flutter</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/性能/">性能</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/RestfulAPI/" style="font-size: 15px;">RestfulAPI</a> <a href="/tags/antd/" style="font-size: 15px;">antd</a> <a href="/tags/bigtest/" style="font-size: 15px;">bigtest</a> <a href="/tags/flutter/" style="font-size: 15px;">flutter</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/base64/" style="font-size: 15px;">base64</a> <a href="/tags/ios卡顿/" style="font-size: 15px;">ios卡顿</a> <a href="/tags/jenkins/" style="font-size: 15px;">jenkins</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/防抖截流/" style="font-size: 15px;">防抖截流</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 15px;">nodejs</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/react-native/" style="font-size: 15px;">react-native</a> <a href="/tags/FOLIO/" style="font-size: 15px;">FOLIO</a> <a href="/tags/svg/" style="font-size: 15px;">svg</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/调用摄像头/" style="font-size: 15px;">调用摄像头</a> <a href="/tags/批量上传图片/" style="font-size: 15px;">批量上传图片</a> <a href="/tags/favicon/" style="font-size: 15px;">favicon</a> <a href="/tags/移动端开发/" style="font-size: 15px;">移动端开发</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/数组拷贝/" style="font-size: 15px;">数组拷贝</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a> <a href="/tags/https/" style="font-size: 15px;">https</a> <a href="/tags/随机颜色/" style="font-size: 15px;">随机颜色</a> <a href="/tags/设计/" style="font-size: 15px;">设计</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://weixin.qingyun100.cn/" title="青云公考" target="_blank">青云公考</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>

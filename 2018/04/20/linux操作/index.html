@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><title>Linux使用 | 雪林的博客</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Linux使用</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Linux使用</h1><div class="post-meta"><a href="/2018/04/20/linux操作/#comments" class="comment-count"></a><p><span class="date">Apr 20, 2018</span><span><a href="/categories/Linux/" class="category">Linux</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h2 id="软件操作"><a href="#软件操作" class="headerlink" title="软件操作"></a>软件操作</h2><p>软件包管理</p>
+<pre><code>yum
+</code></pre><p>安装</p>
+<pre><code>yum install ...
+</code></pre><p>卸载</p>
+<pre><code>yum remove ...
+</code></pre><p>搜索</p>
+<pre><code>yum serach ...
+</code></pre><p>清理缓存</p>
+<pre><code>yum clean packages
+</code></pre><p>列出已安装</p>
+<pre><code>yum list
+</code></pre><p>软件包信息</p>
+<pre><code>yum info ...
+</code></pre><h2 id="硬件资源信息"><a href="#硬件资源信息" class="headerlink" title="硬件资源信息"></a>硬件资源信息</h2><ul>
+<li><p>内存</p>
+<p>  free -m</p>
+</li>
+<li><p>硬盘</p>
+<p>  df -h</p>
+</li>
+<li><p>负载（w或top）</p>
+<p>  w</p>
+<p>  12:53:49 up  2:33,  3 users,  load average: 0.00, 0.01, 0.05<br>  USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT<br>  root     tty2                      10:32    1:59m  0.04s  0.04s -bash<br>  root     pts/0    121.239.246.23   11:34    1:13m  0.01s  0.01s -bash<br>  root     pts/1    121.239.246.23   12:24    5.00s  0.02s  0.00s w</p>
+<p>  load average: 0.00, 0.01, 0.05  分别表示最近1分钟，5分钟，15分钟时候的负载值</p>
+<p>  当到达1时说明负载快要超荷。0.6-0.7是健康值。</p>
+</li>
+<li><p>cpu个数和核数</p>
+<p>  cat /proc/cpuinfo</p>
+</li>
+</ul>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>####目录结构</p>
+<p>根目录/</p>
+<p>家目录 /home</p>
+<p>临时目录 /tmp</p>
+<p>配置目录 /etc</p>
+<p>用户程序目录 /usr</p>
+<p>####文件基本操作</p>
+<pre><code>touch --新建文件
+rm --删除文件和目录
+cp --复制
+mv --移动
+pwd --显示路径
+</code></pre><p>####vim</p>
+<pre><code>gg--定位到行头
+G--定位到行尾
+dd--删除整行
+u--恢复
+</code></pre><p>####文件权限421</p>
+<pre><code>r--4 可读
+w--2 可写
+x--1 可执行
+</code></pre><p>####文件搜索，查找</p>
+<pre><code>tail--从尾部开始读
+head--从头部开始读
+cat--读取整个文件
+more--分页读取
+less--可控分页
+grep--搜索关键字
+find--查找文件
+wc--统计个数
+
+find . -name &quot;*.conf&quot; --查找当前路径下以conf后缀的文件
+find . -type  f --查找当前路径下的文件
+find . -type  d --查找当前路径下的文件夹
+find . -ctime -20 --查找20天内更新过的文件
+</code></pre><h4 id="文件压缩和解压tar和untar"><a href="#文件压缩和解压tar和untar" class="headerlink" title="文件压缩和解压tar和untar"></a>文件压缩和解压tar和untar</h4><p>把zxl文件压缩为zxl.tar：</p>
+<pre><code>tar -cf zxl.tar zxl
+</code></pre><p>查看zxl.tar里面的内容：</p>
+<pre><code>tar -tf zxl.tar
+</code></pre><p>查看zxl.tar里面的详细内容：</p>
+<pre><code>tar -tvf zxl.tar
+</code></pre><p>把zxl.tar解压：</p>
+<pre><code>tar -xf zxl.tar
+</code></pre><h2 id="系统用户操作命令"><a href="#系统用户操作命令" class="headerlink" title="系统用户操作命令"></a>系统用户操作命令</h2><h4 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h4><pre><code>cd /home/
+useradd zhaolin
+</code></pre><p>这时查看home里面会多了一个文件夹zhaolin</p>
+<p>给zhaolin用户添加密码：</p>
+<pre><code>passwd zhaolin
+</code></pre><p>输入密码并确认密码。</p>
+<p>这样就有了一个新的用户zhaolin，可以用ssh用zhaolin用户连接。</p>
+<h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><pre><code>userdel zhaolin  --删除用户zhaolin
+rm -rf zhaolin  --删除用户zhaolin目录
+
+userdel -r zhaolin --彻底删除用户以及用户文件夹
+</code></pre><h2 id="防火墙操作"><a href="#防火墙操作" class="headerlink" title="防火墙操作"></a>防火墙操作</h2><p>作用：保护服务器安全</p>
+<p>安装：</p>
+<pre><code>yum install firewalld
+</code></pre><p>启动： </p>
+<pre><code>service firewalld started
+</code></pre><p>启动： </p>
+<pre><code>service firewalld restarted
+</code></pre><p>列出防火墙服务：</p>
+<pre><code>yum list | grep firewall
+</code></pre><p>查看是否启动防火墙：</p>
+<pre><code>ps -ef|grep firewall
+</code></pre><p>停止：</p>
+<pre><code>service firewalld stop
+
+service firewalld status
+</code></pre><h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>root账号中</p>
+<pre><code>visudo
+</code></pre><p>修改：</p>
+<pre><code>## Allows people in group wheel to run all commands
+%wheel  ALL=(ALL)       ALL
+%zhaolin ALL=(ALL)    ALL
+</code></pre><p>在zhaolin用户进行操作以前，前面加上sudo即可</p>
+<pre><code>sudo yum install XXXXX
+</code></pre><h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h4 id="linux-scp"><a href="#linux-scp" class="headerlink" title="linux: scp"></a>linux: scp</h4><pre><code>scp zhaolin@47.96.140.xx:/tmp/abc.txt ./  
+把服务器47.96.140.xx上tmp里面的文件传到本地当前目录
+
+scp abc.txt  zhaolin@47.96.140.xx:/tmp  
+把本地当前目录的文件上传到服务器47.96.140.xx上tmp
+</code></pre><h4 id="windows-xshell"><a href="#windows-xshell" class="headerlink" title="windows xshell"></a>windows xshell</h4><ul>
+<li>首先xshell连接linux，</li>
+<li><p>然后再linux服务器上安装：</p>
+<p>  yum install lrzsz</p>
+</li>
+</ul>
+<p>装好以后执行命令：</p>
+<pre><code>rz
+</code></pre><p>会出现弹框：</p>
+<p>选择文件并上传即可</p>
+<h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><pre><code>wget XXXXX
+</code></pre></div><div class="post-copyright"><blockquote><p>原文作者: 雪林</p><p>原文链接: <a href="https://shleyz.github.io/2018/04/20/linux操作/">https://shleyz.github.io/2018/04/20/linux操作/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/linux/">linux</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2018/04/20/SSH连接/" class="pre">SSH连接</a><a href="/2018/04/20/nginx centOS/" class="next">Nginx 安装使用</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#软件操作"><span class="toc-text">软件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件资源信息"><span class="toc-text">硬件资源信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件操作"><span class="toc-text">文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件压缩和解压tar和untar"><span class="toc-text">文件压缩和解压tar和untar</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#系统用户操作命令"><span class="toc-text">系统用户操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加用户"><span class="toc-text">添加用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除用户"><span class="toc-text">删除用户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#防火墙操作"><span class="toc-text">防火墙操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提权"><span class="toc-text">提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件上传"><span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux-scp"><span class="toc-text">linux: scp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#windows-xshell"><span class="toc-text">windows xshell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件下载"><span class="toc-text">文件下载</span></a></li></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/08/bigtest-react/">@bigtest/react</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/08/bigtest-convergence/">@bigtest/convergence</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor开箱即用的方法和属性/">@bigtest/interactor开箱即用的方法和属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor使用/">@bigtest/interactor使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor/">@bigtest/interactor介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest使用/">@bigtest使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest/">@bigtest介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/LRU-缓存淘汰算法/">LRU 缓存淘汰算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/06/在移动端避免使用100vh/">在移动端避免使用100vh</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/display：flex和position-absolute-fixed/">display:flex和position:absolute/fixed一起用产生的问题</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RestfulAPI/">RestfulAPI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/antd/">antd</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bigtest/">bigtest</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/flutter/">flutter</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/性能/">性能</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/RestfulAPI/" style="font-size: 15px;">RestfulAPI</a> <a href="/tags/antd/" style="font-size: 15px;">antd</a> <a href="/tags/bigtest/" style="font-size: 15px;">bigtest</a> <a href="/tags/flutter/" style="font-size: 15px;">flutter</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/base64/" style="font-size: 15px;">base64</a> <a href="/tags/ios卡顿/" style="font-size: 15px;">ios卡顿</a> <a href="/tags/jenkins/" style="font-size: 15px;">jenkins</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/防抖截流/" style="font-size: 15px;">防抖截流</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 15px;">nodejs</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/react-native/" style="font-size: 15px;">react-native</a> <a href="/tags/FOLIO/" style="font-size: 15px;">FOLIO</a> <a href="/tags/svg/" style="font-size: 15px;">svg</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/调用摄像头/" style="font-size: 15px;">调用摄像头</a> <a href="/tags/批量上传图片/" style="font-size: 15px;">批量上传图片</a> <a href="/tags/favicon/" style="font-size: 15px;">favicon</a> <a href="/tags/移动端开发/" style="font-size: 15px;">移动端开发</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/数组拷贝/" style="font-size: 15px;">数组拷贝</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a> <a href="/tags/https/" style="font-size: 15px;">https</a> <a href="/tags/随机颜色/" style="font-size: 15px;">随机颜色</a> <a href="/tags/设计/" style="font-size: 15px;">设计</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://weixin.qingyun100.cn/" title="青云公考" target="_blank">青云公考</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>

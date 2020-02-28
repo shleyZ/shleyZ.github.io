@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="keywords" content="from-end, shleyZ, key1, key2, key3"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><title>nginx编译 | 雪林的博客</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">nginx编译</h1><a id="logo" href="/.">雪林的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">nginx编译</h1><div class="post-meta"><a href="/2018/11/19/nginx编译/#comments" class="comment-count"></a><p><span class="date">Nov 19, 2018</span><span><a href="/categories/Linux/" class="category">Linux</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>安装nginx有两种方法，一种是直接通过yarn/apt-get直接来安装，一种就是编译</p>
+<p>通过yarn/apt-get直接来安装，有一个问题，就是nginx的二进制文件会把模块直接编译进去，nignx的官方模块并不是每一个都会开启，如果想要添加第三方的nginx模块，必须通过编译的方式进行添加。</p>
+<p>推荐编译安装</p>
+<h4 id="下载nginx"><a href="#下载nginx" class="headerlink" title="下载nginx"></a>下载nginx</h4><p>打开nginx.org</p>
+<p>找到stable版本(当前stable版本为1.14.1)，复制下载地址，进入linux你想要安装的目录</p>
+<pre><code>wget http://nginx.org/download/nginx-1.14.1.tar.gz
+
+tar -xzf nginx-1.14.1.tar.gz 进行解压
+
+cd nginx-1.14.1 进入解压后的源码目录,查看目录如下：
+
+总用量 748
+drwxr-xr-x 6 mysql mysql   4096 11月 19 10:31 auto
+-rw-r--r-- 1 mysql mysql 287441 11月  6 21:52 CHANGES
+-rw-r--r-- 1 mysql mysql 438114 11月  6 21:52 CHANGES.ru
+drwxr-xr-x 2 mysql mysql   4096 11月 19 10:31 conf
+-rwxr-xr-x 1 mysql mysql   2502 11月  6 21:52 configure
+drwxr-xr-x 4 mysql mysql   4096 11月 19 10:31 contrib
+drwxr-xr-x 2 mysql mysql   4096 11月 19 10:31 html
+-rw-r--r-- 1 mysql mysql   1397 11月  6 21:52 LICENSE
+drwxr-xr-x 2 mysql mysql   4096 11月 19 10:31 man
+-rw-r--r-- 1 mysql mysql     49 11月  6 21:52 README
+drwxr-xr-x 9 mysql mysql   4096 11月 19 10:31 src
+</code></pre><h4 id="nginx源码各个目录"><a href="#nginx源码各个目录" class="headerlink" title="nginx源码各个目录"></a>nginx源码各个目录</h4><p>1.auto目录：</p>
+<pre><code>总用量 204
+drwxr-xr-x  2 mysql mysql  4096 11月 19 10:31 cc
+-rw-r--r--  1 mysql mysql   141 11月  6 21:52 define
+-rw-r--r--  1 mysql mysql   889 11月  6 21:52 endianness
+-rw-r--r--  1 mysql mysql  2812 11月  6 21:52 feature
+-rw-r--r--  1 mysql mysql   136 11月  6 21:52 have
+-rw-r--r--  1 mysql mysql   137 11月  6 21:52 have_headers
+-rw-r--r--  1 mysql mysql   411 11月  6 21:52 headers
+-rw-r--r--  1 mysql mysql  1020 11月  6 21:52 include
+-rw-r--r--  1 mysql mysql   745 11月  6 21:52 init
+-rw-r--r--  1 mysql mysql  4836 11月  6 21:52 install
+drwxr-xr-x 11 mysql mysql  4096 11月 19 10:31 lib
+-rw-r--r--  1 mysql mysql 18253 11月  6 21:52 make
+-rw-r--r--  1 mysql mysql  3183 11月  6 21:52 module
+-rw-r--r--  1 mysql mysql 37857 11月  6 21:52 modules
+-rw-r--r--  1 mysql mysql   136 11月  6 21:52 nohave
+-rw-r--r--  1 mysql mysql 24767 11月  6 21:52 options
+drwxr-xr-x  2 mysql mysql  4096 11月 19 10:31 os
+-rw-r--r--  1 mysql mysql  8654 11月  6 21:52 sources
+-rw-r--r--  1 mysql mysql   120 11月  6 21:52 stubs
+-rw-r--r--  1 mysql mysql  2014 11月  6 21:52 summary
+-rw-r--r--  1 mysql mysql   394 11月  6 21:52 threads
+drwxr-xr-x  2 mysql mysql  4096 11月 19 10:31 types
+-rw-r--r--  1 mysql mysql 26859 11月  6 21:52 unix
+</code></pre><p>包含四个子目录： cc–用于编译,lib–lib库,os–判断操作系统,types</p>
+<p>其他所有的都是为了配合configure脚本执行的时候去判定nginx支持哪些模块，当前操作系统有什么特性供nginx使用，</p>
+<p>2.CHANGES文件：nginx每个版本中的特性和bugfix</p>
+<p>3.conf是一个配置示例文件</p>
+<p>4.configure脚本是用来生成中间文件，执行编译前的必备动作</p>
+<p>5.contrib目录,vim编辑器的nginx语法高亮显示</p>
+<p>6.html目录, 里面是500错误，重定向到的页面，还有一个是index默认页面</p>
+<p>7.man目录，是linux对nginx的帮助文件</p>
+<p>8.src目录, 是nginx的源代码</p>
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>configure支持哪些参数呢：</p>
+<pre><code>./configure --help | more 
+
+结果：
+
+  --help                             print this message
+
+  --prefix=PATH                      set installation prefix
+  --sbin-path=PATH                   set nginx binary pathname
+  --modules-path=PATH                set modules path
+  --conf-path=PATH                   set nginx.conf pathname
+  --error-log-path=PATH              set error log pathname
+  --pid-path=PATH                    set nginx.pid pathname
+  --lock-path=PATH                   set nginx.lock pathname
+
+  --user=USER                        set non-privileged user for
+                                    worker processes
+  --group=GROUP                      set non-privileged group for
+                                    worker processes
+
+  --build=NAME                       set build name
+  --builddir=DIR                     set build directory
+
+  --with-select_module               enable select module
+  --without-select_module            disable select module
+  --with-poll_module                 enable poll module
+  --without-poll_module              disable poll module
+--More--
+</code></pre><p>1.开始编译（使用默认参数prefix）：</p>
+<pre><code>./configure --prefix=/home/zhaoxuelin/nginx (指定了nginx安装目录)
+</code></pre><p>  如果没有报错，nignx就在指定目录安装成功了  </p>
+<p>  此过程生成的中间文件放在新增加的objs目录下</p>
+<pre><code>objs:
+
+总用量 84
+-rw-r--r-- 1 root root 17763 11月 19 10:59 autoconf.err
+-rw-r--r-- 1 root root 39736 11月 19 10:59 Makefile
+-rw-r--r-- 1 root root  6816 11月 19 10:59 ngx_auto_config.h
+-rw-r--r-- 1 root root   657 11月 19 10:59 ngx_auto_headers.h
+-rw-r--r-- 1 root root  5725 11月 19 10:59 ngx_modules.c  (决定了哪些模块被编译进nginx)
+drwxr-xr-x 9 root root  4096 11月 19 10:59 src
+</code></pre><p>2.接下来执行make编译</p>
+<pre><code>make
+</code></pre><p>编译完成以后，就会生成大量中间文件和运行nginx的二进制文件。可以在objs目录中看到。</p>
+<p>3.执行make install首次安装可以执行这个命令</p>
+<pre><code>make install
+</code></pre><p>以上就是编译nginx的步骤</p>
+</div><div class="post-copyright"><blockquote><p>原文作者: 雪林</p><p>原文链接: <a href="https://shleyz.github.io/2018/11/19/nginx编译/">https://shleyz.github.io/2018/11/19/nginx编译/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/nginx/">nginx</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2018/11/21/nginx-命令/" class="pre">nginx 命令</a><a href="/2018/11/15/antd-onChange事件中setFieldsValue无效/" class="next">antd onChange事件中setFieldsValue无效</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载nginx"><span class="toc-text">下载nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx源码各个目录"><span class="toc-text">nginx源码各个目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编译"><span class="toc-text">编译</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/08/bigtest-react/">@bigtest/react</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/08/bigtest-convergence/">@bigtest/convergence</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor开箱即用的方法和属性/">@bigtest/interactor开箱即用的方法和属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor使用/">@bigtest/interactor使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest-interactor/">@bigtest/interactor介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest使用/">@bigtest使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/bigtest/">@bigtest介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/LRU-缓存淘汰算法/">LRU 缓存淘汰算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/06/在移动端避免使用100vh/">在移动端避免使用100vh</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/display：flex和position-absolute-fixed/">display:flex和position:absolute/fixed一起用产生的问题</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RestfulAPI/">RestfulAPI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass/">Sass</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/antd/">antd</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bigtest/">bigtest</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/flutter/">flutter</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/性能/">性能</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/RestfulAPI/" style="font-size: 15px;">RestfulAPI</a> <a href="/tags/antd/" style="font-size: 15px;">antd</a> <a href="/tags/bigtest/" style="font-size: 15px;">bigtest</a> <a href="/tags/flutter/" style="font-size: 15px;">flutter</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/base64/" style="font-size: 15px;">base64</a> <a href="/tags/ios卡顿/" style="font-size: 15px;">ios卡顿</a> <a href="/tags/jenkins/" style="font-size: 15px;">jenkins</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/防抖截流/" style="font-size: 15px;">防抖截流</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 15px;">nodejs</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/react-native/" style="font-size: 15px;">react-native</a> <a href="/tags/FOLIO/" style="font-size: 15px;">FOLIO</a> <a href="/tags/svg/" style="font-size: 15px;">svg</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/调用摄像头/" style="font-size: 15px;">调用摄像头</a> <a href="/tags/批量上传图片/" style="font-size: 15px;">批量上传图片</a> <a href="/tags/favicon/" style="font-size: 15px;">favicon</a> <a href="/tags/移动端开发/" style="font-size: 15px;">移动端开发</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/数组拷贝/" style="font-size: 15px;">数组拷贝</a> <a href="/tags/正则/" style="font-size: 15px;">正则</a> <a href="/tags/https/" style="font-size: 15px;">https</a> <a href="/tags/随机颜色/" style="font-size: 15px;">随机颜色</a> <a href="/tags/设计/" style="font-size: 15px;">设计</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/科学上网/" style="font-size: 15px;">科学上网</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://weixin.qingyun100.cn/" title="青云公考" target="_blank">青云公考</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">雪林.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
