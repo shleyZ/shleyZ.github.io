@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shleyz.github.io/"/>
-  <updated>2020-03-13T10:18:10.440Z</updated>
+  <updated>2020-05-08T02:48:55.368Z</updated>
   <id>https://shleyz.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>antdPro</title>
+    <link href="https://shleyz.github.io/2020/05/08/antdPro/"/>
+    <id>https://shleyz.github.io/2020/05/08/antdPro/</id>
+    <published>2020-05-08T02:21:02.000Z</published>
+    <updated>2020-05-08T02:48:55.368Z</updated>
+    
+    <content type="html"><![CDATA[<p>作者是这样描述的：dva 是 react 和 redux 的最佳实践。</p><p>而 antd-pro 就是作者把 UI 工具 antd，打包工具 roadhog，路由 react-router，状态管理器 dva 整合在一起</p><h2 id="dva-数据流"><a href="#dva-数据流" class="headerlink" title="dva 数据流"></a>dva 数据流</h2><ul><li><p>service：请求定义，并且按照 model 的维度进行拆分</p></li><li><p>utils/request.ts：统一的请求发送和错误处理</p></li><li><p>model: 处理数据逻辑部分，包含 state 初始值 和 reducers（相当于 redux 里面的 reducer，根据 action 来更新 state）</p></li></ul><h4 id="创建一个页面，除了需要配置相应的路由和权限，还需要两个部分，一个是-ui-组件，另一个就是-model-部分。"><a href="#创建一个页面，除了需要配置相应的路由和权限，还需要两个部分，一个是-ui-组件，另一个就是-model-部分。" class="headerlink" title="创建一个页面，除了需要配置相应的路由和权限，还需要两个部分，一个是 ui 组件，另一个就是 model 部分。"></a>创建一个页面，除了需要配置相应的路由和权限，还需要两个部分，一个是 ui 组件，另一个就是 model 部分。</h4><h4 id="在组件内部调用-dispatch-方法，根据传的-type-来执行-model-里面的对应的命名空间的-effects，进而可以修改-state-值。"><a href="#在组件内部调用-dispatch-方法，根据传的-type-来执行-model-里面的对应的命名空间的-effects，进而可以修改-state-值。" class="headerlink" title="在组件内部调用 dispatch 方法，根据传的 type 来执行 model 里面的对应的命名空间的 effects，进而可以修改 state 值。"></a>在组件内部调用 dispatch 方法，根据传的 type 来执行 model 里面的对应的命名空间的 effects，进而可以修改 state 值。</h4><h4 id="在-UI-组件内部使用高阶组件-connect-包裹组件，可以在组件内部使用-model-里面的-state。"><a href="#在-UI-组件内部使用高阶组件-connect-包裹组件，可以在组件内部使用-model-里面的-state。" class="headerlink" title="在 UI 组件内部使用高阶组件 connect 包裹组件，可以在组件内部使用 model 里面的 state。"></a>在 UI 组件内部使用高阶组件 connect 包裹组件，可以在组件内部使用 model 里面的 state。</h4><h2 id="1-组件内部调用-dispatch-一个-action，需要指定命名空间的-model-里面的-action："><a href="#1-组件内部调用-dispatch-一个-action，需要指定命名空间的-model-里面的-action：" class="headerlink" title="1. 组件内部调用 dispatch 一个 action，需要指定命名空间的 model 里面的 action："></a>1. 组件内部调用 dispatch 一个 action，需要指定命名空间的 model 里面的 action：</h2><p><img src="https://user-images.githubusercontent.com/11802509/81363902-fbead280-9116-11ea-80fc-172b86c984f1.png" alt="dispatch"></p><h2 id="2-model-部分"><a href="#2-model-部分" class="headerlink" title="2. model 部分"></a>2. model 部分</h2><p><img src="https://user-images.githubusercontent.com/11802509/81364365-0a85b980-9118-11ea-886a-3d73f3b95c8f.png" alt="dispatch"></p><h2 id="3-services-里面进行-请求的定义"><a href="#3-services-里面进行-请求的定义" class="headerlink" title="3. services 里面进行 请求的定义"></a>3. services 里面进行 请求的定义</h2><p><img src="https://user-images.githubusercontent.com/11802509/81364456-43259300-9118-11ea-908d-4536a8f756a3.png" alt="dispatch"></p><h3 id="一个-model-里面会有这些属性"><a href="#一个-model-里面会有这些属性" class="headerlink" title="一个 model 里面会有这些属性:"></a>一个 model 里面会有这些属性:</h3><ul><li><p>state：model 的状态数据，一般是不可变的，只有 action 才能修改 state 值</p></li><li><p>action：改变 state 的唯一途径，需要 dispatch 来触发 action，需要传一个 type 值，来指定 state 的修改。 dispatch 一般在组件 connect 以后从 props 里面可以获取到</p></li><li><p>dispatch：触发 action 的函数，在组件 connect 以后从 props 里面可以获取到 dispatch</p></li><li><p>reducers：是一个纯函数，接收 state 和 action，返回新的 state , 同步修改状态</p></li><li><p>effect：多用于异步修改状态，将异步操作转换成同步的写法，来实现纯函数</p></li><li>subscription：订阅一个数据源，根据条件来 dispacth 一个 action，一般用来监听路由变化</li></ul><p>此外每个 model 还需要定义一个 namespace 命名空间，也是全局 state 里面的属性，</p><p>例如 connect 指定的 state 时会用到，dispatch 指定的命名空间的 effects 也会用到</p><h3 id="model-里面的-effect-的使用"><a href="#model-里面的-effect-的使用" class="headerlink" title="model 里面的 effect 的使用:"></a>model 里面的 effect 的使用:</h3><ul><li>call 一般用来调用 api 接口，并可以获取到返回值</li><li>put 大致与 dispatch 相同，可让 effects 里的方法调用修改 state 的方法</li><li>select 用于获取 state 变量<br>此外 antd-pro 引入了 typescript，对 js 代码进行的类型检测，配合 tslint，能够严格约束代码的编写，虽然有些时候遇到的一些类型警报，可以用 any 类型解决，但是非常不建议这样做。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;作者是这样描述的：dva 是 react 和 redux 的最佳实践。&lt;/p&gt;
+&lt;p&gt;而 antd-pro 就是作者把 UI 工具 antd，打包工具 roadhog，路由 react-router，状态管理器 dva 整合在一起&lt;/p&gt;
+&lt;h2 id=&quot;dva-数据流&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="antdPro" scheme="https://shleyz.github.io/categories/antdPro/"/>
+    
+    
+      <category term="antdPro" scheme="https://shleyz.github.io/tags/antdPro/"/>
+    
+  </entry>
   
   <entry>
     <title>dart学习</title>
@@ -491,31 +518,6 @@
         &lt;p&gt;一条查询语句的执行过程一般是经过连接器、分析器、优化器、执行器等功能模块，最后到达存储引擎。&lt;/p&gt;
 &lt;p&gt;那么，一条更新语句的执行流程又是怎样的呢？&lt;/p&gt;
 &lt;p&gt;之前你可能经常听 DBA 同事说，MySQL 可以恢复到半个月内任意一秒的状态，惊叹的同时，你是不是心中也会
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="https://shleyz.github.io/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="https://shleyz.github.io/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>01 基础架构：一条SQL查询语句是如何执行的</title>
-    <link href="https://shleyz.github.io/2019/10/09/01-%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%EF%BC%9A%E4%B8%80%E6%9D%A1SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E7%9A%84/"/>
-    <id>https://shleyz.github.io/2019/10/09/01-基础架构：一条SQL查询语句是如何执行的/</id>
-    <published>2019-10-09T01:55:13.000Z</published>
-    <updated>2020-02-28T05:44:47.709Z</updated>
-    
-    <content type="html"><![CDATA[<p>来自 丁奇的MySQL基础课  <a href="https://time.geekbang.org/column/article/115537" target="_blank" rel="noopener">https://time.geekbang.org/column/article/115537</a></p><p>最简单的一条查询语句：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from T where ID=10;</span><br></pre></td></tr></table></figure><p>这条语句在 MySQL 内部的执行过程是怎样的呢？</p><p><img src="http://ww1.sinaimg.cn/large/8c85763dly1g9q8n57t8yj21hc140tpc.jpg" alt="MySQL 的逻辑架构图"></p><p>大体来说，MySQL 可以分为 Server 层和存储引擎层两部分。</p><p>Server 层包括连接器、查询缓存、分析器、优化器、执行器等。涵盖了 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期，时间，数学和加密函数等），所有跨存储引擎的功能都在这一层实现。比如存储过程、触发器、视图等。</p><p>存储引擎负责数据的存和取，其架构模式是插件式的，支持 InnoDB、MyISAM、Memory 等多个存储引擎。现在最常用的存储引擎是 InnoDB，它从 MySQL 5.5.5 版本开始成为了默认存储引擎。</p><p>也就是说，你执行 create table 建表的时候，如果不指定引擎类型，默认使用的就是 InnoDB。不过，你也可以通过指定存储引擎的类型来选择别的引擎，比如在 create table 语句中使用 engine=memory, 来指定使用内存引擎创建表。不同存储引擎的表数据存取方式不同，支持的功能也不同。</p><p>从图中不难看出，不同的存储引擎共用一个 Server 层，也就是从连接器到执行器的部分。你可以先对每个组件的名字有个印象，接下来我们结合开头提到的那条 SQL 语句，带你走一遍整个执行流程，依次看下每个组件的作用。</p><h2 id="连接器"><a href="#连接器" class="headerlink" title="连接器"></a>连接器</h2><p>第一步，先连接到这个数据库上，连接器负责与客户端建立连接、获取权限、维持和管理连接。连接命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h<span class="variable">$ip</span> -P<span class="variable">$port</span> -u<span class="variable">$user</span> -p</span><br></pre></td></tr></table></figure><p>输完命令之后，你就需要在交互对话里面输入密码。虽然密码也可以直接跟在 -p 后面写在命令行中，但这样可能会导致你的密码泄露。如果你连的是生产服务器，强烈建议你不要这么做。</p><p>连接命令中的 mysql 是客户端工具，用来跟服务端建立连接。在完成经典的 TCP 握手后，连接器就要开始认证你的身份，这个时候用的就是你输入的用户名和密码。</p><ul><li><p>如果用户名或密码不对，你就会收到一个”Access denied for user”的错误，然后客户端程序结束执行。</p></li><li><p>如果用户名密码认证通过，连接器会到权限表里面查出你拥有的权限。之后，这个连接里面的权限判断逻辑，都将依赖于此时读到的权限。</p></li></ul><p>这就意味着，一个用户成功建立连接后，即使你用管理员账号对这个用户的权限做了修改，也不会影响已经存在连接的权限。修改完成后，只有再新建的连接才会使用新的权限设置。</p><p>连接完成后，如果你没有后续的动作，这个连接就处于空闲状态，你可以在 show processlist 命令中看到它。文本中这个图是 show processlist 的结果，其中的 Command 列显示为“Sleep”的这一行，就表示现在系统里面有一个空闲连接。</p><p><img src="http://ww1.sinaimg.cn/large/8c85763dly1g9q9cuspppj20ob04j3yn.jpg" alt="show processlis"></p><p>客户端如果太长时间没动静，连接器就会自动将它断开。<br>这个时间是由参数 wait_timeout 控制的，默认值是 8 小时。<br>如果在连接被断开之后，客户端再次发送请求的话，就会收到一个错误提醒：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lost connection to MySQL server during query。</span><br></pre></td></tr></table></figure></p><p>这时候如果你要继续，就需要重连，然后再执行请求了。</p><p>数据库里面，长连接是指连接成功后，如果客户端持续有请求，则一直使用同一个连接。<br>短连接则是指每次执行完很少的几次查询就断开连接，下次查询再重新建立一个。建立连接的过程通常是比较复杂的，所以我建议你在使用中要尽量减少建立连接的动作，也就是尽量使用长连接。</p><p>但是全部使用长连接后，你可能会发现，有些时候 MySQL 占用内存涨得特别快，这是因为 MySQL 在执行过程中临时使用的内存是管理在连接对象里面的。这些资源会在连接断开的时候才释放。<br>所以如果长连接累积下来，可能导致内存占用太大，被系统强行杀掉（OOM），从现象看就是 MySQL 异常重启了。怎么解决这个问题呢？你可以考虑以下两种方案。定期断开长连接。使用一段时间，或者程序里面判断执行过一个占用内存的大查询后，断开连接，之后要查询再重连。如果你用的是 MySQL 5.7 或更新版本，可以在每次执行一个比较大的操作后，通过执行 mysql_reset_connection 来重新初始化连接资源。这个过程不需要重连和重新做权限验证，但是会将连接恢复到刚刚创建完时的状态。</p><h2 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h2><p>连接建立完成后，你就可以执行 select 语句了。执行逻辑就会来到第二步：查询缓存。</p><p>MySQL 拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以 key-value 对的形式，被直接缓存在内存中。 key 是查询的语句，value 是查询的结果。如果你的查询能够直接在这个缓存中找到 key，那么这个 value 就会被直接返回给客户端。</p><p>如果语句不在查询缓存中，就会继续后面的执行阶段。执行完成后，执行结果会被存入查询缓存中。你可以看到，如果查询命中缓存，MySQL 不需要执行后面的复杂操作，就可以直接返回结果，这个效率会很高。</p><p><strong>但是大多数情况下我会建议你不要使用查询缓存，为什么呢？因为查询缓存往往弊大于利。</strong></p><p>查询缓存的失效非常频繁，只要有对一个表的更新，这个表上所有的查询缓存都会被清空。因此很可能你费劲地把结果存起来，还没使用呢，就被一个更新全清空了。对于更新压力大的数据库来说，查询缓存的命中率会非常低。除非你的业务就是有一张静态表，很长时间才会更新一次。比如，一个系统配置表，那这张表上的查询才适合使用查询缓存。</p><p>好在 MySQL 也提供了这种“按需使用”的方式。你可以将参数 query_cache_type 设置成 DEMAND，这样对于默认的 SQL 语句都不使用查询缓存。而对于你确定要使用查询缓存的语句，可以用 SQL_CACHE 显式指定，像下面这个语句一样：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SQL_CACHE * from T where ID=10；</span><br></pre></td></tr></table></figure><p>需要注意的是，MySQL 8.0 版本直接将查询缓存的整块功能删掉了，<strong>也就是说 8.0 开始彻底没有这个功能了。</strong></p><h2 id="分析器"><a href="#分析器" class="headerlink" title="分析器"></a>分析器</h2><p>如果没有命中查询缓存，就要开始真正执行语句了。首先，MySQL 需要知道你要做什么，因此需要对 SQL 语句做解析。</p><p>分析器先会做<strong>词法分析</strong>。你输入的是由多个字符串和空格组成的一条 SQL 语句，MySQL 需要识别出里面的字符串分别是什么，代表什么。</p><p>MySQL 从你输入的”select”这个关键字识别出来，这是一个查询语句。它也要把字符串“T”识别成“表名 T”，把字符串“ID”识别成“列 ID”。</p><p>做完了这些识别以后，就要做<strong>语法分析</strong>。根据词法分析的结果，语法分析器会根据语法规则，判断你输入的这个 SQL 语句是否满足 MySQL 语法。</p><p>如果你的语句不对，就会收到“You have an error in your SQL syntax”的错误提醒，比如下面这个语句 select 少打了开头的字母“s”。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; elect * from t where ID=1;</span><br><span class="line"></span><br><span class="line">ERROR 1064 (42000): You have an error in your SQL syntax; <span class="keyword">check</span> the <span class="keyword">manual</span> that corresponds <span class="keyword">to</span> your MySQL <span class="keyword">server</span> <span class="keyword">version</span> <span class="keyword">for</span> the <span class="keyword">right</span> syntax <span class="keyword">to</span> <span class="keyword">use</span> near <span class="string">'elect * from t where ID=1'</span> <span class="keyword">at</span> line <span class="number">1</span></span><br></pre></td></tr></table></figure><p>一般语法错误会提示第一个出现错误的位置，所以你要关注的是紧接“use near”的内容。</p><h2 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h2><p>经过了分析器，MySQL 就知道你要做什么了。在开始执行之前，还要先经过优化器的处理。</p><p>优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。比如你执行下面这样的语句，这个语句是执行两个表的 join：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from t1 join t2 using(ID) where t1.c=10 and t2.d=20;</span><br></pre></td></tr></table></figure><ul><li>既可以先从表 t1 里面取出 c=10 的记录的 ID 值，再根据 ID 值关联到表 t2，再判断 t2 里面 d 的值是否等于 20。</li><li>也可以先从表 t2 里面取出 d=20 的记录的 ID 值，再根据 ID 值关联到 t1，再判断 t1 里面 c 的值是否等于 10。</li></ul><p>这两种执行方法的逻辑结果是一样的，但是执行的效率会有不同，而优化器的作用就是决定选择使用哪一个方案。</p><p>优化器阶段完成后，这个语句的执行方案就确定下来了，然后进入执行器阶段。如果你还有一些疑问，比如优化器是怎么选择索引的，有没有可能选择错等等，没关系，我会在后面的文章中单独展开说明优化器的内容。</p><h2 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h2><p>MySQL 通过分析器知道了你要做什么，通过优化器知道了该怎么做，于是就进入了执行器阶段，开始执行语句。</p><p>开始执行的时候，要先判断一下你对这个表 T 有没有执行查询的权限，如果没有，就会返回没有权限的错误，如下所示 (在工程实现上，如果命中查询缓存，会在查询缓存返回结果的时候，做权限验证。查询也会在优化器之前调用 precheck 验证权限)。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; select * from T where ID=10;</span><br><span class="line"></span><br><span class="line">ERROR 1142 (42000): <span class="keyword">SELECT</span> command denied <span class="keyword">to</span> <span class="keyword">user</span> <span class="string">'b'</span>@<span class="string">'localhost'</span> <span class="keyword">for</span> <span class="keyword">table</span> <span class="string">'T'</span></span><br></pre></td></tr></table></figure><p>如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口。</p><p>比如我们这个例子中的表 T 中，ID 字段没有索引，那么执行器的执行流程是这样的：</p><ul><li><p>调用 InnoDB 引擎接口取这个表的第一行，判断 ID 值是不是 10，如果不是则跳过，如果是则将这行存在结果集中；</p></li><li><p>调用引擎接口取“下一行”，重复相同的判断逻辑，直到取到这个表的最后一行。</p></li><li><p>执行器将上述遍历过程中所有满足条件的行组成的记录集作为结果集返回给客户端。</p></li></ul><p>至此，这个语句就执行完成了。</p><p>对于有索引的表，执行的逻辑也差不多。第一次调用的是“取满足条件的第一行”这个接口，之后循环取“满足条件的下一行”这个接口，这些接口都是引擎中已经定义好的。</p><p>你会在数据库的慢查询日志中看到一个 rows_examined 的字段，表示这个语句执行过程中扫描了多少行。这个值就是在执行器每次调用引擎获取数据行的时候累加的。</p><p>在有些场景下，执行器调用一次，在引擎内部则扫描了多行，因此引擎扫描行数跟 rows_examined 并不是完全相同的。我们后面会专门有一篇文章来讲存储引擎的内部机制，里面会有详细的说明。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;来自 丁奇的MySQL基础课  &lt;a href=&quot;https://time.geekbang.org/column/article/115537&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://time.geekbang.org/column
       
     
     </summary>
